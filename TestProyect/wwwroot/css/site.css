@@ -86,18 +86,31 @@ body {
 }
 .carusel {
 position: absolute;
-top: 25%;
+top: 20%;
 
 }
 .titulo{
     text-align:center;
     color:white;
 }
-.login{
-    color:white;
+.login {
+
+    top: 30%;
+    color: white;
 }
 
 .recuperar_contrasena{
     color:white;
     text-align: center;
 }
+
+.banner {
+    display: block;
+    margin: auto;
+    width: 600px;
+    height: auto;
+    vertical-align: middle;
+}
+/* ------------------------------ */
+
+/* Estilos de la Página PasswordReset */

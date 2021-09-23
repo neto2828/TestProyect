@@ -8,10 +8,13 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body class="fondoPrincipal">
     <div class="row carusel">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div id="myCarousel" class="carousel carusel slide d-none d-sm-none d-md-block" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -22,10 +25,19 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="/img/banner1.png" alt="Chicago" style="width:100%;">
+                        <img class="banner" src="/img/banner1.png" alt="Oziel">
                         <div class="carousel-caption">
-                            <h3>Chicago</h3>
-                            <p>Thank you, Chicago!</p>
+                            <h3>Oziel Escobedo</h3>
+                            <p>Mediocampista</p>
+                            <h4>Consolidado</h4>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="banner" src="/img/banner2.png" alt="Chicago">
+                        <div class="carousel-caption">
+                            <h3>Alfonso Cuevas Garrido</h3>
+                            <p>Delantero</p>
+                            <h4>Élite</h4>
                         </div>
                     </div>
                 </div>
@@ -40,20 +52,20 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 login">
             <h3 class="titulo">Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento</h3>
             <form action="">
                 <div class="form-group">
-                    <label class="login">* Usuario</label>
+                    <label class="">* Usuario</label>
                     <input type="email" class="form-control" placeholder="* Usuario">
                 </div>
                 <div class="form-group">
-                    <label class="login">Contraseña:</label>
+                    <label class="">Contraseña:</label>
                     <input type="password" class="form-control" placeholder="* Contraseña" id="pwd">
                 </div>
                 <button type="submit" class="btn btn-success">Iniciar Sesión</button>
             </form>
-            <a class="recuperar_contrasena" asp-action="Amigo">Recuperar Contraseña</a>
+            <a class="recuperar_contrasena" asp-action="PasswordReset">Recuperar Contraseña</a>
         </div>
 
     </div>
