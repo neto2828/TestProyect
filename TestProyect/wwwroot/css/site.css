@@ -124,8 +124,7 @@ body {
     overflow: hidden;
 }
 .carusel {
-
-top: 40%;
+margin-top: 10%;
 
 }
 .titulo{
@@ -231,4 +230,29 @@ hr .linea {
 }
 
 /* ---------------------------------- */
-/* ---------------------------------- */
+
+/* Estilos de la Página Administracion */
+
+.fondoAdministracion {
+    background-image: url(../img/fondoAdministracion.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    border: 0;
+    overflow: hidden;
+}
+
+.card{
+    background-color: var(--grisF);
+    color: white;
+}
+
+.btn-orange{
+    background-color: var(--naranja) !important;
+    display: flex;
+    justify-content:center;
+    color: white;
+}
+
+/* ----------------------------------- */
