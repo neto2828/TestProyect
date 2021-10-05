@@ -1,4 +1,31 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+﻿/* Colores Oficiales */
+
+:root {
+    --grisF: #343A40;
+    --grisC: #595959;
+    --naranja: #EA7B1F;
+    /*Para asignar un color de variable es: var(--grisF);*/
+}
+
+/* ----------------- */
+
+/* Preload */
+.hidden{
+    overflow: hidden;
+}
+.centradoLoad {
+    height: 100vh;
+    background: url(../img/Loader.gif) no-repeat center center;
+    background-color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------- */
+
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
@@ -63,7 +90,7 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-    background-color: #2F2F2F;
+    background-color: var(--grisF);
     color: white;
     position: absolute;
     bottom: 0;
@@ -73,8 +100,20 @@ body {
     text-align: center;
 }
 
-/* Estilos de la Página Principal */
+/* Barra Nav*/
 
+.navbar-gray {
+    background-color: var(--grisF);
+}
+.Logo {
+    
+    height: 40px;
+    
+}
+/*----------*/
+
+
+/* Estilos de la Página Principal */
 .fondoPrincipal {
     background-image: url(../img/fondo.png);
     background-repeat: no-repeat;
@@ -82,17 +121,138 @@ body {
     background-position: center center;
     background-size: cover;
     border: 0;
-    overflow: hidden
+    overflow: hidden;
 }
 .carusel {
-position: absolute;
-top: 25%;
+margin-top: 10%;
 
 }
 .titulo{
     text-align:center;
     color:white;
 }
-.login{
+.col-md-4 .login {
+    top: 30%;
+    color: white;
+}
+
+.recuperar_contrasena {
+    line-height:200%;
+    text-align: right;
+}
+
+.enlace {
+    color: var(--naranja);
+    font-weight: bold;
+}
+
+.enlace:hover{
+color: var(--grisF);
+font-weight: bold;
+}
+
+.banner {
+    display: block;
+    margin: auto;
+    width: 600px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.labelPrincipal{
     color:white;
 }
+
+.btn-dark:hover {
+    background-color: var(--naranja);
+    color: white;
+}
+
+.jugador {
+    -webkit-text-stroke: 1px var(--grisF);
+    color: white;
+}
+
+.logotipo {
+    display: block;
+    margin: auto;
+    width: 70%;
+}
+/* ------------------------------ */
+
+/* Estilos de la Página PasswordReset */
+
+.fondoPasswordReset {
+    background-image: url(../img/fondoPasswordReset.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    border: 0;
+    overflow: hidden;
+}
+
+.form-register {
+    top: 50%;
+    width: 85%;
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    border-radius: 40px 10px;
+   
+}
+
+.form-titulo {
+    background: var(--grisC);
+    color: #fff;
+    padding: 20px;
+    font-weight: 100;
+    font-size: 20px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom: 5px solid var(--naranja);
+}
+
+.contenedor-inputs {
+    padding: 2px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.registrado {
+    line-height: 200%;
+    text-align: center;
+}
+
+hr .linea {
+    border-top: 1px dotted red;
+}
+
+/* ---------------------------------- */
+
+/* Estilos de la Página Administracion */
+
+.fondoAdministracion {
+    background-image: url(../img/fondoAdministracion.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    border: 0;
+    overflow: hidden;
+}
+
+.card{
+    background-color: var(--grisF);
+    color: white;
+}
+
+.btn-orange{
+    background-color: var(--naranja) !important;
+    display: flex;
+    justify-content:center;
+    color: white;
+}
+
+/* ----------------------------------- */
