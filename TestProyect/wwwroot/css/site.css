@@ -240,7 +240,7 @@ hr .linea {
     background-position: center center;
     background-size: cover;
     border: 0;
-    overflow: hidden;
+    
 }
 
 .card{
@@ -256,3 +256,7 @@ hr .linea {
 }
 
 /* ----------------------------------- */
+
+.card-special {
+    background-color: white !important;
+}
