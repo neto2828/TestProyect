@@ -15,6 +15,11 @@ namespace TestProyect.Controllers
             return View();
         }
 
+        public ActionResult Field()
+        {
+            return View();
+        }
+
 
         // POST: EntrenadoresController/Create
         [HttpPost]

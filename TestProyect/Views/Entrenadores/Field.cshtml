@@ -1,0 +1,143 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div style="border: 1px solid black;">
+   <img src="https://thumbs.dreamstime.com/b/vista-superior-del-campo-de-f%C3%BAtbol-84246649.jpg" width="100%" style=""/>
+   <div id="draggable" class="player player__item player__item--eleven">
+            <div class="player player__item--shirt">
+                9
+            </div>
+            <div class="player player__item--label">
+                Suárez
+            </div>
+            <div class="player__item--card">
+                <div class="player__item--card--name">
+                    Suárez
+                </div>
+                <div class="player__item--card--photo-bg">
+                    <img src="http://img.uefa.com/imgml/TP/players/9/2015/324x324/106375.jpg" class="player__item--card--photo">
+                </div>
+                <div class="player__item--card--info">
+                    <div class="player__item--card--info--column player__item--card--info--age">
+                        <div class="player__item--card--info--column player__item--card--info--age--title">
+                            Age
+                        </div>
+                        <div class="player__item--card--info--column player__item--card--info--age--data">
+                            29
+                        </div>
+                    </div>
+                    <div class="player__item--card--info--column player__item--card--info--country">
+                        <div class="player__item--card--info--column player__item--card--info--country--title">
+                            Country
+                        </div>
+                        <div class="player__item--card--info--column player__item--card--info--country--data">
+                            <span class="flag-icon flag-icon-uy"></span>
+                        </div>
+                    </div>
+                    <div class="player__item--card--info--column player__item--card--info--club">
+                        <div class="player__item--card--info--column player__item--card--info--club--title">
+                            Club
+                        </div>
+                        <div class="player__item--card--info--column player__item--card--info--club-data">
+                            Barcelona
+                        </div>
+                    </div>
+                </div>
+            </div>
+   </div>
+   <div id="draggable2" class="player player__item player__item--ten">
+            <div class="player player__item--shirt">
+                11
+            </div>
+            <div class="player player__item--label">
+                Neymar
+            </div>
+            <div class="player__item--card">
+                <div class="player__item--card--name">
+                    Neymar
+                </div>
+                <div class="player__item--card--photo-bg">
+                    <img src="http://img.uefa.com/imgml/TP/players/9/2015/324x324/250039508.jpg" class="player__item--card--photo">
+                </div>
+                <div class="player__item--card--info">
+                    <div class="player__item--card--info--column player__item--card--info--age">
+                        <div class="player__item--card--info--column player__item--card--info--age--title">
+                            Age
+                        </div>
+                        <div class="player__item--card--info--column player__item--card--info--age--data">
+                            24
+                        </div>
+                    </div>
+                    <div class="player__item--card--info--column player__item--card--info--country">
+                        <div class="player__item--card--info--column player__item--card--info--country--title">
+                            Country
+                        </div>
+                        <div class="player__item--card--info--column player__item--card--info--country--data">
+                            <span class="flag-icon flag-icon-br"></span>
+                        </div>
+                    </div>
+                    <div class="player__item--card--info--column player__item--card--info--club">
+                        <div class="player__item--card--info--column player__item--card--info--club--title">
+                            Club
+                        </div>
+                        <div class="player__item--card--info--column player__item--card--info--club-data">
+                            Barcelona
+                        </div>
+                    </div>
+                </div>
+            </div>
+   </div>
+   <div id="draggable3" class="player player__item player__item--nine">
+            <div class="player player__item--shirt">
+                10
+            </div>
+            <div class="player player__item--label">
+                Messi
+            </div>
+            <div class="player__item--card">
+                <div class="player__item--card--name">
+                    Messi
+                </div>
+                <div class="player__item--card--photo-bg">
+                    <img src="http://img.uefa.com/imgml/TP/players/9/2015/324x324/95803.jpg" class="player__item--card--photo">
+                </div>
+                <div class="player__item--card--info">
+                    <div class="player__item--card--info--column player__item--card--info--age">
+                        <div class="player__item--card--info--column player__item--card--info--age--title">
+                            Age
+                        </div>
+                        <div class="player__item--card--info--column player__item--card--info--age--data">
+                            29
+                        </div>
+                    </div>
+                    <div class="player__item--card--info--column player__item--card--info--country">
+                        <div class="player__item--card--info--column player__item--card--info--country--title">
+                            Country
+                        </div>
+                        <div class="player__item--card--info--column player__item--card--info--country--data">
+                            <span class="flag-icon flag-icon-ar"></span>
+                        </div>
+                    </div>
+                    <div class="player__item--card--info--column player__item--card--info--club">
+                        <div class="player__item--card--info--column player__item--card--info--club--title">
+                            Club
+                        </div>
+                        <div class="player__item--card--info--column player__item--card--info--club-data">
+                            Barcelona
+                        </div>
+                    </div>
+                </div>
+            </div>
+   </div>
+
+</div>
+
+
+<script>
+     var draggable = new PlainDraggable(document.getElementById('draggable'));
+     var draggable2 = new PlainDraggable(document.getElementById('draggable2'));
+     var draggable3 = new PlainDraggable(document.getElementById('draggable3'));
+</script>
