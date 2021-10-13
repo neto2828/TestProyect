@@ -32,7 +32,27 @@ namespace TestProyect.Controllers
         }
 
         // GET: EntrenadoresController/Edit/5
-        public ActionResult Alineacion(int id)
+        public ActionResult Alineacion()
+        {
+            return View();
+        }
+
+        public ActionResult Planeacion()
+        {
+            return View();
+        }
+
+        public ActionResult Estadistica()
+        {
+            return View();
+        }
+
+        public ActionResult Jugadores()
+        {
+            return View();
+        }
+
+        public ActionResult Componente()
         {
             return View();
         }

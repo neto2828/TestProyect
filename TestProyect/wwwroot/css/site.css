@@ -341,4 +341,27 @@ hr .linea {
     }
 }
 
+.activo{
+    background-color:var(--naranja);
+    color: white !important;
+}
+
 /* ----------------------------------- */
+.card-body-perfil {
+    background-color: white !important;
+    border-radius: 50px;
+    width: 180px;
+    height: 150px;
+    background: blue;
+    margin: auto;
+}
+.card-footer{
+    background-color: var(--naranja);
+}
+.card-header{
+    background-color: var(--naranja);
+    font-weight: bold;
+    text-align: center;
+}
+
+
