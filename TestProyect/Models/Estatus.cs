@@ -15,6 +15,7 @@ namespace TestProyect.Models
         [Display(Name = "Estatus")]
         [StringLength(30, ErrorMessage = "El {0} debe ser al menos {2} y máximo {1} caracteres", MinimumLength = 3)]
         public string NombreEstatus { get; set; }
+        public List<Usuarios> Usuarios { get; set; }
     }
     public class TipoUsuario
     {
@@ -25,5 +26,8 @@ namespace TestProyect.Models
         [Display(Name = "Tipo Usuario")]
         [StringLength(30, ErrorMessage = "El {0} debe ser al menos {2} y máximo {1} caracteres", MinimumLength = 3)]
         public string NombreTipoUsuario { get; set; }
+        public List<Usuarios> Usuarios { get; set; }
     }
 }
+
+

@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace TestProyect.Controllers
 {
-    public class UtilerosController : Controller
+    public class TutorController : Controller
     {
-        // GET: Utileros
+        // GET: TutorController1
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Utileros/Details/5
+        // GET: TutorController1/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Utileros/Create
+        // GET: TutorController1/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Utileros/Create
+        // POST: TutorController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -42,13 +42,13 @@ namespace TestProyect.Controllers
             }
         }
 
-        // GET: Utileros/Edit/5
+        // GET: TutorController1/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Utileros/Edit/5
+        // POST: TutorController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -63,13 +63,13 @@ namespace TestProyect.Controllers
             }
         }
 
-        // GET: Utileros/Delete/5
+        // GET: TutorController1/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Utileros/Delete/5
+        // POST: TutorController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

@@ -29,7 +29,8 @@ namespace TestProyect.Controllers
         // GET: Administrativo
         public ActionResult Administrativos()
         {
-            return View();
+            IEnumerable<Usuarios> listUsuarios = _context.Usuarios;
+            return View(listUsuarios);
         }
 
         // GET: Administrativo
@@ -50,7 +51,8 @@ namespace TestProyect.Controllers
         }
         public ActionResult Catalogos()
         {
-            IEnumerable<Estatus> listEstatus = _context.Estatus;
+            IEnumerable<Estatus> listEstatus = _context.Estatus;            
+            //Tuple<Estatus, TipoUsuario> Model = new Tuple<Estatus, TipoUsuario>(new Estatus(), new TipoUsuario());
             return View(listEstatus);
         }
 
@@ -67,8 +69,28 @@ namespace TestProyect.Controllers
             {
                 _context.Estatus.Add(estatus);
                 _context.SaveChanges();
-                TempData["mensaje"] = "La cateogria se ha guadado";
+                TempData["mensaje"] = "La categoria se ha guadado";
                 return RedirectToAction("Catalogos");
+
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult NuevoAdministrativo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult NuevoAdministrativo(Usuarios usuarios)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Usuarios.Add(usuarios);
+                _context.SaveChanges();
+                TempData["mensaje"] = "El Administrativo se ha guadado";
+                return RedirectToAction("Administrativos");
 
             }
             return View();
