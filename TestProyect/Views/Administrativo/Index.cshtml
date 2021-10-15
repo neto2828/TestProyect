@@ -7,13 +7,13 @@
 </head>
 <body class="fondoAdministracion">
     <div class="row carusel">
-        <div class="col-md-3">
+        <div class="col-3">
             <div class="card" style="">
                 <img class="card-img-top" src="~/img/directivo.png" alt="Card image" style="width:100%">
                 <div class="card-body">
                     <h4 class="card-title">Administrativos</h4>
                     <p class="card-text">Espacio dedicado para la Gestión del personal Administrativo de la Institución</p>
-                    <a href="#" class="btn btn-orange">Ingresar</a>
+                    <a asp-controller="Administrativo" asp-action="Administrativos" class="btn btn-orange">Ingresar</a>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                         Espacio dedicado para la administración del Cuerpo Técnico de la Institución
                     </p>
                     <br>
-                    <a href="#" class="btn btn-orange">Ingresar</a>
+                    <a asp-controller="Administrativo" asp-action="Entrenadores" class="btn btn-orange">Ingresar</a>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                     <p class="card-text">
                         Espacio dedicado para la administración de los nuevos jugadores inscritos en la institución
                     </p>
-                    <a href="#" class="btn btn-orange">Ingresar</a>
+                    <a asp-controller="Administrativo" asp-action="Jugadores" class="btn btn-orange">Ingresar</a>
                 </div>
             </div>
         </div>
@@ -52,23 +52,23 @@
                     <h4 class="card-title">Utileros</h4>
                     <p class="card-text">Espacio dedicado para la gestion del personal encargado de la utileria</p>
                     <br>
-                    <a href="#" class="btn btn-orange">Ingresar</a>
+                    <a asp-controller="Administrativo" asp-action="Utileros" class="btn btn-orange">Ingresar</a>
                 </div>
             </div>
         </div>
 
+    </div>
+    <div class="row carusel">
         <div class="col-md-3">
             <div class="card" style="">
-                <img class="card-img-top" src="~/img/utileros.png" alt="Card image" style="width:100%">
                 <div class="card-body">
                     <h4 class="card-title">Catálogos</h4>
                     <p class="card-text">Espacio dedicado para los catálogos de opciones</p>
                     <br>
-                    <a href="#" class="btn btn-orange">Ingresar</a>
+                    <a asp-controller="Administrativo" asp-action="Catalogos" class="btn btn-orange">Ingresar</a>
                 </div>
             </div>
         </div>
-
     </div>
 
 </body>
