@@ -118,7 +118,7 @@ body {
 
 /* Estilos de la Página Principal */
 .fondoPrincipal {
-    background-image: url(../img/fondo.png);
+    /*background-image: url(../img/fondo.png);*/
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
@@ -150,9 +150,22 @@ margin-top: 10%;
 }
 
 .enlace:hover{
-color: var(--grisF);
+color: white;
 font-weight: bold;
 }
+
+.iniciar {
+    background-color: var(--naranja);
+    font-weight: bold;
+    color: white;
+}
+
+.iniciar:hover {
+    color: var(--grisF);
+    font-weight: bold;
+    color: var(--grisC);
+}
+
 
 .banner {
     display: block;
@@ -180,6 +193,11 @@ font-weight: bold;
     display: block;
     margin: auto;
     width: 70%;
+}
+
+.card-inicio {
+    margin-top: 15%;
+    background-color: var(--grisF) !important;
 }
 /* ------------------------------ */
 
@@ -243,6 +261,7 @@ hr .linea {
     background-position: center center;
     background-size: cover;
     border: 0;
+    overflow: hidden;
     
 }
 

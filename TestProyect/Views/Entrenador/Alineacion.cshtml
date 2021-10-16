@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Sidebar.cshtml";
+}
+
+<body class="fondoAdministracion">
+    <div class="d-flex" id="content-wrapper">
+        <div id="sidebar-container" class="bg-primary">
+            <div class="logo text-center">
+                <img src="~/img/LogoSPEJAR.png" alt="..." height="36">
+            </div>
+            <div class="card">
+                <div class="card-header">Equipo 1</div>
+                <div class="card-body-perfil">
+                    <div class="logo text-center">
+                        <img src="~/img/Equipos/Logo1.svg" alt="..." height="120">
+                    </div>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+            
+            <div class="menu">
+                <a asp-controller="Entrenador" asp-action="Index" class="d-block text-light p-3"><i class="icon ion-md-grid mr-2 lead"></i> Equipos</a>
+                <a asp-controller="Entrenador" asp-action="Alineacion" class="d-block text-light p-3 activo"><i class="icon ion-md-people mr-2 lead"></i> Alineación</a>
+                <a asp-controller="Entrenador" asp-action="Planeacion" class="d-block text-light p-3"><i class="icon ion-md-stats mr-2 lead"></i> Planeación</a>
+                <a asp-controller="Entrenador" asp-action="Componente" class="d-block text-light p-3"><i class="icon ion-md-stats mr-2 lead"></i> Componente</a>
+                <a asp-controller="Entrenador" asp-action="Estadistica" class="d-block text-light p-3"><i class="icon ion-md-contact mr-2 lead"></i> Estadísticas</a>
+                <a asp-controller="Entrenador" asp-action="Jugadores" class="d-block text-light p-3"><i class="icon ion-md-cog mr-2 lead"></i> Jugadores</a>
+            </div>
+        </div>
+        <div class="w-100">
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/img/jugador.png" class="img-fluid rounded-circle avatar mr-2" />
+                                    Nombre del Usuario
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Perfil</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Cerrar Sesión</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div id="content" class="bg-transparent w-100">
+                <div class="container">
+                    <div class="fondoTitulo">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 text-center">
+                                <h3>Selecione un Equipos</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

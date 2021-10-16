@@ -7,21 +7,27 @@ using System.Threading.Tasks;
 
 namespace TestProyect.Controllers
 {
-    public class EntrenadoresController : Controller
+    public class JugadorController : Controller
     {
-        // GET: EntrenadoresController
+        // GET: Jugadores
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Field()
+        // GET: Jugadores/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
 
+        // GET: Jugadores/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-        // POST: EntrenadoresController/Create
+        // POST: Jugadores/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -36,13 +42,13 @@ namespace TestProyect.Controllers
             }
         }
 
-        // GET: EntrenadoresController/Edit/5
+        // GET: Jugadores/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: EntrenadoresController/Edit/5
+        // POST: Jugadores/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -57,13 +63,13 @@ namespace TestProyect.Controllers
             }
         }
 
-        // GET: EntrenadoresController/Delete/5
+        // GET: Jugadores/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: EntrenadoresController/Delete/5
+        // POST: Jugadores/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

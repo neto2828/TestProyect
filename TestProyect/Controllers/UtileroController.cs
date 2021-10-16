@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestProyect.Controllers
 {
-    public class UtilerosController : Controller
+    public class UtileroController : Controller
     {
         // GET: Utileros
         public ActionResult Index()

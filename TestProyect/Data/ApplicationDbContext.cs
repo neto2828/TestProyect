@@ -11,11 +11,12 @@ namespace TestProyect.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
+            
         }
 
         public DbSet<Estatus> Estatus { get; set; }
         public DbSet<TipoUsuario> TipoUsuario { get; set; }
+        public DbSet<Usuarios> Usuarios { get; set; }
 
     }
 }
