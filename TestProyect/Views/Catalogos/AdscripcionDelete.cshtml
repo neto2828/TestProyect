@@ -1,0 +1,53 @@
+﻿@model TestProyect.Models.Adscripcion
+
+@{
+    ViewData["Title"] = "AdscripcionDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<body class="fondoAdministracion">
+    <div class="row">
+        <div class="col-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Eliminar Adscripción</strong></h3>
+                </div>
+            </div>
+            <div class="card-body card-special">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-action="AdscripcionDelete">
+                            <input type="hidden" asp-for="IdAdscripcion" />
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="NombreAdscripcion" class="control-label"></label>
+                                <input asp-for="NombreAdscripcion" class="form-control" readonly />
+                                <span asp-validation-for="NombreAdscripcion" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <a asp-action="Adscripcion" class="btn btn-danger float-md-left mr-2"><i class="fas fa-arrow-circle-left"> Regresar</i></a>
+                                <span id="confirmDeleteSpan_@Model.IdAdscripcion" style="display:none">
+                                    <span>¿Desea Elimiar el Estatus?</span>
+                                    <button type="submit" class="btn btn-danger">Si</button>
+                                    <a href="#" class="btn btn-primary mr-2" onclick="confirmDelete('@Model.IdAdscripcion', false)">No</a>
+                                </span>
+                                <span id="deleteSpan_@Model.IdAdscripcion">
+                                    <a href="#" class="btn badge-warning mr-2" onclick="confirmDelete('@Model.IdAdscripcion', true)">
+                                        <i class="fas fa-trash"> Eliminar</i>
+                                    </a>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@section Scripts{
+    <script src="~/js/DeleteConfirm.js"></script>
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -8,26 +8,12 @@ namespace TestProyect.Models
 {
     public class Estatus
     {
-        [Key]
+        [Key]        
         public int IdEstatus { get; set; }
 
-        [Required(ErrorMessage ="El Estatus es obligaotrio")]
-        [Display(Name = "Estatus")]
-        [StringLength(30, ErrorMessage = "El {0} debe ser al menos {2} y máximo {1} caracteres", MinimumLength = 3)]
-        public string NombreEstatus { get; set; }
-        public List<Usuarios> Usuarios { get; set; }
-    }
-    public class TipoUsuario
-    {
-        [Key]
-        public int IdTipoUsuario { get; set; }
+        [Display(Name ="Nombre Estatus")]
+        [Required(ErrorMessage ="El Nombre del Estatus es obligatorio")]
+        public String NombreEstatus { get; set; }
 
-        [Required(ErrorMessage = "El Tipo de Usuario es obligaotrio")]
-        [Display(Name = "Tipo Usuario")]
-        [StringLength(30, ErrorMessage = "El {0} debe ser al menos {2} y máximo {1} caracteres", MinimumLength = 3)]
-        public string NombreTipoUsuario { get; set; }
-        public List<Usuarios> Usuarios { get; set; }
     }
 }
-
-

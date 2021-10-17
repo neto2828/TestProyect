@@ -1,0 +1,38 @@
+﻿@model TestProyect.Models.Adscripcion
+
+@{
+    ViewData["Title"] = "AdscripcionDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+
+<body class="fondoAdministracion">
+    <div class="row">
+        <div class="col-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Detalle Estatus</strong></h3>
+                </div>
+            </div>
+            <div class="card-body card-special">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Adscripción: </strong>@Html.DisplayFor(m => m.NombreAdscripcion)</li>
+                            <li class="list-group-item"><strong>Estatus: </strong>@Html.DisplayFor(m => m.Estatus.NombreEstatus)</li>
+                        </ul>
+                        <hr />
+                        <a asp-action="Adscripcion" class="btn btn-danger float-md-left"><i class="fas fa-arrow-circle-left"> Regresar</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

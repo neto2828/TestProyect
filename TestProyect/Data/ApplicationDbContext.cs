@@ -14,9 +14,9 @@ namespace TestProyect.Data
             
         }
 
-        public DbSet<Estatus> Estatus { get; set; }
-        public DbSet<TipoUsuario> TipoUsuario { get; set; }
-        public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Estatus> Estatus { get; set; }      
+       // public DbSet<Administrativos> Administrativos { get; set; }
+       public DbSet<Adscripcion> Adscripcion { get; set; }
 
     }
 }

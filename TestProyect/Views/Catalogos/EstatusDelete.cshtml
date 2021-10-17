@@ -1,0 +1,51 @@
+﻿@model TestProyect.Models.Estatus
+@{
+    ViewData["Title"] = "EstatusCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<body class="fondoAdministracion">
+    <div class="row">
+        <div class="col-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Eliminar Estatus</strong></h3>
+                </div>
+            </div>
+            <div class="card-body card-special">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-action="EstatusDelete">
+                            <input type="hidden" asp-for="IdEstatus" />
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="NombreEstatus" class="control-label"></label>
+                                <input asp-for="NombreEstatus" class="form-control" readonly />
+                                <span asp-validation-for="NombreEstatus" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <a asp-action="Estatus" class="btn btn-danger float-md-left mr-2"><i class="fas fa-arrow-circle-left"> Regresar</i></a>
+                                <span id="confirmDeleteSpan_@Model.IdEstatus" style="display:none">
+                                    <span>¿Desea Elimiar el Estatus?</span>
+                                    <button type="submit" class="btn btn-danger">Si</button>
+                                    <a href="#" class="btn btn-primary mr-2" onclick="confirmDelete('@Model.IdEstatus', false)">No</a>
+                                </span>
+                                <span id="deleteSpan_@Model.IdEstatus">
+                                    <a href="#" class="btn badge-warning mr-2" onclick="confirmDelete('@Model.IdEstatus', true)">
+                                        <i class="fas fa-trash"> Eliminar</i>
+                                    </a>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@section Scripts{
+    <script src="~/js/DeleteConfirm.js"></script>
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

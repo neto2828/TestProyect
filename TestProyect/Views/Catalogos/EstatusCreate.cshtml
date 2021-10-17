@@ -1,0 +1,42 @@
+﻿@model TestProyect.Models.Estatus
+
+@{
+    ViewData["Title"] = "EstatusCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+
+<body class="fondoAdministracion">
+    <div class="row">
+        <div class="col-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Añadir Estatus</strong></h3>
+                </div>
+            </div>
+            <div class="card-body card-special">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-action="EstatusCreate">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="NombreEstatus" class="control-label"></label>
+                                <input asp-for="NombreEstatus" class="form-control" />
+                                <span asp-validation-for="NombreEstatus" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Guardar</i></button>
+                                <a asp-action="Estatus" class="btn btn-danger float-md-left"><i class="fas fa-arrow-circle-left"> Regresar</i></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts{ 
+@{ <partial name="_ValidationScriptsPartial"/>}
+}
