@@ -27,14 +27,36 @@
 
 /* ------- */
 
+/*Iconos CRUD*/
+
+.fa-user-edit{
+    color: white;
+}
+.fa-user-edit:hover {
+    color: var(--naranja);  
+}  
+
+
+.fa-info-circle{
+    color: white;
+}
+    .fa-info-circle:hover {
+        color: var(--naranja);
+    }
+
+.fa-user-minus{
+    color: white;
+}
+    .fa-user-minus:hover {
+        color: var(--naranja);
+    }
 
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
@@ -261,13 +283,13 @@ hr .linea {
     background-position: center center;
     background-size: cover;
     border: 0;
-    overflow: hidden;
-    
+    /*overflow: hidden;*/
 }
 
 .card{
     background-color: var(--grisF);
     color: white;
+    border-color: var(--naranja) !important;
 }
 
 .btn-orange{
@@ -276,9 +298,13 @@ hr .linea {
     justify-content:center;
     color: white;
 }
-
+.link-bar{
+    color:white;
+}
+.link-bar:hover {
+    color: var(--naranja);
+}
 /* ----------------------------------- */
-
 .card-special {
     background-color: white !important;
 }

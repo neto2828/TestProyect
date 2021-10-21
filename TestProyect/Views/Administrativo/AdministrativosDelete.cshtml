@@ -1,0 +1,125 @@
+﻿@model TestProyect.Models.Administrativos
+
+@{
+    ViewData["Title"] = "AdministrativosCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<body class="fondoAdministracion">
+    <hr>
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-action="">Administrativo/</a>
+            <a class="link-bar" asp-action="Administrativos">Administrativos/</a>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Eliminar: @Html.ViewData.Model.NombreAdministrativo @Html.ViewData.Model.PaternoAdministrativo @Html.ViewData.Model.MaternoAdministrativo</strong></h3>
+                </div>
+            </div>
+            <div class="card-body card-special">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-action="AdministrativosDelete">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="IdAdministrativos" />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="MatriculaAdministrativo" class="control-label"></label>
+                                        <input asp-for="MatriculaAdministrativo" class="form-control" readonly />
+                                        <span asp-validation-for="MatriculaAdministrativo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="NombreAdministrativo" class="control-label"></label>
+                                        <input asp-for="NombreAdministrativo" class="form-control" readonly />
+                                        <span asp-validation-for="NombreAdministrativo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="PaternoAdministrativo" class="control-label"></label>
+                                        <input asp-for="PaternoAdministrativo" class="form-control" readonly />
+                                        <span asp-validation-for="PaternoAdministrativo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="MaternoAdministrativo" class="control-label"></label>
+                                        <input asp-for="MaternoAdministrativo" class="form-control" readonly />
+                                        <span asp-validation-for="MaternoAdministrativo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="CasaAdministrativo" class="control-label"></label>
+                                        <input asp-for="CasaAdministrativo" class="form-control" readonly />
+                                        <span asp-validation-for="CasaAdministrativo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="CelularAdministrativo" class="control-label"></label>
+                                        <input asp-for="CelularAdministrativo" class="form-control" readonly />
+                                        <span asp-validation-for="CelularAdministrativo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="EmailAdministrativo" class="control-label"></label>
+                                        <input asp-for="EmailAdministrativo" class="form-control" readonly />
+                                        <span asp-validation-for="EmailAdministrativo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="AdscripcionAdminId" class="control-label"></label>
+                                        <select asp-for="AdscripcionAdminId" class="form-control" asp-items="ViewBag.AdscripcionId" disabled></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="IdEstatus" class="control-label"></label>
+                                        <select asp-for="IdEstatus" class="form-control" asp-items="ViewBag.EstatusId" disabled></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">                                
+                                <span id="confirmDeleteSpan_@Model.IdAdministrativos" style="display:none">
+                                    <span>¿Desea Eliminar a <strong>@Html.ViewData.Model.NombreAdministrativo @Html.ViewData.Model.PaternoAdministrativo @Html.ViewData.Model.MaternoAdministrativo </strong> ?</span>
+                                    <button type="submit" class="btn btn-danger">Si</button>
+                                    <a href="#" class="btn btn-primary mr-2" onclick="confirmDelete('@Model.IdAdministrativos', false)">No</a>
+                                </span>
+                                <span id="deleteSpan_@Model.IdAdministrativos">
+                                    <a href="#" class="btn badge-warning mr-2" onclick="confirmDelete('@Model.IdAdministrativos', true)">
+                                        <i class="fas fa-trash"> Eliminar</i>
+                                    </a>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@section Scripts{
+    <script src="~/js/DeleteConfirm.js"></script>
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

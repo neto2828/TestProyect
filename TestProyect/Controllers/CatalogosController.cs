@@ -31,7 +31,7 @@ namespace TestProyect.Controllers
         /*Controlador CRUD Estatus Index*/
         [HttpGet]
         public async Task<IActionResult> Estatus()
-        {
+        {            
             return View(await _context.Estatus.ToListAsync());
         }
 
