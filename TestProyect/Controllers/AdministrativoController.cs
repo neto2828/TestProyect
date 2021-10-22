@@ -1,8 +1,11 @@
 ﻿using ClosedXML.Excel;
+using ExcelDataReader;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using Rotativa.AspNetCore;
 using System;
 using System.Collections.Generic;
@@ -178,17 +181,65 @@ namespace TestProyect.Controllers
             }
         }
 
-
-        public async Task<IActionResult> ExportToPDFAdministrativo()
+        [HttpGet]
+        public IActionResult AdministrativoUpload()
         {
-            var applicationDbContext = _context.Administrativos.Include(i => i.Estatus).Include(i => i.Adscripcion);
-            return new ViewAsPdf("ExportToPDFAdministrativo", applicationDbContext)
-            {
-                PageSize = Rotativa.AspNetCore.Options.Size.Letter,
-                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape,
-                FileName = "Administrativos.pdf",
-            };
+            return View();
         }
-        /***************************/
-    }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AdministrativoUpload(IFormFile batchUsers)
+        {
+            if (ModelState.IsValid)
+            {
+                if (batchUsers?.Length > 0)
+                {
+                    // convert to a stream
+                    var stream = batchUsers.OpenReadStream();
+                    List<Administrativos> administrativos = new List<Administrativos>();
+                    try
+                    {
+                        using (var package = new ExcelPackage(stream))
+                        {
+                            var worksheet = package.Workbook.Worksheets.First();
+                            var rowCount = worksheet.Dimension.Rows;
+
+                            for (var row = 2; row <= rowCount; row++)
+                            {
+                                try
+                                {
+                                    var nombre = worksheet.Cells[row, 1].Value?.ToString();
+                                    var paterno = worksheet.Cells[row, 2].Value?.ToString();
+                                    var materno = worksheet.Cells[row, 3].Value?.ToString();
+
+                                    var admin = new Administrativos()
+                                    {
+                                        NombreAdministrativo = nombre,
+                                        PaternoAdministrativo = paterno,
+                                        MaternoAdministrativo = materno
+                                    };
+
+                                    administrativos.Add(admin);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                            }
+                        }
+                        return View("Administrativos", administrativos);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
+            return View();
+        }
+   }
+
+    /***************************/
 }

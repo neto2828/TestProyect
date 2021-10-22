@@ -7,14 +7,10 @@
 
 <body class="fondoAdministracion">
     <hr>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="float-left">
-                <a asp-controller="Catalogos" asp-action="Index" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-left"> Regresar</i></a>
-            </div>
-            <div class="float-right">
-                <a asp-controller="Catalogos" asp-action="EstatusCreate" class="btn btn-info"><i class="fas fa-plus"> Nuevo Estatus</i></a>
-            </div>
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
         </div>
     </div>
     <hr />
@@ -45,7 +41,16 @@
         <div class="col-12">
             <div class="card border">
                 <div class="card-header">
-                    <h3><strong>Lista de Estatus</strong></h3>
+                    <div class="col-md-12">
+                        <div class="float-left">
+                            <h3><strong>Lista de Estatus</strong></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="float-right">
+                            <a asp-controller="Catalogos" asp-action="EstatusCreate" class="btn btn-info"><i class="fas fa-plus"> Nuevo Estatus</i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card-body card-special">

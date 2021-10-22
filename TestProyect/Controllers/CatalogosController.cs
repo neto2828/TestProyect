@@ -137,6 +137,7 @@ namespace TestProyect.Controllers
             var applicationDbContext = _context.Adscripcion.Include(i => i.Estatus);
             return View(await applicationDbContext.ToListAsync());
         }
+
         [HttpGet]
         public IActionResult AdscripcionCreate()
         {
@@ -231,6 +232,35 @@ namespace TestProyect.Controllers
             await _context.SaveChangesAsync();
             TempData["eliminado"] = "El Estatus se ha Eliminado";
             return RedirectToAction(nameof(Adscripcion));
+        }
+        /***************************/
+        /*Controlador CRUD Categoria Index*/
+        [HttpGet]
+        public async Task<IActionResult> Categoria()
+        {
+            var applicationDbContext = _context.Categorias.Include(i => i.Estatus);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        [HttpGet]
+        public IActionResult CategoriaCreate()
+        {
+            ViewData["EstatusCatId"] = new SelectList(_context.Estatus, "IdEstatus", "NombreEstatus");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CategoriaCreate(Categorias categorias)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Categorias.Add(categorias);
+                await _context.SaveChangesAsync();
+                TempData["mensaje"] = "La Categoría se ha Creado";
+                return RedirectToAction(nameof(Categoria));
+            }
+            return View();
         }
         /***************************/
     }

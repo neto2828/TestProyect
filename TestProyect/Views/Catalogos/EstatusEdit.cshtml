@@ -8,6 +8,16 @@
 <hr />
 
 <body class="fondoAdministracion">
+    <hr />
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Estatus">Estatus/</a>
+        </div>
+    </div>
+    <hr />
+
     <div class="row">
         <div class="col-12">
             <div class="card border">
@@ -19,7 +29,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <form asp-action="EstatusEdit">
-                            <input type="hidden" asp-for="IdEstatus"/>
+                            <input type="hidden" asp-for="IdEstatus" />
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="NombreEstatus" class="control-label"></label>
@@ -28,7 +38,6 @@
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-info float-md-right"><i class="fas fa-check-circle"> Modificar</i> </button>
-                                <a asp-action="Estatus" class="btn btn-danger float-md-left"><i class="fas fa-arrow-circle-left"> Regresar</i></a>
                             </div>
                         </form>
                     </div>

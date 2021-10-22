@@ -8,7 +8,7 @@
     <hr>
     <div class="card border">
         <div class="card-header">
-            <a class="link-bar" asp-action="Administrativo">Administrativo/</a>
+            <a class="link-bar" asp-action="">Administrativo/</a>
         </div>
     </div>
     <hr />
@@ -96,6 +96,9 @@
                         </div>
                         <div class="float-right">
                             <a asp-controller="Administrativo" asp-action="ExportToExcelAdministrativo" class="btn btn-success m-2"><i class="fas fa-file-excel"> Excel</i></a>
+                        </div>
+                        <div class="float-left">
+                            <a asp-controller="Administrativo" asp-action="AdministrativoUpload" class="btn btn-primary m-2"><i class="fas fa-upload"> Carga Masiva</i></a>
                         </div>
                     </div>
                 </div>

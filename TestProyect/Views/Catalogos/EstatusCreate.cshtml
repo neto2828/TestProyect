@@ -8,6 +8,15 @@
 <hr />
 
 <body class="fondoAdministracion">
+    <hr />
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Estatus">Estatus/</a>
+        </div>
+    </div>
+    <hr />
     <div class="row">
         <div class="col-12">
             <div class="card border">
@@ -26,8 +35,7 @@
                                 <span asp-validation-for="NombreEstatus" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Guardar</i></button>
-                                <a asp-action="Estatus" class="btn btn-danger float-md-left"><i class="fas fa-arrow-circle-left"> Regresar</i></a>
+                                <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Guardar</i></button>                                
                             </div>
                         </form>
                     </div>

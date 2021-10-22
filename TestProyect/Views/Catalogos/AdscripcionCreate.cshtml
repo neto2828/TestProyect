@@ -7,6 +7,15 @@
 
 <hr />
 <body class="fondoAdministracion">
+    <hr />
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Adscripcion">Adscripciones/</a>
+        </div>
+    </div>
+    <hr />
     <div class="row">
         <div class="col-md-12">
             <div class="card border">
@@ -29,8 +38,7 @@
                                 <select asp-for="EstatusId" class="form-control" asp-items="ViewBag.EstatusId"></select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Guardar</i></button>
-                                <a asp-action="Adscripcion" class="btn btn-danger float-md-left"><i class="fas fa-arrow-circle-left"> Regresar</i></a>
+                                <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Guardar</i></button>                                
                             </div>
                         </form>
                     </div>

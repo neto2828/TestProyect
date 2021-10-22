@@ -17,6 +17,7 @@ namespace TestProyect.Data
         public DbSet<Estatus> Estatus { get; set; }             
         public DbSet<Adscripcion> Adscripcion { get; set; }
         public DbSet<Administrativos> Administrativos { get; set; }
+        public DbSet<Categorias> Categorias { get; set; }
 
     }
 }

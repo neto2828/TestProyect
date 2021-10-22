@@ -5,6 +5,15 @@
 }
 <hr />
 <body class="fondoAdministracion">
+    <hr />
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Estatus">Estatus/</a>
+        </div>
+    </div>
+    <hr />
     <div class="row">
         <div class="col-12">
             <div class="card border">
@@ -24,9 +33,8 @@
                                 <span asp-validation-for="NombreEstatus" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <a asp-action="Estatus" class="btn btn-danger float-md-left mr-2"><i class="fas fa-arrow-circle-left"> Regresar</i></a>
                                 <span id="confirmDeleteSpan_@Model.IdEstatus" style="display:none">
-                                    <span>¿Desea Elimiar el Estatus?</span>
+                                    <span>¿Desea Eliminar el Estatus <strong>@Html.ViewData.Model.NombreEstatus</strong>?</span>
                                     <button type="submit" class="btn btn-danger">Si</button>
                                     <a href="#" class="btn btn-primary mr-2" onclick="confirmDelete('@Model.IdEstatus', false)">No</a>
                                 </span>

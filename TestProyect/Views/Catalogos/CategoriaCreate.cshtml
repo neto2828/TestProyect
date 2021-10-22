@@ -1,48 +1,44 @@
-﻿@model TestProyect.Models.Adscripcion
+﻿@model TestProyect.Models.Categorias
 
 @{
-    ViewData["Title"] = "AdscripcionEdit";
+    ViewData["Title"] = "AdscripcionCreate";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <hr />
-
 <body class="fondoAdministracion">
     <hr />
     <div class="card border">
         <div class="card-header">
             <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
             <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
-            <a class="link-bar" asp-controller="Catalogos" asp-action="Adscripcion">Adscripciones/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Categoria">Categoría/</a>
         </div>
     </div>
     <hr />
-
     <div class="row">
         <div class="col-md-12">
             <div class="card border">
                 <div class="card-header">
-                    <h3><strong>Editar Adscripción</strong></h3>
+                    <h3><strong>Añadir Categoría</strong></h3>
                 </div>
             </div>
             <div class="card-body card-special">
                 <div class="row">
                     <div class="col-md-12">
-                        <form asp-action="AdscripcionEdit">
+                        <form asp-action="CategoriaCreate">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="IdAdscripcion" />
                             <div class="form-group">
-                                <label asp-for="NombreAdscripcion" class="control-label"></label>
-                                <input asp-for="NombreAdscripcion" class="form-control" />
-                                <span asp-validation-for="NombreAdscripcion" class="text-danger"></span>
+                                <label asp-for="NombreCategoria" class="control-label"></label>
+                                <input asp-for="NombreCategoria" class="form-control" />
+                                <span asp-validation-for="NombreCategoria" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="EstatusId" class="control-label"></label>
-                                <select asp-for="EstatusId" class="form-control" asp-items="ViewBag.EstatusId"></select>
-                                <span asp-validation-for="EstatusId" class="text-danger"></span>
+                                <label asp-for="EstatusCatId" class="control-label"></label>
+                                <select asp-for="EstatusCatId" class="form-control" asp-items="ViewBag.EstatusCatId"></select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-info float-md-right"><i class="fas fa-check-circle"> Modificar</i> </button>                                
+                                <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Guardar</i></button>
                             </div>
                         </form>
                     </div>
@@ -51,9 +47,9 @@
         </div>
     </div>
 </body>
+
 @section Scripts{
     @{
         <partial name="_ValidationScriptsPartial" />
     }
 }
-

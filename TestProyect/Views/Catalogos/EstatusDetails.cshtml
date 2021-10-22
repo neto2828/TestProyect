@@ -8,6 +8,16 @@
 <hr />
 
 <body class="fondoAdministracion">
+    <hr />
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Estatus">Estatus/</a>
+        </div>
+    </div>
+    <hr />
+
     <div class="row">
         <div class="col-12">
             <div class="card border">
@@ -21,8 +31,7 @@
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Nombre del Estatus: </strong>@Html.DisplayFor(m => m.NombreEstatus)</li>
                         </ul>
-                        <hr />
-                        <a asp-action="Estatus" class="btn btn-danger float-md-left"><i class="fas fa-arrow-circle-left"> Regresar</i></a>
+
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TestProyect.Models.Adscripcion>
+﻿@model IEnumerable<TestProyect.Models.Categorias>
 
 @{
     ViewData["Title"] = "Estatus";
@@ -10,7 +10,7 @@
     <div class="card border">
         <div class="card-header">
             <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
-            <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catalogos/</a>
         </div>
     </div>
     <hr />
@@ -43,12 +43,12 @@
                 <div class="card-header">
                     <div class="col-md-12">
                         <div class="float-left">
-                            <h3><strong>Lista de Adscripciones</strong></h3>
+                            <h3><strong>Lista de Categorías</strong></h3>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="float-right">
-                            <a asp-controller="Catalogos" asp-action="AdscripcionCreate" class="btn btn-info"><i class="fas fa-plus"> Nueva Adscripción</i></a>
+                            <a asp-controller="Catalogos" asp-action="CategoriaCreate" class="btn btn-info"><i class="fas fa-plus"> Nueva Categoría</i></a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                         <thead>
                             <tr class="text-center">
                                 <th>
-                                    @Html.DisplayNameFor(m => m.NombreAdscripcion)
+                                    @Html.DisplayNameFor(m => m.NombreCategoria)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(m => m.Estatus)
@@ -74,15 +74,15 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(m => item.NombreAdscripcion)
+                                        @Html.DisplayFor(m => item.NombreCategoria)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(m => item.Estatus.NombreEstatus)
                                     </td>
                                     <td class="text-center">
-                                        <a class="btn btn-primary" asp-action="AdscripcionEdit" asp-route-id="@item.IdAdscripcion">Editar</a> |
-                                        <a class="btn btn-info" asp-action="AdscripcionDetails" asp-route-id="@item.IdAdscripcion">Detalles</a> |
-                                        <a class="btn btn-danger" asp-action="AdscripcionDelete" asp-route-id="@item.IdAdscripcion">Eliminar</a>
+                                        <a class="btn btn-primary" asp-action="CategoriaEdit" asp-route-id="@item.IdCategoria">Editar</a> |
+                                        <a class="btn btn-info" asp-action="CategoriaDetails" asp-route-id="@item.IdCategoria">Detalles</a> |
+                                        <a class="btn btn-danger" asp-action="CategoriaDelete" asp-route-id="@item.IdCategoria">Eliminar</a>
                                     </td>
                                 </tr>
                             }

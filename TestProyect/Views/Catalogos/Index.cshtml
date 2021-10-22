@@ -1,14 +1,22 @@
 ﻿<body class="fondoAdministracion">
-    <hr />
-    <div class="row">
-        <div class="col-md-12">
-            <div class="float-left">
-                <a asp-controller="Administrativo" asp-action="Index" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-left"> Regresar</i></a>
-            </div>
+    <hr>
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-controller="Administrativo">Administrativo/</a>
         </div>
     </div>
-
-    <div class="row carusel">
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card" style="">
+                <div class="card-body">
+                    <h4 class="card-title">Categorías</h4>
+                    <p class="card-text"></p>
+                    <br>
+                    <a asp-controller="Catalogos" asp-action="Categoria" class="btn btn-orange">Ingresar</a>
+                </div>
+            </div>
+        </div>
         <div class="col-md-3">
             <div class="card" style="">
                 <div class="card-body">

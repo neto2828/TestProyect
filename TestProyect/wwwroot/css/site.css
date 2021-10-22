@@ -1,4 +1,26 @@
-﻿/* Colores Oficiales */
+﻿/* Tipo de Letra Oficial*/
+@font-face {
+    font-family: graphic-light;
+    src: url("http://cdn.hidalgo.gob.mx/fonts/Graphik-Light.otf");
+}
+
+@font-face {
+    font-family: "Graphik-Black";
+    src: url("http://cdn.hidalgo.gob.mx/fonts/Graphik-Black.otf");
+}
+
+@font-face {
+    font-family: "Graphik-Bold";
+    src: url("http://cdn.hidalgo.gob.mx/fonts/Graphik-Bold.otf");
+}
+
+body * {
+    font-family: graphic-light !important;
+}
+
+/* ----------------- */
+
+/* Colores Oficiales */
 
 :root {
     --grisF: #343A40;
