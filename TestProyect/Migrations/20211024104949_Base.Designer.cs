@@ -10,15 +10,15 @@ using TestProyect.Data;
 namespace TestProyect.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211022074430_Categoria")]
-    partial class Categoria
+    [Migration("20211024104949_Base")]
+    partial class Base
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("TestProyect.Models.Administrativos", b =>
@@ -100,6 +100,36 @@ namespace TestProyect.Migrations
                     b.ToTable("Adscripcion");
                 });
 
+            modelBuilder.Entity("TestProyect.Models.Canchas", b =>
+                {
+                    b.Property<int>("IdCancha")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EstatusCanchaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LatitudCancha")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LongitudCancha")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreCancha")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PoligonoCancha")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdCancha");
+
+                    b.HasIndex("EstatusCanchaId");
+
+                    b.ToTable("Canchas");
+                });
+
             modelBuilder.Entity("TestProyect.Models.Categorias", b =>
                 {
                     b.Property<int>("IdCategoria")
@@ -119,6 +149,68 @@ namespace TestProyect.Migrations
                     b.HasIndex("EstatusCatId");
 
                     b.ToTable("Categorias");
+                });
+
+            modelBuilder.Entity("TestProyect.Models.Entrenadores", b =>
+                {
+                    b.Property<int>("IdEntrenador")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AdscripcionEntId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("CambioPwEntrenador")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CasaEntrenador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CategoriaEntrenador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CelularEntrenador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailEntrenador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EstatusEntId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MaternoEntrenador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MatriculaEntrenador")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NombreEntrenador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordEntrenador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaternoEntrenador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ValidacionEntrenador")
+                        .HasColumnType("bit");
+
+                    b.HasKey("IdEntrenador");
+
+                    b.HasIndex("AdscripcionEntId");
+
+                    b.HasIndex("EstatusEntId");
+
+                    b.ToTable("Entrenadores");
                 });
 
             modelBuilder.Entity("TestProyect.Models.Estatus", b =>
@@ -165,6 +257,17 @@ namespace TestProyect.Migrations
                     b.Navigation("Estatus");
                 });
 
+            modelBuilder.Entity("TestProyect.Models.Canchas", b =>
+                {
+                    b.HasOne("TestProyect.Models.Estatus", "Estatus")
+                        .WithMany()
+                        .HasForeignKey("EstatusCanchaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Estatus");
+                });
+
             modelBuilder.Entity("TestProyect.Models.Categorias", b =>
                 {
                     b.HasOne("TestProyect.Models.Estatus", "Estatus")
@@ -172,6 +275,23 @@ namespace TestProyect.Migrations
                         .HasForeignKey("EstatusCatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Estatus");
+                });
+
+            modelBuilder.Entity("TestProyect.Models.Entrenadores", b =>
+                {
+                    b.HasOne("TestProyect.Models.Adscripcion", "Adscripcion")
+                        .WithMany()
+                        .HasForeignKey("AdscripcionEntId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TestProyect.Models.Estatus", "Estatus")
+                        .WithMany()
+                        .HasForeignKey("EstatusEntId");
+
+                    b.Navigation("Adscripcion");
 
                     b.Navigation("Estatus");
                 });

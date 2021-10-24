@@ -192,10 +192,10 @@ namespace TestProyect.Controllers
         {
             return View();
         }
-
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
-        /*public IActionResult AdministrativoUpload(IFormFile batchUsers)
+        public IActionResult AdministrativoUpload(IFormFile batchUsers)
         {
             if (ModelState.IsValid)
             {
