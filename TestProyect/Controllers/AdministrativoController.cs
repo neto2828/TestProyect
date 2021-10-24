@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using OfficeOpenXml;
+//using OfficeOpenXml;
 using Rotativa;
 using Rotativa.AspNetCore;
 using System;
@@ -195,7 +195,7 @@ namespace TestProyect.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AdministrativoUpload(IFormFile batchUsers)
+        /*public IActionResult AdministrativoUpload(IFormFile batchUsers)
         {
             if (ModelState.IsValid)
             {
@@ -244,7 +244,7 @@ namespace TestProyect.Controllers
             }
 
             return View();
-        }
+        }*/
 
         /***************************/
         /*Controlador CRUD Entrenadores Index*/
