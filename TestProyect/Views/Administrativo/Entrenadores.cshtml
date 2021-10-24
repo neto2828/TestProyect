@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TestProyect.Models.Administrativos>
+﻿@model IEnumerable<TestProyect.Models.Entrenadores>
 @{
     ViewData["Title"] = "Administrativos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -42,12 +42,12 @@
                 <div class="card-header">
                     <div class="col-md-12">
                         <div class="float-left">
-                            <h3><strong>Lista de Administrativos</strong></h3>
+                            <h3><strong>Lista de Entrenadores</strong></h3>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="float-right">
-                            <a asp-controller="Administrativo" asp-action="AdministrativosCreate" class="btn btn-info"><i class="fas fa-plus"> Nuevo Administrativo</i></a>
+                            <a asp-controller="Administrativo" asp-action="EntrenadoresCreate" class="btn btn-info"><i class="fas fa-plus"> Nuevo Entrenador</i></a>
                         </div>
                     </div>
                 </div>
@@ -57,11 +57,11 @@
                     <table class="table table-bordered" id="tablas" width="100%" cellpadding="0">
                         <thead>
                             <tr class="text-center">
-                                <th>@Html.DisplayNameFor(m => m.NombreAdministrativo)</th>
-                                <th>@Html.DisplayNameFor(m => m.PaternoAdministrativo)</th>
-                                <th>@Html.DisplayNameFor(m => m.MaternoAdministrativo)</th>
-                                <th>@Html.DisplayNameFor(m => m.CelularAdministrativo)</th>
-                                <th>@Html.DisplayNameFor(m => m.EmailAdministrativo)</th>
+                                <th>@Html.DisplayNameFor(m => m.NombreEntrenador)</th>
+                                <th>@Html.DisplayNameFor(m => m.PaternoEntrenador)</th>
+                                <th>@Html.DisplayNameFor(m => m.MaternoEntrenador)</th>
+                                <th>@Html.DisplayNameFor(m => m.CelularEntrenador)</th>
+                                <th>@Html.DisplayNameFor(m => m.EmailEntrenador)</th>
                                 <th>@Html.DisplayNameFor(m => m.Estatus)</th>
                                 <th>@Html.DisplayNameFor(m => m.Adscripcion)</th>
                                 <th>
@@ -73,17 +73,17 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(m => item.NombreAdministrativo)</td>
-                                    <td>@Html.DisplayFor(m => item.PaternoAdministrativo)</td>
-                                    <td>@Html.DisplayFor(m => item.MaternoAdministrativo)</td>
-                                    <td>@Html.DisplayFor(m => item.CelularAdministrativo)</td>
-                                    <td>@Html.DisplayFor(m => item.EmailAdministrativo)</td>
+                                    <td>@Html.DisplayFor(m => item.NombreEntrenador)</td>
+                                    <td>@Html.DisplayFor(m => item.PaternoEntrenador)</td>
+                                    <td>@Html.DisplayFor(m => item.MaternoEntrenador)</td>
+                                    <td>@Html.DisplayFor(m => item.CelularEntrenador)</td>
+                                    <td>@Html.DisplayFor(m => item.EmailEntrenador)</td>
                                     <td>@Html.DisplayFor(m => item.Estatus.NombreEstatus)</td>
                                     <td>@Html.DisplayFor(m => item.Adscripcion.NombreAdscripcion)</td>
                                     <td class="text-center">
-                                        <a class="btn btn-primary btn-sm" asp-action="AdministrativosEdit" asp-route-id="@item.IdAdministrativos"><i class="fas fa-user-circle"></i></a> |
-                                        <a class="btn btn-success btn-sm" asp-action="AdministrativosDetails" asp-route-id="@item.IdAdministrativos"><i class="fas fa-info-circle"></i></a> |
-                                        <a class="btn btn-danger btn-sm" asp-action="AdministrativosDelete" asp-route-id="@item.IdAdministrativos"><i class="fas fa-user-minus"></i></a>
+                                        <a class="btn btn-primary btn-sm" asp-action="EntrenadoresEdit" asp-route-id="@item.IdEntrenador"><i class="fas fa-user-edit"></i></a> |
+                                        <a class="btn btn-success btn-sm" asp-action="EntrenadoresDetails" asp-route-id="@item.IdEntrenador"><i class="fas fa-info-circle"></i></a> |
+                                        <a class="btn btn-danger btn-sm" asp-action="EntrenadoresDelete" asp-route-id="@item.IdEntrenador"><i class="fas fa-user-minus"></i></a>
                                     </td>
                                 </tr>
                             }
@@ -92,13 +92,13 @@
                     <hr />
                     <div class="form-group">
                         <div class="float-right">
-                            <a asp-controller="Administrativo" asp-action="ExportToPDFAdministrativo" target="_blank" class="btn btn-danger m-2"><i class="fas fa-file-excel"> PDF</i></a>
+                            <a asp-controller="Administrativo" asp-action="ExportToPDFEntrenador" target="_blank" class="btn btn-danger m-2"><i class="fas fa-file-excel"> PDF</i></a>
                         </div>
                         <div class="float-right">
-                            <a asp-controller="Administrativo" asp-action="ExportToExcelAdministrativo" class="btn btn-success m-2"><i class="fas fa-file-excel"> Excel</i></a>
+                            <a asp-controller="Administrativo" asp-action="ExportToExcelEntrenadores" class="btn btn-success m-2"><i class="fas fa-file-excel"> Excel</i></a>
                         </div>
                         <div class="float-left">
-                            <a asp-controller="Administrativo" asp-action="AdministrativoUpload" class="btn btn-primary m-2"><i class="fas fa-upload"> Carga Masiva</i></a>
+                            <a asp-controller="Administrativo" asp-action="EntrenadorUpload" class="btn btn-primary m-2"><i class="fas fa-upload"> Carga Masiva</i></a>
                         </div>
                     </div>
                 </div>

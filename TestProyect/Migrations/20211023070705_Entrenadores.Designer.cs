@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TestProyect.Data;
 
 namespace TestProyect.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211023070705_Entrenadores")]
+    partial class Entrenadores
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,36 +98,6 @@ namespace TestProyect.Migrations
                     b.HasIndex("EstatusId");
 
                     b.ToTable("Adscripcion");
-                });
-
-            modelBuilder.Entity("TestProyect.Models.Canchas", b =>
-                {
-                    b.Property<int>("IdCancha")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EstatusCanchaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LatitudCancha")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LongitudCancha")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NombreCancha")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PoligonoCancha")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdCancha");
-
-                    b.HasIndex("EstatusCanchaId");
-
-                    b.ToTable("Canchas");
                 });
 
             modelBuilder.Entity("TestProyect.Models.Categorias", b =>
@@ -249,17 +221,6 @@ namespace TestProyect.Migrations
                     b.HasOne("TestProyect.Models.Estatus", "Estatus")
                         .WithMany()
                         .HasForeignKey("EstatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Estatus");
-                });
-
-            modelBuilder.Entity("TestProyect.Models.Canchas", b =>
-                {
-                    b.HasOne("TestProyect.Models.Estatus", "Estatus")
-                        .WithMany()
-                        .HasForeignKey("EstatusCanchaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

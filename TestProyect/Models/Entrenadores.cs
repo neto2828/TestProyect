@@ -7,63 +7,61 @@ using System.Threading.Tasks;
 
 namespace TestProyect.Models
 {
-    public class Administrativos
+    public class Entrenadores
     {
         [Key]
-        public int IdAdministrativos { get; set; }
+        public int IdEntrenador { get; set; }
 
         [Display(Name = "Matrícula")]
         [Required(ErrorMessage = "La Matrícula es Obligatoria")]
-        public int MatriculaAdministrativo { get; set; }
+        public int MatriculaEntrenador { get; set; }
 
         [Display(Name = "Nombre (s)")]
         [Required(ErrorMessage = "El Nombre (s) es Obligatorio")]
-        public String NombreAdministrativo { get; set; }
+        public String NombreEntrenador { get; set; }
 
         [Display(Name = "Paterno")]
         [Required(ErrorMessage = "El Apellido Paterno es Obligatorio")]
-        public String PaternoAdministrativo { get; set; }
+        public String PaternoEntrenador { get; set; }
 
         [Display(Name = "Materno")]
         [Required(ErrorMessage = "El Apellido Materno es Obligatorio")]
-        public String MaternoAdministrativo { get; set; }
+        public String MaternoEntrenador { get; set; }
 
         [Display(Name = "Teléfono Fijo")]
-        public String CasaAdministrativo { get; set; }
+        public String CasaEntrenador { get; set; }
 
         [Display(Name = "Teléfono Celular")]
         [Required(ErrorMessage = "El Teléfono Celular es Obligatorio")]
-        public String CelularAdministrativo { get; set; }
+        public String CelularEntrenador { get; set; }
 
         [Display(Name = "Correo Electrónico")]
         [Required(ErrorMessage = "El Correo Electrónico es Obligatorio")]
-        public String EmailAdministrativo { get; set; }
+        public String EmailEntrenador { get; set; }
 
         [Display(Name = "Contraseña")]
         [Required(ErrorMessage = "La Contraseña es Obligatoria")]
-        public String PasswordAdministrativo { get; set; }
+        public String PasswordEntrenador { get; set; }
 
         [Display(Name = "Área de Adscripción")]
         [Required(ErrorMessage = "El Área de Adscripción es Obligatorio")]
-        public int AdscripcionAdminId { get; set; }
-        [ForeignKey("AdscripcionAdminId")]
+        public int AdscripcionEntId { get; set; }
+        [ForeignKey("AdscripcionEntId")]
         public Adscripcion Adscripcion { get; set; }
 
-
         [Display(Name = "Estatus")]
-        public int? IdEstatus { get; set; }
-        [ForeignKey("IdEstatus")]
+        public int? EstatusEntId { get; set; }
+        [ForeignKey("EstatusEntId")]
         public Estatus Estatus { get; set; }
 
+        [Display(Name = "Categorías")]
+        [Required(ErrorMessage = "Seleccione al menos 1 Categoría")]
+        public String CategoriaEntrenador { get; set; }
 
         [Required]
-        public bool ValidacionAdministrativo { get; set; }
+        public bool ValidacionEntrenador { get; set; }
         [Required]
-        public bool CambioPwAdministrativo { get; set; }
+        public bool CambioPwEntrenador { get; set; }
 
-        internal void createTableInstance()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -1,22 +1,5 @@
 ﻿/* Tipo de Letra Oficial*/
-@font-face {
-    font-family: graphic-light;
-    src: url("http://cdn.hidalgo.gob.mx/fonts/Graphik-Light.otf");
-}
 
-@font-face {
-    font-family: "Graphik-Black";
-    src: url("http://cdn.hidalgo.gob.mx/fonts/Graphik-Black.otf");
-}
-
-@font-face {
-    font-family: "Graphik-Bold";
-    src: url("http://cdn.hidalgo.gob.mx/fonts/Graphik-Bold.otf");
-}
-
-body * {
-    font-family: graphic-light !important;
-}
 
 /* ----------------- */
 
@@ -516,3 +499,15 @@ hr .linea {
     top: 50%;
     left: 70%;
 }
+
+
+/*Mapa*/
+
+/* Set the size of the div element that contains the map */
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+}
+/*******/

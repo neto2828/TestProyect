@@ -18,6 +18,8 @@ namespace TestProyect.Data
         public DbSet<Adscripcion> Adscripcion { get; set; }
         public DbSet<Administrativos> Administrativos { get; set; }
         public DbSet<Categorias> Categorias { get; set; }
+        public DbSet<Entrenadores> Entrenadores { get; set; }
+        public DbSet<Canchas> Canchas { get; set; }
 
     }
 }

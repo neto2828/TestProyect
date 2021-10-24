@@ -1,0 +1,52 @@
+﻿@model TestProyect.Models.Entrenadores
+
+@{
+    ViewData["Title"] = "AdministrativosCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<body class="fondoAdministracion">
+    <hr>
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-action="">Administrativo/</a>
+            <a class="link-bar" asp-action="Entrenadores">Entrenadores/</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Detalle: @Html.ViewData.Model.NombreEntrenador @Html.ViewData.Model.PaternoEntrenador @Html.ViewData.Model.MaternoEntrenador</strong></h3>
+                </div>
+            </div>
+            <div class="card-body card-special">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong>Matrícula: </strong>@Html.DisplayFor(m => m.MatriculaEntrenador)</li>
+                                <li class="list-group-item"><strong>Nombre (s): </strong>@Html.DisplayFor(m => m.NombreEntrenador)</li>
+                                <li class="list-group-item"><strong>Paterno: </strong>@Html.DisplayFor(m => m.PaternoEntrenador)</li>
+                                <li class="list-group-item"><strong>Materno: </strong>@Html.DisplayFor(m => m.MaternoEntrenador)</li>
+                                <li class="list-group-item"><strong>Teléfono Fijo: </strong>@Html.DisplayFor(m => m.CasaEntrenador)</li>
+                                <li class="list-group-item"><strong>Teléfono Celular: </strong>@Html.DisplayFor(m => m.CelularEntrenador)</li>
+                                <li class="list-group-item"><strong>Correo Electrónico: </strong>@Html.DisplayFor(m => m.EmailEntrenador)</li>
+                                <li class="list-group-item"><strong>Área de Adscripción: </strong>@Html.DisplayFor(m => m.Adscripcion.NombreAdscripcion)</li>
+                                <li class="list-group-item"><strong>Estatus: </strong>@Html.DisplayFor(m => m.Estatus.NombreEstatus)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

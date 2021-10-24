@@ -262,6 +262,38 @@ namespace TestProyect.Controllers
             }
             return View();
         }
+
+
+        /***************************/
+
+        /*Controlador CRUD Canchas Index*/
+
+        public async Task<IActionResult> Canchas()
+        {
+            var applicationDbContext = _context.Canchas.Include(i => i.Estatus);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        public IActionResult CanchaCreate()
+        {
+            ViewData["EstatusId"] = new SelectList(_context.Estatus, "IdEstatus", "NombreEstatus");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CanchaCreate(Canchas canchas)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Canchas.Add(canchas);
+                await _context.SaveChangesAsync();
+                TempData["mensaje"] = "La Cancha se ha Creado";
+                return RedirectToAction(nameof(Canchas));
+            }
+            return View();
+        }
+
         /***************************/
     }
 }

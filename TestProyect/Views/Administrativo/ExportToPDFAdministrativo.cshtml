@@ -1,34 +1,7 @@
 ﻿
-@model IEnumerable<TestProyect.Models.Administrativos>
+
 @{
     ViewData["Title"] = "ExportToPDFAdministrativo";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "null";
 }
 
-<table class="table table-striped" width="100%" cellpadding="0">
-    <thead>
-        <tr class="text-center">
-            <th>@Html.DisplayNameFor(m => m.NombreAdministrativo)</th>
-            <th>@Html.DisplayNameFor(m => m.PaternoAdministrativo)</th>
-            <th>@Html.DisplayNameFor(m => m.MaternoAdministrativo)</th>
-            <th>@Html.DisplayNameFor(m => m.CelularAdministrativo)</th>
-            <th>@Html.DisplayNameFor(m => m.EmailAdministrativo)</th>
-            <th>@Html.DisplayNameFor(m => m.Estatus)</th>
-            <th>@Html.DisplayNameFor(m => m.Adscripcion)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(m => item.NombreAdministrativo)</td>
-                <td>@Html.DisplayFor(m => item.PaternoAdministrativo)</td>
-                <td>@Html.DisplayFor(m => item.MaternoAdministrativo)</td>
-                <td>@Html.DisplayFor(m => item.CelularAdministrativo)</td>
-                <td>@Html.DisplayFor(m => item.EmailAdministrativo)</td>
-                <td>@Html.DisplayFor(m => item.Estatus.NombreEstatus)</td>
-                <td>@Html.DisplayFor(m => item.Adscripcion.NombreAdscripcion)</td>
-            </tr>
-        }
-    </tbody>
-</table>
