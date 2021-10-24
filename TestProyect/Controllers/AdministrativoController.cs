@@ -400,9 +400,8 @@ namespace TestProyect.Controllers
         }
 
         /***************************/
-        /*Controlador CRUD Entrenadores Index*/
+        /*Controlador CRUD Cancha Index*/
 
-
-        /***************************/
+          /***************************/
     }
 }
