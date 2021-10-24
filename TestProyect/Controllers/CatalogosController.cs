@@ -294,6 +294,36 @@ namespace TestProyect.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult CanchaEdit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var estatu = _context.Canchas.Find(id);
+            if (estatu == null)
+            {
+                return NotFound();
+            }
+            ViewData["EstatusId"] = new SelectList(_context.Estatus, "IdEstatus", "NombreEstatus");
+            return View(estatu);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CanchaEdit(Canchas canchas)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Canchas.Update(canchas);
+                await _context.SaveChangesAsync();
+                TempData["actualizacion"] = "La Cancha se ha Modificado";
+                return RedirectToAction(nameof(Canchas));
+            }
+            return View(canchas);
+        }
+
         /***************************/
     }
 }
