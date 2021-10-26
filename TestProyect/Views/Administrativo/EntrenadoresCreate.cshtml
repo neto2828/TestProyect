@@ -107,22 +107,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        @foreach (var item in ViewBag.CategoriaEntrenador)
-            {
-
-                                        <div class="form-group">
-                                            <label asp-for="CategoriaEntrenador" class="control-label"></label>
-                                            <select asp-for="CategoriaEntrenador" class="form-control" asp-items="ViewBag.CategoriaEntrenador"></select>
-                                        </div>
-
-                                        }
-                                    </div>
-                                </div>
-                            </div>
                             <hr />
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Guardar</i></button>

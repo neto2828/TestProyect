@@ -2,7 +2,7 @@
 
 namespace TestProyect.Migrations
 {
-    public partial class Base : Migration
+    public partial class Canchas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

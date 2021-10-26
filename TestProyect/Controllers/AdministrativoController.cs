@@ -400,8 +400,25 @@ namespace TestProyect.Controllers
         }
 
         /***************************/
-        /*Controlador CRUD Cancha Index*/
+        /*Controlador CRUD Jugadores Index*/
 
-          /***************************/
+        public async Task<IActionResult> Jugadores()
+        {
+            var applicationDbContext = _context.Jugadores.Include(i => i.Estatus);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        public IActionResult JugadoresCreate()
+        {
+
+            //ViewData["CategoriaEntrenador"] = new SelectList(_context.Categorias.Where(i => i.EstatusCatId == 1), "IdCategoria", "NombreCategoria");
+            ViewData["Nacionalidad"] = new SelectList(_context.Paises, "IdPais", "NombrePais");
+            //ViewData["Nacionalidad"] = new SelectList(_context.Paises.Where(i => i.EstatusId == 1), "IdAdscripcion", "NombreAdscripcion");
+            return View();
+        }
+
+
+
+        /***************************/
     }
 }

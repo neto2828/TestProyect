@@ -20,6 +20,10 @@ namespace TestProyect.Data
         public DbSet<Categorias> Categorias { get; set; }
         public DbSet<Entrenadores> Entrenadores { get; set; }
         public DbSet<Canchas> Canchas { get; set; }
+        public DbSet<Equipos> Equipos { get; set; }
+        public DbSet<Posiciones> Posiciones { get; set; }
+        public DbSet<Paises> Paises { get; set; }
+        public DbSet<Jugadores> Jugadores { get; set; }
 
     }
 }

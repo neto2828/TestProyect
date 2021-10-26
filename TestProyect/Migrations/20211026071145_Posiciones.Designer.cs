@@ -10,8 +10,8 @@ using TestProyect.Data;
 namespace TestProyect.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211024104949_Base")]
-    partial class Base
+    [Migration("20211026071145_Posiciones")]
+    partial class Posiciones
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -229,6 +229,31 @@ namespace TestProyect.Migrations
                     b.ToTable("Estatus");
                 });
 
+            modelBuilder.Entity("TestProyect.Models.Posiciones", b =>
+                {
+                    b.Property<int>("IdPosicion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EstatusPosId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NombrePosicion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UbicacionPosicion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdPosicion");
+
+                    b.HasIndex("EstatusPosId");
+
+                    b.ToTable("Posiciones");
+                });
+
             modelBuilder.Entity("TestProyect.Models.Administrativos", b =>
                 {
                     b.HasOne("TestProyect.Models.Adscripcion", "Adscripcion")
@@ -292,6 +317,17 @@ namespace TestProyect.Migrations
                         .HasForeignKey("EstatusEntId");
 
                     b.Navigation("Adscripcion");
+
+                    b.Navigation("Estatus");
+                });
+
+            modelBuilder.Entity("TestProyect.Models.Posiciones", b =>
+                {
+                    b.HasOne("TestProyect.Models.Estatus", "Estatus")
+                        .WithMany()
+                        .HasForeignKey("EstatusPosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Estatus");
                 });

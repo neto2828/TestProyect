@@ -1,0 +1,158 @@
+﻿@model TestProyect.Models.Jugadores
+
+@{
+    ViewData["Title"] = "JugadoresCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<body class="fondoAdministracion">
+    <hr>
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-action="">Administrativo/</a>
+            <a class="link-bar" asp-action="Jugadores">Jugadores/</a>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Añadir Jugador</strong></h3>
+                </div>
+            </div>
+            <div class="card-body card-special">
+
+                <form asp-action="JugadoresCreate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="MatriculaJugador" class="control-label"></label>
+                        <input asp-for="MatriculaJugador" class="form-control" />
+                        <span asp-validation-for="MatriculaJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NombreJugador" class="control-label"></label>
+                        <input asp-for="NombreJugador" class="form-control" />
+                        <span asp-validation-for="NombreJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PaternoJugador" class="control-label"></label>
+                        <input asp-for="PaternoJugador" class="form-control" />
+                        <span asp-validation-for="PaternoJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MaternoJugador" class="control-label"></label>
+                        <input asp-for="MaternoJugador" class="form-control" />
+                        <span asp-validation-for="MaternoJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EquipoJugId" class="control-label"></label>
+                        <select asp-for="EquipoJugId" class="form-control" asp-items="ViewBag.EquipoJugId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EstaturaJugador" class="control-label"></label>
+                        <input asp-for="EstaturaJugador" class="form-control" />
+                        <span asp-validation-for="EstaturaJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PesoJugador" class="control-label"></label>
+                        <input asp-for="PesoJugador" class="form-control" />
+                        <span asp-validation-for="PesoJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NacimientoJugador" class="control-label"></label>
+                        <input asp-for="NacimientoJugador" class="form-control" />
+                        <span asp-validation-for="NacimientoJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PosicionJugId" class="control-label"></label>
+                        <select asp-for="PosicionJugId" class="form-control" asp-items="ViewBag.PosicionJugId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CasaJugador" class="control-label"></label>
+                        <input asp-for="CasaJugador" class="form-control" />
+                        <span asp-validation-for="CasaJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CelularJugador" class="control-label"></label>
+                        <input asp-for="CelularJugador" class="form-control" />
+                        <span asp-validation-for="CelularJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EmailJugador" class="control-label"></label>
+                        <input asp-for="EmailJugador" class="form-control" />
+                        <span asp-validation-for="EmailJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PasswordJugador" class="control-label"></label>
+                        <input asp-for="PasswordJugador" class="form-control" />
+                        <span asp-validation-for="PasswordJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CalleJugador" class="control-label"></label>
+                        <input asp-for="CalleJugador" class="form-control" />
+                        <span asp-validation-for="CalleJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NoExtJugador" class="control-label"></label>
+                        <input asp-for="NoExtJugador" class="form-control" />
+                        <span asp-validation-for="NoExtJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NoIntJugador" class="control-label"></label>
+                        <input asp-for="NoIntJugador" class="form-control" />
+                        <span asp-validation-for="NoIntJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CiudadJugador" class="control-label"></label>
+                        <input asp-for="CiudadJugador" class="form-control" />
+                        <span asp-validation-for="CiudadJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EstadoJugador" class="control-label"></label>
+                        <input asp-for="EstadoJugador" class="form-control" />
+                        <span asp-validation-for="EstadoJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PaisJugId" class="control-label"></label>
+                        <select asp-for="PaisJugId" class="form-control" asp-items="ViewBag.PaisJugId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NacionalidadJugId" class="control-label"></label>
+                        <select asp-for="NacionalidadJugId" class="form-control " asp-items="ViewBag.Nacionalidad"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PiernaJugador" class="control-label"></label>
+                        <input asp-for="PiernaJugador" class="form-control" />
+                        <span asp-validation-for="PiernaJugador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EstatusJugaId" class="control-label"></label>
+                        <input asp-for="EstatusJugaId" class="form-control" />
+                        <span asp-validation-for="EstatusJugaId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="ValidacionJugador" /> @Html.DisplayNameFor(model => model.ValidacionJugador)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="CambioPwJugador" /> @Html.DisplayNameFor(model => model.CambioPwJugador)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

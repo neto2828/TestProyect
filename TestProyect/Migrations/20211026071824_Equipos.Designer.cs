@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TestProyect.Data;
 
 namespace TestProyect.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211026071824_Equipos")]
+    partial class Equipos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,118 +255,6 @@ namespace TestProyect.Migrations
                     b.ToTable("Estatus");
                 });
 
-            modelBuilder.Entity("TestProyect.Models.Jugadores", b =>
-                {
-                    b.Property<int>("IdJugador")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CalleJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("CambioPwJugador")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("CasaJugador")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CelularJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CiudadJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EmailJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EquipoJugId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EstadoJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EstaturaJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("EstatusJugId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EstatusJugaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MaternoJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MatriculaJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NacimientoJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NacionalidadJugId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NoExtJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NoIntJugador")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NombreJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PaisJugId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PasswordJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PaternoJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PesoJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PiernaJugador")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PosicionJugId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("ValidacionJugador")
-                        .HasColumnType("bit");
-
-                    b.HasKey("IdJugador");
-
-                    b.HasIndex("EquipoJugId");
-
-                    b.HasIndex("EstatusJugId");
-
-                    b.HasIndex("NacionalidadJugId");
-
-                    b.HasIndex("PaisJugId");
-
-                    b.HasIndex("PosicionJugId");
-
-                    b.ToTable("Jugadores");
-                });
-
             modelBuilder.Entity("TestProyect.Models.Paises", b =>
                 {
                     b.Property<int>("IdPais")
@@ -492,41 +382,6 @@ namespace TestProyect.Migrations
                     b.Navigation("Categorias");
 
                     b.Navigation("Entrenadores");
-                });
-
-            modelBuilder.Entity("TestProyect.Models.Jugadores", b =>
-                {
-                    b.HasOne("TestProyect.Models.Equipos", "Equipos")
-                        .WithMany()
-                        .HasForeignKey("EquipoJugId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TestProyect.Models.Estatus", "Estatus")
-                        .WithMany()
-                        .HasForeignKey("EstatusJugId");
-
-                    b.HasOne("TestProyect.Models.Paises", "Nacionalidad")
-                        .WithMany()
-                        .HasForeignKey("NacionalidadJugId");
-
-                    b.HasOne("TestProyect.Models.Paises", "Paises")
-                        .WithMany()
-                        .HasForeignKey("PaisJugId");
-
-                    b.HasOne("TestProyect.Models.Posiciones", "Posiciones")
-                        .WithMany()
-                        .HasForeignKey("PosicionJugId");
-
-                    b.Navigation("Equipos");
-
-                    b.Navigation("Estatus");
-
-                    b.Navigation("Nacionalidad");
-
-                    b.Navigation("Paises");
-
-                    b.Navigation("Posiciones");
                 });
 
             modelBuilder.Entity("TestProyect.Models.Posiciones", b =>
