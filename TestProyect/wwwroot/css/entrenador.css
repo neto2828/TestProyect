@@ -10,6 +10,17 @@
 }
 
 /* ----------------- */
+/* ----------------- */
+.fondoEntrenador {
+    background-image: url(../img/fondoEntrenador.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    border: 0;
+    /*overflow: hidden;*/
+}
+/* ----------------- */
 
 .cards-wrapper {
     
