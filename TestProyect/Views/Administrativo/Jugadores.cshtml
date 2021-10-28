@@ -62,6 +62,7 @@
                                 <th>@Html.DisplayNameFor(m => m.MaternoJugador)</th>
                                 <th>@Html.DisplayNameFor(m => m.CelularJugador)</th>
                                 <th>@Html.DisplayNameFor(m => m.EmailJugador)</th>
+                                <th>@Html.DisplayNameFor(m => m.Equipos.Entrenadores)</th>
                                 <th>@Html.DisplayNameFor(m => m.Estatus)</th>
                                 <th>
                                     Acciones
@@ -71,19 +72,20 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>@Html.DisplayFor(m => item.NombreJugador)</td>
-                                    <td>@Html.DisplayFor(m => item.PaternoJugador)</td>
-                                    <td>@Html.DisplayFor(m => item.MaternoJugador)</td>
-                                    <td>@Html.DisplayFor(m => item.CelularJugador)</td>
-                                    <td>@Html.DisplayFor(m => item.EmailJugador)</td>
-                                    <td>@Html.DisplayFor(m => item.Estatus.NombreEstatus)</td>
-                                    <td class="text-center">
-                                        <a class="btn btn-primary btn-sm" asp-action="JugadoresEdit" asp-route-id="@item.IdJugador"><i class="fas fa-user-edit"></i></a> |
-                                        <a class="btn btn-success btn-sm" asp-action="JugadoresDetails" asp-route-id="@item.IdJugador"><i class="fas fa-info-circle"></i></a> |
-                                        <a class="btn btn-danger btn-sm" asp-action="JugadoresDelete" asp-route-id="@item.IdJugador"><i class="fas fa-user-minus"></i></a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.NombreJugador)</td>
+                                <td>@Html.DisplayFor(m => item.PaternoJugador)</td>
+                                <td>@Html.DisplayFor(m => item.MaternoJugador)</td>
+                                <td>@Html.DisplayFor(m => item.CelularJugador)</td>
+                                <td>@Html.DisplayFor(m => item.EmailJugador)</td>
+                                <td>@Html.DisplayFor(m => item.Equipos.Entrenadores.NombreEntrenador)</td>
+                                <td>@Html.DisplayFor(m => item.Estatus.NombreEstatus)</td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary btn-sm" asp-action="JugadoresEdit" asp-route-id="@item.IdJugador"><i class="fas fa-user-edit"></i></a> |
+                                    <a class="btn btn-success btn-sm" asp-action="JugadoresDetails" asp-route-id="@item.IdJugador"><i class="fas fa-info-circle"></i></a> |
+                                    <a class="btn btn-danger btn-sm" asp-action="JugadoresDelete" asp-route-id="@item.IdJugador"><i class="fas fa-user-minus"></i></a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

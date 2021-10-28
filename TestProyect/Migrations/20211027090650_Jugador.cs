@@ -2,7 +2,7 @@
 
 namespace TestProyect.Migrations
 {
-    public partial class Canchas : Migration
+    public partial class Jugador : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,20 @@ namespace TestProyect.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Estatus", x => x.IdEstatus);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Paises",
+                columns: table => new
+                {
+                    IdPais = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NombrePais = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClasePais = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Paises", x => x.IdPais);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,6 +91,27 @@ namespace TestProyect.Migrations
                     table.ForeignKey(
                         name: "FK_Categorias_Estatus_EstatusCatId",
                         column: x => x.EstatusCatId,
+                        principalTable: "Estatus",
+                        principalColumn: "IdEstatus",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Posiciones",
+                columns: table => new
+                {
+                    IdPosicion = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NombrePosicion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UbicacionPosicion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EstatusPosId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Posiciones", x => x.IdPosicion);
+                    table.ForeignKey(
+                        name: "FK_Posiciones_Estatus_EstatusPosId",
+                        column: x => x.EstatusPosId,
                         principalTable: "Estatus",
                         principalColumn: "IdEstatus",
                         onDelete: ReferentialAction.Cascade);
@@ -155,6 +190,99 @@ namespace TestProyect.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Equipos",
+                columns: table => new
+                {
+                    IdEquipo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NombreEquipo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EntrenadorEquiId = table.Column<int>(type: "int", nullable: true),
+                    CategoriaEquId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Equipos", x => x.IdEquipo);
+                    table.ForeignKey(
+                        name: "FK_Equipos_Categorias_CategoriaEquId",
+                        column: x => x.CategoriaEquId,
+                        principalTable: "Categorias",
+                        principalColumn: "IdCategoria",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Equipos_Entrenadores_EntrenadorEquiId",
+                        column: x => x.EntrenadorEquiId,
+                        principalTable: "Entrenadores",
+                        principalColumn: "IdEntrenador",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Jugadores",
+                columns: table => new
+                {
+                    IdJugador = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MatriculaJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NombreJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaternoJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MaternoJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EquipoJugId = table.Column<int>(type: "int", nullable: false),
+                    EstaturaJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PesoJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NacimientoJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PosicionJugId = table.Column<int>(type: "int", nullable: true),
+                    CasaJugador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CelularJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PasswordJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CalleJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NoExtJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NoIntJugador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CiudadJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EstadoJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaisJugId = table.Column<int>(type: "int", nullable: true),
+                    NacionalidadJugId = table.Column<int>(type: "int", nullable: true),
+                    PiernaJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EstatusJugId = table.Column<int>(type: "int", nullable: true),
+                    ValidacionJugador = table.Column<bool>(type: "bit", nullable: false),
+                    CambioPwJugador = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Jugadores", x => x.IdJugador);
+                    table.ForeignKey(
+                        name: "FK_Jugadores_Equipos_EquipoJugId",
+                        column: x => x.EquipoJugId,
+                        principalTable: "Equipos",
+                        principalColumn: "IdEquipo",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Jugadores_Estatus_EstatusJugId",
+                        column: x => x.EstatusJugId,
+                        principalTable: "Estatus",
+                        principalColumn: "IdEstatus",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Jugadores_Paises_NacionalidadJugId",
+                        column: x => x.NacionalidadJugId,
+                        principalTable: "Paises",
+                        principalColumn: "IdPais",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Jugadores_Paises_PaisJugId",
+                        column: x => x.PaisJugId,
+                        principalTable: "Paises",
+                        principalColumn: "IdPais",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Jugadores_Posiciones_PosicionJugId",
+                        column: x => x.PosicionJugId,
+                        principalTable: "Posiciones",
+                        principalColumn: "IdPosicion",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Administrativos_AdscripcionAdminId",
                 table: "Administrativos",
@@ -189,6 +317,46 @@ namespace TestProyect.Migrations
                 name: "IX_Entrenadores_EstatusEntId",
                 table: "Entrenadores",
                 column: "EstatusEntId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Equipos_CategoriaEquId",
+                table: "Equipos",
+                column: "CategoriaEquId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Equipos_EntrenadorEquiId",
+                table: "Equipos",
+                column: "EntrenadorEquiId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jugadores_EquipoJugId",
+                table: "Jugadores",
+                column: "EquipoJugId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jugadores_EstatusJugId",
+                table: "Jugadores",
+                column: "EstatusJugId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jugadores_NacionalidadJugId",
+                table: "Jugadores",
+                column: "NacionalidadJugId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jugadores_PaisJugId",
+                table: "Jugadores",
+                column: "PaisJugId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jugadores_PosicionJugId",
+                table: "Jugadores",
+                column: "PosicionJugId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Posiciones_EstatusPosId",
+                table: "Posiciones",
+                column: "EstatusPosId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -198,6 +366,18 @@ namespace TestProyect.Migrations
 
             migrationBuilder.DropTable(
                 name: "Canchas");
+
+            migrationBuilder.DropTable(
+                name: "Jugadores");
+
+            migrationBuilder.DropTable(
+                name: "Equipos");
+
+            migrationBuilder.DropTable(
+                name: "Paises");
+
+            migrationBuilder.DropTable(
+                name: "Posiciones");
 
             migrationBuilder.DropTable(
                 name: "Categorias");

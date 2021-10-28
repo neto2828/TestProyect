@@ -296,9 +296,6 @@ namespace TestProyect.Migrations
                     b.Property<int?>("EstatusJugId")
                         .HasColumnType("int");
 
-                    b.Property<int>("EstatusJugaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("MaternoJugador")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

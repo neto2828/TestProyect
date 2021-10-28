@@ -404,16 +404,32 @@ namespace TestProyect.Controllers
 
         public async Task<IActionResult> Jugadores()
         {
-            var applicationDbContext = _context.Jugadores.Include(i => i.Estatus);
+            
+            var applicationDbContext = _context.Jugadores.Include(i => i.Estatus).Include(i => i.Equipos).Include(i=> i.Equipos.Entrenadores) ;
             return View(await applicationDbContext.ToListAsync());
         }
 
         public IActionResult JugadoresCreate()
         {
 
-            //ViewData["CategoriaEntrenador"] = new SelectList(_context.Categorias.Where(i => i.EstatusCatId == 1), "IdCategoria", "NombreCategoria");
+
             ViewData["Nacionalidad"] = new SelectList(_context.Paises, "IdPais", "NombrePais");
-            //ViewData["Nacionalidad"] = new SelectList(_context.Paises.Where(i => i.EstatusId == 1), "IdAdscripcion", "NombreAdscripcion");
+            ViewData["EstatusJugId"] = new SelectList(_context.Estatus, "IdEstatus", "NombreEstatus");
+            ViewData["EntrenaJug"] = new SelectList(_context.Entrenadores, "IdEntrenador", "NombreEntrenador"+"PaternoEntrenador");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> JugadoresCreate(Jugadores jugadores)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Jugadores.Add(jugadores);
+                await _context.SaveChangesAsync();
+                TempData["mensaje"] = "El Jugador se ha Creado";
+                return RedirectToAction(nameof(Jugadores));
+            }
             return View();
         }
 

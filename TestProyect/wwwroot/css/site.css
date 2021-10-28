@@ -511,3 +511,23 @@ hr .linea {
     /* The width is the width of the web page */
 }
 /*******/
+
+.separador {
+    border: 1px solid var(--naranja);
+}
+
+.carousel-caption {
+    background-color: var(--grisC);
+   height: 20%; 
+   border-radius: 50px;
+   border: solid ;
+   border-color: var(--naranja) !important;
+}
+
+
+.abs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}

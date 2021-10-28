@@ -1,12 +1,29 @@
 ﻿
+:root {
+    --grisF: #343A40;
+    --grisC: #595959;
+    --naranja: #EA7B1F;
+    --primaryTeam: #9c1737;
+    --secondaryTeam: #325082;
+    --tertiaryTeam: #EBE52D;
+    /*Para asignar un color de variable es: var(--grisF);*/
+}
+
+/* ----------------- */
+
 .cards-wrapper {
+    
     display: flex;
     justify-content: center;
+
 }
 
 .card img {
+    margin-top:10px;
     max-width: 100%;
     max-height: 100%;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .card {
@@ -15,6 +32,12 @@
     border: none;
     border-radius: 0;
     width: 150px;
+}
+
+.cards {
+    background-color: var(--grisF);
+    color: white;
+    border-color: var(--naranja) !important;
 }
 
 .carousel-inner {

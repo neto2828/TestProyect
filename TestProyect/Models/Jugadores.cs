@@ -101,8 +101,7 @@ namespace TestProyect.Models
         public string PiernaJugador { get; set; }
 
         [Display(Name = "Estatus")]
-        [Required(ErrorMessage = "El Estatus es Obligatorio")]
-        public int EstatusJugaId { get; set; }
+        public int? EstatusJugId { get; set; }
 
         [ForeignKey("EstatusJugId")]
         public Estatus Estatus { get; set; }

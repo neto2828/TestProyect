@@ -1,20 +1,59 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ClosedXML.Excel;
+using ExcelDataReader;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+//using OfficeOpenXml;
+using Rotativa;
+using Rotativa.AspNetCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using TestProyect.Data;
+using TestProyect.Models;
 
 namespace TestProyect.Controllers
 {
     public class EntrenadorController : Controller
     {
-        // GET: EntrenadoresController
-        public ActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public EntrenadorController(ApplicationDbContext context)
         {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var applicationDbContext = _context.Equipos.Include(i => i.Categorias).Where(i => i.EntrenadorEquiId == 2);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        public IActionResult EquipoCreate()
+        {
+            ViewData["CategoriaEntrenador"] = new SelectList(_context.Categorias.Where(i => i.EstatusCatId == 1), "IdCategoria", "NombreCategoria");
             return View();
         }
 
+         // GET: EntrenadoresController
+         [HttpPost]
+         [ValidateAntiForgeryToken]
+         public async Task<IActionResult> EquipoCreate(Equipos equipos)
+         {
+             if (ModelState.IsValid)
+             {
+                 _context.Equipos.AddAsync(equipos);
+                 await _context.SaveChangesAsync();
+                TempData["mensaje"] = "El Equipo se ha Creado";
+                return (RedirectToAction(nameof(Index)));
+             }
+             return View(equipos);
+         }
+        
         public ActionResult Field()
         {
             return View();
