@@ -29,6 +29,28 @@ namespace TestProyect.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public ActionResult Login(string email, string password)
+        {
+            var usuario = _context.Administrativos.Where(s => s.EmailAdministrativo == email && s.PasswordAdministrativo == password);
+            if (usuario.Any())
+            {
+                if (usuario.Where(s => s.EmailAdministrativo == email && s.PasswordAdministrativo == password).Any())
+                {
+                    return View("Index");
+                }
+                else
+                {
+                    return View("/Views/Home/Index");
+                }
+            }
+            else
+            {
+                return View("Views/Home/Index.cshtml");
+            }
+        }
+
+
         /*Controlador CRUD Administrativo Index*/
         public ActionResult Index()
         {

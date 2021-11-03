@@ -2,6 +2,7 @@
     ViewData["Title"] = "Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento";
 
 }
+@model Administrativos
 
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -21,20 +22,23 @@
             <div class="card-body card-inicio">
                 <img class="logotipo" src="~/img/LogoSPEJAR.png" />
                 <h3 class="titulo">Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento</h3>
-                <form action="">
+                  <form method="post">
                     <div class="form-group">
-                        <label class="labelPrincipal">* Usuario</label>
-                        <input type="email" class="form-control" placeholder="* Usuario">
+                        <label asp-for="EmailAdministrativo" class="labelPrincipal">* Usuario</label>
+                        <input id="userInput" type="email" name="email" asp-for="EmailAdministrativo" class="form-control" placeholder="* Usuario">
+                        <span asp-validation-for="EmailAdministrativo" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label class="labelPrincipal">Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="* Contraseña" id="pwd">
+                        <label asp-for="PasswordAdministrativo" class="labelPrincipal">Contraseña:</label>
+                        <input id="passInput" type="password" name="password" asp-for="PasswordAdministrativo" class="form-control" placeholder="* Contraseña" id="pwd">
+                        <span asp-validation-for="PasswordAdministrativo" class="text-danger"></span>
                     </div>
-                    <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Administrativo" asp-action="Index">Iniciar Sesión</button>
-                    <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Entrenador" asp-action="Index">Entrenadores (Provicional)</button>
-                    <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Jugador" asp-action="Index">Jugadores (Provicional)</button>
-                    <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Utilero" asp-action="Index">Utileros (Provicional)</button>
-                    <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Tutor" asp-action="Index">Tutores (Provicional)</button>
+                    <button id="btnLoginAdmin" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Administrativo" asp-action="Login">Iniciar Sesión Administradores</button>
+                    <button id="btnLoginEntrenador" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Entrenador" asp-action="Login">Entrenadores (Provicional)</button>
+                    <button id="btnLoginJugador" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Jugador" asp-action="Login">Jugadores (Provicional)</button>
+                   <!-- <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Utilero" asp-action="Login">Utileros (Provicional)</button>
+                    <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Tutor" asp-action="Login">Tutores (Provicional)</button> -->
+                    <hr>
                 </form>
                 <hr>
                 <div class="recuperar_contrasena">
@@ -46,3 +50,59 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#userInput').focus();
+
+        $('#btnLoginAdmin').on('click', function (e) {
+            if ($('#userInput').val() != "" && $('#passInput').val() != "") {
+                Validate($('#userInput').val(), $('#passInput'),'Administrativos');
+            }
+        });
+
+        $('#btnLoginEntrenador').on('click', function (e) {
+            if ($('#userInput').val() != "" && $('#passInput').val() != "") {
+                Validate($('#userInput').val(), $('#passInput'), 'Entrenadores');
+            }
+        });
+
+        $('#btnLoginJugador').on('click', function (e) {
+            if ($('#userInput').val() != "" && $('#passInput').val() != "") {
+                Validate($('#userInput').val(), $('#passInput'), 'Jugador');
+            }
+        });
+
+        function Validate(usuario, clave, controller) {
+            var record = {
+                EmailUsuario: usuario,
+                Clave: clave
+            };
+
+            $.ajax({
+                url: controller+'/Login',
+                async: false,
+                type: 'POST',
+                data: record,
+                beforeSend: function (xhr, options) { },
+                complete: function () { },
+                success: function (data) {
+                    if (data.status == true) {
+                        //window.location.href = 'Administrativos/Index';
+                        alert("INICIO SESION");
+                        //sessionStorage.setItem('sesion', data.EmailUsuario);
+                   
+                    }
+                    else if (data.status == false) {
+                        alert("Error: ", data.message);
+                    }
+                },
+                error: function (data) {
+                    alert("Error: ", data.message);
+                }
+            });
+        };
+
+    });
+
+</script>

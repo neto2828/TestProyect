@@ -27,6 +27,28 @@ namespace TestProyect.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public ActionResult Login(string email, string password)
+        {
+            var usuario = _context.Entrenadores.Where(s => s.EmailEntrenador == email && s.PasswordEntrenador == password);
+            if (usuario.Any())
+            {
+                if (usuario.Where(s => s.EmailEntrenador == email && s.PasswordEntrenador == password).Any())
+                {
+                    return View("Index");
+                }
+                else
+                {
+                    return Json(new { status = false, message = "Usuario Incorrecta" });
+                }
+            }
+            else
+            {
+                return Json(new { status = true, message = "Clave Incorrecto" });
+            }
+        }
+
+
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Equipos.Include(i => i.Categorias).Where(i => i.EntrenadorEquiId == 2);

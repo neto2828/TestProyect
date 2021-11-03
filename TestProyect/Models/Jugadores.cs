@@ -64,6 +64,7 @@ namespace TestProyect.Models
         public string EmailJugador { get; set; }
 
         [Display(Name = "Contraseña")]
+        [DataType(DataType.Password)]
         [Required(ErrorMessage = "La Contraseña es Obligatoria")]
         public string PasswordJugador { get; set; }
 
