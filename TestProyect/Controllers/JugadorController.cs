@@ -4,11 +4,40 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TestProyect.Data;
 
 namespace TestProyect.Controllers
 {
     public class JugadorController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public JugadorController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpPost]
+        public ActionResult Login(string email, string password)
+        {
+            var usuario = _context.Jugadores.Where(s => s.EmailJugador == email && s.PasswordJugador == password);
+            if (usuario.Any())
+            {
+                if (usuario.Where(s => s.EmailJugador == email && s.PasswordJugador == password).Any())
+                {
+                    return View("Index");
+                }
+                else
+                {
+                    return Json(new { status = false, message = "Usuario Incorrecta" });
+                }
+            }
+            else
+            {
+                return Json(new { status = true, message = "Clave Incorrecto" });
+            }
+        }
+
         // GET: Jugadores
         public ActionResult Index()
         {

@@ -40,6 +40,7 @@ namespace TestProyect.Models
         public String EmailEntrenador { get; set; }
 
         [Display(Name = "Contraseña")]
+        [DataType(DataType.Password)]
         [Required(ErrorMessage = "La Contraseña es Obligatoria")]
         public String PasswordEntrenador { get; set; }
 
