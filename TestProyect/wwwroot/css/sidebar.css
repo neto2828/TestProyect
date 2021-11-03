@@ -1,4 +1,16 @@
-﻿.wrapper {
+﻿
+:root {
+    --grisF: #343A40;
+    --grisC: #595959;
+    --naranja: #EA7B1F;
+    --primaryTeam: #9c1737;
+    --secondaryTeam: #325082;
+    --tertiaryTeam: #EBE52D;
+    /*Para asignar un color de variable es: var(--grisF);*/
+}
+
+
+.wrapper {
     box-sizing: border-box;
 }
 
@@ -36,9 +48,21 @@ section#konten {
     background-color: rgb(34, 32, 32);
 }
 
+.navbar-nav{
+color: white !important;
+}
+
 .sidebar .nav-item:hover {
     color: white !important;
-    background-color: rgb(46, 45, 45);
+    background-color: var(--naranja);
+}
+
+.logo_sidebar{    
+    border-color: var(--naranja);
+    display: block;
+    margin: auto;
+    width: 150px;
+
 }
 
 .translate {

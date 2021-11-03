@@ -5,65 +5,68 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
+
 <hr />
 <body class="fondoAdministracion" onload="initMap()" ;>
 
-        <hr />
-        <div class="card border">
-            <div class="card-header">
-                <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
-                <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
-                <a class="link-bar" asp-controller="Catalogos" asp-action="Canchas">Canchas/</a>
-            </div>
+    <hr />
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Administrativo/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Index">Catálogos/</a>
+            <a class="link-bar" asp-controller="Catalogos" asp-action="Canchas">Canchas/</a>
         </div>
-        <hr />
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card border">
-                    <div class="card-header">
-                        <h3><strong>Añadir Cancha</strong></h3>
-                    </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Añadir Cancha</strong></h3>
                 </div>
-                <div class="card-body card-special">
+            </div>
+            <div class="card-body card-special">
 
-                    <form asp-action="CanchaCreate">
-                        <div class="row">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="NombreCancha" class="control-label"></label>
-                                    <input asp-for="NombreCancha" class="form-control" />
-                                    <span asp-validation-for="NombreCancha" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="EstatusCanchaId" class="control-label"></label>
-                                    <select asp-for="EstatusCanchaId" class="form-control" asp-items="ViewBag.EstatusId"></select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-
-                            <div id="map"></div>
-
-                        </div>
-                        <hr />
-                        <div class="row">
+                <form asp-action="CanchaCreate">
+                    <div class="row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success float-md-left"><i class="fas fa-check-circle"> Guardar</i></button>
+                                <label asp-for="NombreCancha" class="control-label"></label>
+                                <input asp-for="NombreCancha" class="form-control" />
+                                <span asp-validation-for="NombreCancha" class="text-danger"></span>
                             </div>
                         </div>
-                    </form>
-                </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="EstatusCanchaId" class="control-label"></label>
+                                <select asp-for="EstatusCanchaId" class="form-control" asp-items="ViewBag.EstatusId"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <<div id="map"></div>
+
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success float-md-left"><i class="fas fa-check-circle"> Guardar</i></button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 
 
-    @section Scripts{
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaCP72gPqhpbjDi0YehWuXh-cKjjWE04w&callback=initMap&libraries=drawing&v=weekly"
-                async></script>
-        <script src="~/js/Canchas.js" asp-append-version="true"></script>
-        <partial name="_ValidationScriptsPartial" />
-    }
+@section Scripts{
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaCP72gPqhpbjDi0YehWuXh-cKjjWE04w&callback=initMap&libraries=drawing&v=weekly"
+            async></script>
+    <script src="~/js/Canchas.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -76,9 +76,18 @@ namespace TestProyect.Controllers
         }
 
         // GET: EntrenadoresController/Edit/5
-        public ActionResult Alineacion()
+        public async Task<ActionResult> Alineacion(int? id)
         {
-            return View();
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
+            if (estatu == null)
+            {
+                return NotFound();
+            }
+            return View(estatu);
         }
 
         public ActionResult Planeacion()
