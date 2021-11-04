@@ -25,6 +25,8 @@ namespace TestProyect.Data
         public DbSet<Paises> Paises { get; set; }
         public DbSet<Jugadores> Jugadores { get; set; }
         public DbSet<Utileros> Utileros { get; set; }
+        public DbSet<Componentes> Componentes { get; set; }
+        public DbSet<Subcomponentes> Subcomponentes { get; set; }
 
     }
 }

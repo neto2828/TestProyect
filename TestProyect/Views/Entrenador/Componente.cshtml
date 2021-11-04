@@ -1,71 +1,159 @@
-﻿
+﻿@model IEnumerable<TestProyect.Models.Componentes>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Sidebar.cshtml";
+    ViewData["Title"] = "Administrativos";
+    Layout = "~/Views/Shared/_MenuPartial.cshtml";
 }
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button type="button" class="navbar-toggler sidemenu-toggler mb-4">
+                <span class="line top"></span>
+                <span class="line middle"></span>
+                <span class="line bottom"></span>
+            </button>
+            <a href="#" class="navbar-brand">Navbar</a>
 
-<body class="fondoAdministracion">
-    <div class="d-flex" id="content-wrapper">
-        <div id="sidebar-container" class="bg-primary">
-            <div class="logo text-center">
-                <img src="~/img/LogoSPEJAR.png" alt="..." height="36">
-            </div>
-            <div class="card">
-                <div class="card-header">Equipo 1</div>
-                <div class="card-body-perfil">
-                    <div class="logo text-center">
-                        <img src="~/img/Equipos/Logo1.svg" alt="..." height="120">
-                    </div>
-                </div>
-                <div class="card-footer"></div>
-            </div>
+            <button type="button" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <div class="menu">
-                <a asp-controller="Entrenador" asp-action="Index" class="d-block text-light p-3"><i class="icon ion-md-grid mr-2 lead"></i> Equipos</a>
-                <a asp-controller="Entrenador" asp-action="Alineacion" class="d-block text-light p-3"><i class="icon ion-md-people mr-2 lead"></i> Alineación</a>
-                <a asp-controller="Entrenador" asp-action="Planeacion" class="d-block text-light p-3"><i class="icon ion-md-stats mr-2 lead"></i> Planeación</a>
-                <a asp-controller="Entrenador" asp-action="Componente" class="d-block text-light p-3 activo"><i class="icon ion-md-stats mr-2 lead"></i> Componente</a>
-                <a asp-controller="Entrenador" asp-action="Estadistica" class="d-block text-light p-3"><i class="icon ion-md-contact mr-2 lead"></i> Estadísticas</a>
-                <a asp-controller="Entrenador" asp-action="Jugadores" class="d-block text-light p-3"><i class="icon ion-md-cog mr-2 lead"></i> Jugadores</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
+                            <img src="https://assets.metrolatam.com/cl/2015/11/09/captura-de-pantalla-2015-11-09-a-las-09-20-49-1-1200x800.jpg" alt="logo" style="width:40px;"> [Poner Nombre del usuario aquí]
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a href="#" class="dropdown-item">Perfil</a>
+                            <a asp-controller="Entrenador" asp-action="Configuracion" class="dropdown-item">Configuración</a>
+                            <hr>
+                            <a href="#" class="dropdown-item">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="w-100">
-            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="~/img/jugador.png" class="img-fluid rounded-circle avatar mr-2" />
-                                    Nombre del Usuario
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Perfil</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    </nav>
+</header>
+<body class="fondoEntrenador">
+    <hr style="margin-top:10%">
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-action="Index">Inicio/</a>
+            <a class="link-bar" asp-action="Configuracion">Configuración/</a>
+        </div>
+    </div>
+    <hr />
 
-            <div id="content" class="bg-transparent w-100">
-                <div class="container">
-                    <div class="fondoTitulo">
-                        <div class="row justify-content-center">
-                            <div class="col-md-6 text-center">
-                                <h3>Selecione un Equipos</h3>
-                            </div>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Guardado!</strong> @TempData["mensaje"]
+        </div>
+    }
+
+    @if (TempData["actualizacion"] != null)
+    {
+        <div class="alert alert-info alert-dismissible fade show">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Actualizado!</strong> @TempData["actualizacion"]
+        </div>
+    }
+    @if (TempData["eliminado"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Eliminado!</strong> @TempData["eliminado"]
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border">
+                <div class="card-header">
+                    <div class="col-md-12">
+                        <div class="float-left">
+                            <h3><strong>Lista de Componentes</strong></h3>
                         </div>
                     </div>
-
+                    <div class="col-md-12">
+                        <div class="float-right">
+                            <a asp-controller="Entrenador" asp-action="ComponenteCreate" class="btn btn-info"><i class="fas fa-plus"> Nuevo Administrativo</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body card-special">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tablas" width="100%" cellpadding="0">
+                        <thead>
+                            <tr class="text-center">
+                                <th>@Html.DisplayNameFor(m => m.NombreComponente)</th>
+                                <th>
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(m => item.NombreComponente)</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-primary btn-sm" asp-action="ComponenteEdit" asp-route-id="@item.IdComponente"><i class="fas fa-user-circle"></i></a> |
+                                        <a class="btn btn-success btn-sm" asp-action="ComponenteDetails" asp-route-id="@item.IdComponente"><i class="fas fa-info-circle"></i></a> |
+                                        <a class="btn btn-danger btn-sm" asp-action="ComponenteDelete" asp-route-id="@item.IdComponente"><i class="fas fa-user-minus"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <hr />
+                    <div class="form-group">
+                        <div class="float-right">
+                            <a asp-controller="Administrativo" asp-action="ExportToPDFComponente" target="_blank" class="btn btn-danger m-2"><i class="fas fa-file-excel"> PDF</i></a>
+                        </div>
+                        <div class="float-right">
+                            <a asp-controller="Administrativo" asp-action="ExportToExcelComponente" class="btn btn-success m-2"><i class="fas fa-file-excel"> Excel</i></a>
+                        </div>
+                        <div class="float-left">
+                            <a asp-controller="Administrativo" asp-action="ComponenteUpload" class="btn btn-primary m-2"><i class="fas fa-upload"> Carga Masiva</i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#tablas').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay Información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 de 0 Entradas",
+                    "infoFiltered": "(Filtrando de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingMenu": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin Resultados Encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
+}
+

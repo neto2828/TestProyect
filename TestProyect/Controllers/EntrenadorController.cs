@@ -50,7 +50,7 @@ namespace TestProyect.Controllers
 
 
         public async Task<IActionResult> Index()
-        {
+        {            
             var applicationDbContext = _context.Equipos.Include(i => i.Categorias).Where(i => i.EntrenadorEquiId == 2);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -127,11 +127,6 @@ namespace TestProyect.Controllers
             return View();
         }
 
-        public ActionResult Componente()
-        {
-            return View();
-        }
-
         // GET: EntrenadoresController/Edit/5
         public ActionResult Edit(int id)
         {
@@ -172,6 +167,20 @@ namespace TestProyect.Controllers
             {
                 return View();
             }
+        }
+
+        /***Componentes****/
+        public ActionResult Configuracion()
+        {
+            return View();
+        }
+
+
+        public async Task<IActionResult> Componente()
+        {
+            var applicationDbContext = _context.Componentes.Where(i => i.EntrenadorCompId == 2);
+
+            return View(await applicationDbContext.ToListAsync());
         }
     }
 }
