@@ -21,7 +21,7 @@ namespace TestProyect.Controllers
 
     public class AdministrativoController : Controller
     {
-       
+
         private readonly ApplicationDbContext _context;
 
         public AdministrativoController(ApplicationDbContext context)
@@ -56,7 +56,7 @@ namespace TestProyect.Controllers
         {
             return View();
         }
-        
+
         public async Task<IActionResult> Administrativos()
         {
             var applicationDbContext = _context.Administrativos.Include(i => i.Estatus).Include(i => i.Adscripcion);
@@ -171,8 +171,8 @@ namespace TestProyect.Controllers
         }
 
         public IActionResult ExportToExcelAdministrativo()
-        {            
-            using(var wokbook = new XLWorkbook())
+        {
+            using (var wokbook = new XLWorkbook())
             {
                 var worksheet = wokbook.Worksheets.Add("Administrativos");
                 var currentRow = 1;
@@ -294,7 +294,7 @@ namespace TestProyect.Controllers
             {
                 _context.Entrenadores.Add(entrenadores);
                 await _context.SaveChangesAsync();
-               TempData["mensaje"] = "El Entrenador se ha Creado";
+                TempData["mensaje"] = "El Entrenador se ha Creado";
                 return RedirectToAction(nameof(Entrenadores));
             }
             return View();
@@ -426,8 +426,8 @@ namespace TestProyect.Controllers
 
         public async Task<IActionResult> Jugadores()
         {
-            
-            var applicationDbContext = _context.Jugadores.Include(i => i.Estatus).Include(i => i.Equipos).Include(i=> i.Equipos.Entrenadores) ;
+
+            var applicationDbContext = _context.Jugadores.Include(i => i.Estatus).Include(i => i.Equipos).Include(i => i.Equipos.Entrenadores);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -437,7 +437,7 @@ namespace TestProyect.Controllers
 
             ViewData["Nacionalidad"] = new SelectList(_context.Paises, "IdPais", "NombrePais");
             ViewData["EstatusJugId"] = new SelectList(_context.Estatus, "IdEstatus", "NombreEstatus");
-            ViewData["EntrenaJug"] = new SelectList(_context.Entrenadores, "IdEntrenador", "NombreEntrenador"+"PaternoEntrenador");
+            ViewData["EntrenaJug"] = new SelectList(_context.Entrenadores, "IdEntrenador", "NombreEntrenador" + "PaternoEntrenador");
             return View();
         }
 
@@ -455,8 +455,15 @@ namespace TestProyect.Controllers
             return View();
         }
 
-
-
         /***************************/
+        /*Controlador CRUD Utileros Index*/
+
+        public async Task<IActionResult> Utileros()
+        {
+            var applicationDbContext = _context.Utileros.Include(i => i.Estatus).Include(i => i.Adscripcion);
+            return View(await applicationDbContext.ToListAsync());
+        }
     }
+
+
 }
