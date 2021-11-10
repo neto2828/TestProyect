@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TestProyect.Data;
 
+
 namespace TestProyect.Controllers
 {
     public class JugadorController : Controller
@@ -25,18 +26,40 @@ namespace TestProyect.Controllers
             {
                 if (usuario.Where(s => s.EmailJugador == email && s.PasswordJugador == password).Any())
                 {
-                    return View("Index");
+                    if (usuario.Where(s => s.EstatusJugId == 1).Any())
+                    {
+                        if (usuario.Where(s => s.ValidacionJugador == true).Any())
+                        {
+                            HttpContext.Session.SetString("usuariologueado", email);
+                            HttpContext.Session.SetString("mainController", "Jugador");
+                            return View("Index");
+                        }
+                        else
+                        {
+                            TempData["mensaje"] = "2";
+                            return View("Views/Home/Index.cshtml");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["mensaje"] = "3";
+                        return View("Views/Home/Index.cshtml");
+                    }
                 }
                 else
                 {
-                    return Json(new { status = false, message = "Usuario Incorrecta" });
+                    TempData["mensaje"] = "1";
+                    return View("Views/Home/Index.cshtml");
                 }
             }
             else
             {
-                return Json(new { status = true, message = "Clave Incorrecto" });
+                TempData["mensaje"] = "1";
+                return View("Views/Home/Index.cshtml");
             }
         }
+
 
         // GET: Jugadores
         public ActionResult Index()

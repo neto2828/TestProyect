@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using TestProyect.Data;
 using TestProyect.Models;
 
+
 namespace TestProyect.Controllers
 {
     public class EntrenadorController : Controller
@@ -35,18 +36,40 @@ namespace TestProyect.Controllers
             {
                 if (usuario.Where(s => s.EmailEntrenador == email && s.PasswordEntrenador == password).Any())
                 {
-                    return View("Index");
+                    if (usuario.Where(s => s.EstatusEntId == 1).Any())
+                    {
+                        if (usuario.Where(s => s.ValidacionEntrenador == true).Any())
+                        {
+                            HttpContext.Session.SetString("usuariologueado", email);
+                            HttpContext.Session.SetString("mainController", "Entrenador");
+                            return View("Index");
+                        }
+                        else
+                        {
+                            TempData["mensaje"] = "2";
+                            return View("Views/Home/Index.cshtml");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["mensaje"] = "3";
+                        return View("Views/Home/Index.cshtml");
+                    }
                 }
                 else
                 {
-                    return Json(new { status = false, message = "Usuario Incorrecta" });
+                    TempData["mensaje"] = "1";
+                    return View("Views/Home/Index.cshtml");
                 }
             }
             else
             {
-                return Json(new { status = true, message = "Clave Incorrecto" });
+                TempData["mensaje"] = "1";
+                return View("Views/Home/Index.cshtml");
             }
         }
+
 
 
         public async Task<IActionResult> Index()

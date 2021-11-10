@@ -28,6 +28,19 @@
                     <ul class="navbar-nav ms-auto">
                     </ul>
                 </div>
+                  <div style="float:left">
+                    @if (string.IsNullOrEmpty(ViewContext.HttpContext.Session.GetString("usuariologueado")))
+                    {
+
+                    }
+                    else
+                    {
+                        <div id="btnOut" class="btn btn-primary btn-sm">
+                            <span id="txtLogout" style="color:white;" class="glyphicon glyphicon-log-out">@Html.ActionLink("Cerrar Sesión", "Logout", "Home", null, new { @class = "btn-logout" })</span>
+                        </div>
+                    }
+                </div>
+
             </div>
         </nav>
     </header>

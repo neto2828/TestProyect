@@ -28,7 +28,9 @@ namespace TestProyect
             //Configuración de cadena de conexión
             services.AddDbContext<ApplicationDbContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddMvc(); // Adds a default in-memory implementation of     IDistributedCache
+            services.AddDistributedMemoryCache();
+            services.AddSession();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
         }
@@ -53,6 +55,7 @@ namespace TestProyect
 
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

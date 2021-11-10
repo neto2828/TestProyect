@@ -2,6 +2,7 @@
 using ExcelDataReader;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Rotativa;
 using Rotativa.AspNetCore;
 using System;
+using System.Web;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,15 +39,36 @@ namespace TestProyect.Controllers
             {
                 if (usuario.Where(s => s.EmailAdministrativo == email && s.PasswordAdministrativo == password).Any())
                 {
-                    return View("Index");
+                    if (usuario.Where(s => s.IdEstatus == 1).Any())
+                    {
+                        if (usuario.Where(s => s.ValidacionAdministrativo == true).Any())
+                        {
+                            HttpContext.Session.SetString("usuariologueado", email);
+                            HttpContext.Session.SetString("mainController", "Administrativo");
+                            return View("Index");
+                        }
+                        else
+                        {
+                            TempData["mensaje"] = "2";
+                            return View("Views/Home/Index.cshtml");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["mensaje"] = "3";
+                        return View("Views/Home/Index.cshtml");
+                    }
                 }
                 else
                 {
-                    return View("/Views/Home/Index");
+                    TempData["mensaje"] = "1";
+                    return View("Views/Home/Index.cshtml");
                 }
             }
             else
             {
+                TempData["mensaje"] = "1";
                 return View("Views/Home/Index.cshtml");
             }
         }
@@ -54,11 +77,14 @@ namespace TestProyect.Controllers
         /*Controlador CRUD Administrativo Index*/
         public ActionResult Index()
         {
-            return View();
+            var usuario = HttpContext.Session.GetString("usuariologueado");
+            return View(usuario);
+
         }
 
         public async Task<IActionResult> Administrativos()
         {
+            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
             var applicationDbContext = _context.Administrativos.Include(i => i.Estatus).Include(i => i.Adscripcion);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -464,6 +490,4 @@ namespace TestProyect.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
     }
-
-
 }

@@ -22,7 +22,7 @@
             <div class="card-body card-inicio">
                 <img class="logotipo" src="~/img/LogoSPEJAR.png" />
                 <h3 class="titulo">Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento</h3>
-                  <form method="post">
+                <form method="post">
                     <div class="form-group">
                         <label asp-for="EmailAdministrativo" class="labelPrincipal">* Usuario</label>
                         <input id="userInput" type="email" name="email" asp-for="EmailAdministrativo" class="form-control" placeholder="* Usuario">
@@ -33,11 +33,30 @@
                         <input id="passInput" type="password" name="password" asp-for="PasswordAdministrativo" class="form-control" placeholder="* Contraseña" id="pwd">
                         <span asp-validation-for="PasswordAdministrativo" class="text-danger"></span>
                     </div>
+                    @if (TempData["mensaje"] == "1" )
+                    {
+                        <div class="alert alert-danger">
+                            <a href="#" class="alert-link">Usuario/Contraseña Incorrectos</a>
+                        </div>
+                    }else if (TempData["mensaje"] == "2")
+                    {
+                        <div class="alert alert-danger">
+                            <a href="#" class="alert-link">Su Cuenta No esta Validada</a>
+                        </div>
+                    }else if(TempData["mensaje"] == "3")
+                    {
+                          <div class="alert alert-danger">
+                            <a href="#" class="alert-link">Su Cuenta No esta Activa</a>
+                        </div>
+
+                    }
+
                     <button id="btnLoginAdmin" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Administrativo" asp-action="Login">Iniciar Sesión Administradores</button>
                     <button id="btnLoginEntrenador" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Entrenador" asp-action="Login">Entrenadores (Provicional)</button>
                     <button id="btnLoginJugador" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Jugador" asp-action="Login">Jugadores (Provicional)</button>
-                   <!-- <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Utilero" asp-action="Login">Utileros (Provicional)</button>
-                    <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Tutor" asp-action="Login">Tutores (Provicional)</button> -->
+                    <button id="btnLoginUtilero" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Utilero" asp-action="Login">Utileros (Provicional)</button>
+                    <!-- <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Utilero" asp-action="Login">Utileros (Provicional)</button>
+    <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Tutor" asp-action="Login">Tutores (Provicional)</button> -->
                     <hr>
                 </form>
                 <hr>
@@ -80,18 +99,16 @@
             };
 
             $.ajax({
-                url: controller+'/Login',
+                url: controller + '/Login',
                 async: false,
                 type: 'POST',
                 data: record,
-                beforeSend: function (xhr, options) { },
-                complete: function () { },
+                beforeSend: function (xhr, options) {},
+                complete: function () {},
                 success: function (data) {
                     if (data.status == true) {
-                        //window.location.href = 'Administrativos/Index';
-                        alert("INICIO SESION");
-                        //sessionStorage.setItem('sesion', data.EmailUsuario);
-                   
+                        sessionStorage.setItem("userlog", usuario);
+                        console.log("LLEFGA AQUI")
                     }
                     else if (data.status == false) {
                         alert("Error: ", data.message);

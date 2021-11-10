@@ -4,11 +4,62 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TestProyect.Data;
+using TestProyect.Models;
 
 namespace TestProyect.Controllers
 {
     public class UtileroController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public UtileroController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpPost]
+        public ActionResult Login(string email, string password)
+        {
+            var usuario = _context.Utileros.Where(s => s.EmailUtilero == email && s.PasswordUtilero == password);
+            if (usuario.Any())
+            {
+                if (usuario.Where(s => s.EmailUtilero == email && s.PasswordUtilero == password).Any())
+                {
+                    if (usuario.Where(s => s.EstatusUtiId == 1).Any())
+                    {
+                        if (usuario.Where(s => s.ValidacionUtilero == true).Any())
+                        {
+                            HttpContext.Session.SetString("usuariologueado", email);
+                            HttpContext.Session.SetString("mainController", "Utilero");
+                            return View("Index");
+                        }
+                        else
+                        {
+                            TempData["mensaje"] = "2";
+                            return View("Views/Home/Index.cshtml");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["mensaje"] = "3";
+                        return View("Views/Home/Index.cshtml");
+                    }
+                }
+                else
+                {
+                    TempData["mensaje"] = "1";
+                    return View("Views/Home/Index.cshtml");
+                }
+            }
+            else
+            {
+                TempData["mensaje"] = "1";
+                return View("Views/Home/Index.cshtml");
+            }
+        }
+
         // GET: Utileros
         public ActionResult Index()
         {
