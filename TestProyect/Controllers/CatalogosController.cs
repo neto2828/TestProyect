@@ -24,6 +24,7 @@ namespace TestProyect.Controllers
         /*Controlador Catalogo Index*/
         public IActionResult Index()
         {
+            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
             return View();
         }
         /***************************/
@@ -31,7 +32,7 @@ namespace TestProyect.Controllers
         /*Controlador CRUD Estatus Index*/
         [HttpGet]
         public async Task<IActionResult> Estatus()
-        {            
+        {
             return View(await _context.Estatus.ToListAsync());
         }
 
@@ -58,12 +59,12 @@ namespace TestProyect.Controllers
         [HttpGet]
         public IActionResult EstatusEdit(int? id)
         {
-            if(id==null || id== 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
             var estatu = _context.Estatus.Find(id);
-            if(estatu == null)
+            if (estatu == null)
             {
                 return NotFound();
             }
@@ -120,14 +121,14 @@ namespace TestProyect.Controllers
         {
             var estatu = await _context.Estatus.FindAsync(id);
 
-            if(estatu == null)
+            if (estatu == null)
             {
                 return View();
-            }            
-                _context.Estatus.Remove(estatu);
-                await _context.SaveChangesAsync();
-                TempData["eliminado"] = "El Estatus se ha Eliminado";
-                return RedirectToAction(nameof(Estatus));            
+            }
+            _context.Estatus.Remove(estatu);
+            await _context.SaveChangesAsync();
+            TempData["eliminado"] = "El Estatus se ha Eliminado";
+            return RedirectToAction(nameof(Estatus));
         }
         /***************************/
         /*Controlador CRUD Adscripcion Index*/

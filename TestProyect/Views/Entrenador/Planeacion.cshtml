@@ -23,7 +23,6 @@
             <div class="menu">
                 <a asp-controller="Entrenador" asp-action="Index" class="d-block text-light p-3"><i class="icon ion-md-grid mr-2 lead"></i> Equipos</a>
                 <a asp-controller="Entrenador" asp-action="Alineacion" class="d-block text-light p-3"><i class="icon ion-md-people mr-2 lead"></i> Alineación</a>
-                <a asp-controller="Entrenador" asp-action="Planeacion" class="d-block text-light p-3 activo"><i class="icon ion-md-stats mr-2 lead"></i> Planeación</a>
                 <a asp-controller="Entrenador" asp-action="Componente" class="d-block text-light p-3"><i class="icon ion-md-stats mr-2 lead"></i> Componente</a>
                 <a asp-controller="Entrenador" asp-action="Estadistica" class="d-block text-light p-3"><i class="icon ion-md-contact mr-2 lead"></i> Estadísticas</a>
                 <a asp-controller="Entrenador" asp-action="Jugadores" class="d-block text-light p-3"><i class="icon ion-md-cog mr-2 lead"></i> Jugadores</a>
@@ -40,12 +39,12 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="~/img/jugador.png" class="img-fluid rounded-circle avatar mr-2" />
-                                    Nombre del Usuario
+                                    @ViewData["usuariologueado"]
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Perfil</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Cerrar Sesión</a>
+                                    <a class="dropdown-item" href="#">@Html.ActionLink("Cerrar Sesión", "Logout", "Home", null, new {@style = "color: black; text-decoration:none;"})</a>
                                 </div>
                             </li>
                         </ul>

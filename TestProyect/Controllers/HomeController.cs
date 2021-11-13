@@ -36,7 +36,8 @@ namespace TestProyect.Controllers
             else
             {
                 viewController = HttpContext.Session.GetString("mainController");
-                return View("Views/Administrativo/Index.cshtml");
+                string vista = "Views/" + viewController + "/Index.cshtml";
+                return View(vista);
 
             }
 

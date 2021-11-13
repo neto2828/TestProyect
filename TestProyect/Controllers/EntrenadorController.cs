@@ -22,7 +22,6 @@ namespace TestProyect.Controllers
     public class EntrenadorController : Controller
     {
         private readonly ApplicationDbContext _context;
-
         public EntrenadorController(ApplicationDbContext context)
         {
             _context = context;
@@ -42,7 +41,7 @@ namespace TestProyect.Controllers
                         {
                             HttpContext.Session.SetString("usuariologueado", email);
                             HttpContext.Session.SetString("mainController", "Entrenador");
-                            return View("Index");
+                            return View("Planeacion");
                         }
                         else
                         {
@@ -73,8 +72,9 @@ namespace TestProyect.Controllers
 
 
         public async Task<IActionResult> Index()
-        {            
-            var applicationDbContext = _context.Equipos.Include(i => i.Categorias).Where(i => i.EntrenadorEquiId == 2);
+        {
+
+            var applicationDbContext = _context.Equipos.Include(i => i.Categorias);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -84,21 +84,21 @@ namespace TestProyect.Controllers
             return View();
         }
 
-         // GET: EntrenadoresController
-         [HttpPost]
-         [ValidateAntiForgeryToken]
-         public async Task<IActionResult> EquipoCreate(Equipos equipos)
-         {
-             if (ModelState.IsValid)
-             {
-                 _context.Equipos.AddAsync(equipos);
-                 await _context.SaveChangesAsync();
+        // GET: EntrenadoresController
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EquipoCreate(Equipos equipos)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Equipos.AddAsync(equipos);
+                await _context.SaveChangesAsync();
                 TempData["mensaje"] = "El Equipo se ha Creado";
                 return (RedirectToAction(nameof(Index)));
-             }
-             return View(equipos);
-         }
-        
+            }
+            return View(equipos);
+        }
+
         public ActionResult Field()
         {
             return View();
@@ -137,6 +137,7 @@ namespace TestProyect.Controllers
 
         public ActionResult Planeacion()
         {
+            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
             return View();
         }
 

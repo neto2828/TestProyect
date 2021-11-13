@@ -298,6 +298,7 @@ namespace TestProyect.Controllers
         /*Controlador CRUD Entrenadores Index*/
         public async Task<IActionResult> Entrenadores()
         {
+            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
             var applicationDbContext = _context.Entrenadores.Include(i => i.Estatus).Include(i => i.Adscripcion);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -452,7 +453,7 @@ namespace TestProyect.Controllers
 
         public async Task<IActionResult> Jugadores()
         {
-
+            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
             var applicationDbContext = _context.Jugadores.Include(i => i.Estatus).Include(i => i.Equipos).Include(i => i.Equipos.Entrenadores);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -486,6 +487,7 @@ namespace TestProyect.Controllers
 
         public async Task<IActionResult> Utileros()
         {
+            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
             var applicationDbContext = _context.Utileros.Include(i => i.Estatus).Include(i => i.Adscripcion);
             return View(await applicationDbContext.ToListAsync());
         }
