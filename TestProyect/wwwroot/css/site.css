@@ -18,9 +18,10 @@
 /* ----------------- */
 
 /* Preload */
-.hidden{
+.hidden {
     overflow: hidden;
 }
+
 .centradoLoad {
     height: 100vh;
     background: url(../img/Loader.gif) no-repeat center center;
@@ -34,24 +35,27 @@
 
 /*Iconos CRUD*/
 
-.fa-user-edit{
+.fa-user-edit {
     color: white;
 }
-.fa-user-edit:hover {
-    color: var(--naranja);  
-}  
+
+    .fa-user-edit:hover {
+        color: var(--naranja);
+    }
 
 
-.fa-info-circle{
+.fa-info-circle {
     color: white;
 }
+
     .fa-info-circle:hover {
         color: var(--naranja);
     }
 
-.fa-user-minus{
+.fa-user-minus {
     color: white;
 }
+
     .fa-user-minus:hover {
         color: var(--naranja);
     }
@@ -66,59 +70,62 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
 .footer {
     background-color: var(--grisF);
     color: white;
@@ -135,10 +142,9 @@ body {
 .navbar-gray {
     background-color: var(--grisF);
 }
+
 .Logo {
-    
     height: 40px;
-    
 }
 /*----------*/
 
@@ -153,21 +159,23 @@ body {
     border: 0;
     overflow: hidden;
 }
-.carusel {
-margin-top: 10%;
 
+.carusel {
+    margin-top: 10%;
 }
-.titulo{
-    text-align:center;
-    color:white;
+
+.titulo {
+    text-align: center;
+    color: white;
 }
+
 .col-md-4 .login {
     top: 30%;
     color: white;
 }
 
 .recuperar_contrasena {
-    line-height:200%;
+    line-height: 200%;
     text-align: right;
 }
 
@@ -176,10 +184,10 @@ margin-top: 10%;
     font-weight: bold;
 }
 
-.enlace:hover{
-color: white;
-font-weight: bold;
-}
+    .enlace:hover {
+        color: white;
+        font-weight: bold;
+    }
 
 .iniciar {
     background-color: var(--naranja);
@@ -187,11 +195,11 @@ font-weight: bold;
     color: white;
 }
 
-.iniciar:hover {
-    color: var(--grisF);
-    font-weight: bold;
-    color: var(--grisC);
-}
+    .iniciar:hover {
+        color: var(--grisF);
+        font-weight: bold;
+        color: var(--grisC);
+    }
 
 
 .banner {
@@ -202,8 +210,8 @@ font-weight: bold;
     vertical-align: middle;
 }
 
-.labelPrincipal{
-    color:white;
+.labelPrincipal {
+    color: white;
 }
 
 .btn-dark:hover {
@@ -247,7 +255,6 @@ font-weight: bold;
     margin: auto;
     background: white;
     border-radius: 40px 10px;
-   
 }
 
 .form-titulo {
@@ -291,24 +298,26 @@ hr .linea {
     /*overflow: hidden;*/
 }
 
-.card{
+.card {
     background-color: var(--grisF);
     color: white;
     border-color: var(--naranja) !important;
 }
 
-.btn-orange{
+.btn-orange {
     background-color: var(--naranja) !important;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     color: white;
 }
-.link-bar{
-    color:white;
+
+.link-bar {
+    color: white;
 }
-.link-bar:hover {
-    color: var(--naranja);
-}
+
+    .link-bar:hover {
+        color: var(--naranja);
+    }
 /* ----------------------------------- */
 .card-special {
     background-color: white !important;
@@ -317,7 +326,7 @@ hr .linea {
 /** Estilos campo de Futbol */
 
 
-.fieldBox{
+.fieldBox {
     border: 2px solid black;
 }
 
@@ -413,7 +422,7 @@ hr .linea {
 
 .player__item--card--name {
     color: var(--primaryTeam);
-    font-weight:800;
+    font-weight: 800;
 }
 
 .player__item--card--photo {
@@ -433,7 +442,7 @@ hr .linea {
 .player__item--card--info {
     display: flex;
     margin: 4px;
-    font-weight:700
+    font-weight: 700
 }
 
 .player__item--card--info--column {
@@ -518,10 +527,10 @@ hr .linea {
 
 .carousel-caption {
     background-color: var(--grisC);
-   height: 20%; 
-   border-radius: 50px;
-   border: solid ;
-   border-color: var(--naranja) !important;
+    height: 20%;
+    border-radius: 50px;
+    border: solid;
+    border-color: var(--naranja) !important;
 }
 
 
@@ -547,6 +556,29 @@ hr .linea {
     color: white;
 }
 
-.btn-logout:hover {
-    color: white;
+    .btn-logout:hover {
+        color: white;
+    }
+
+.login-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grisC)
+}
+
+    .login-select:hover {
+        color: var(--naranja)
+    }
+
+.nav .li {
+    color: var(--naranja) !important;
+}
+
+.nav {
+    background-color: var(--grisF);
+}
+
+.opcion-login {
+    color: white !important;
 }

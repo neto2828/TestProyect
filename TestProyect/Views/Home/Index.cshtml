@@ -15,61 +15,235 @@
     <script src="~/js/AleatorioPrincipal.js"></script>
 </head>
 
-<body class="fondoPrincipal" >
-
-    <div class="row">                
-        <div class="col-md-4 login center-block">
-            <div class="card-body card-inicio">
-                <img class="logotipo" src="~/img/LogoSPEJAR.png" />
-                <h3 class="titulo">Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento</h3>
-                <form method="post">
-                    <div class="form-group">
-                        <label asp-for="EmailAdministrativo" class="labelPrincipal">* Usuario</label>
-                        <input id="userInput" type="email" name="email" asp-for="EmailAdministrativo" class="form-control" placeholder="* Usuario">
-                        <span asp-validation-for="EmailAdministrativo" class="text-danger"></span>
+<body class="fondoPrincipal">
+    <div class="row login-select">
+        <div class="col-md-6">
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#administrativos">Administrativos</a></li>
+                <li><a data-toggle="pill" href="#entrenadores">Entrenadores</a></li>
+                <li><a data-toggle="pill" href="#jugadores">Jugadores</a></li>
+                <li><a data-toggle="pill" href="#utileros">Utileros</a></li>
+                <li><a data-toggle="pill" href="#tutores">Tutores</a></li>
+            </ul>
+        </div>
+    </div>
+    <br />
+    <div class="row login-select">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="tab-content">
+                        <div id="administrativos" class="tab-pane fade in active">
+                            <img class="logotipo" src="~/img/LogoSPEJAR.png" />
+                            <h3 class="titulo">Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento</h3>
+                            <hr />
+                            <h3>Administrativos</h3>
+                            <form method="post">
+                                <div class="form-group">
+                                    <label asp-for="EmailAdministrativo" class="labelPrincipal">* Usuario</label>
+                                    <input id="userInput" type="email" name="email" asp-for="EmailAdministrativo" class="form-control" placeholder="* Usuario">
+                                    <span asp-validation-for="EmailAdministrativo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PasswordAdministrativo" class="labelPrincipal">Contraseña:</label>
+                                    <input id="passInput" type="password" name="password" asp-for="PasswordAdministrativo" class="form-control" placeholder="* Contraseña" id="pwd">
+                                    <span asp-validation-for="PasswordAdministrativo" class="text-danger"></span>
+                                </div>
+                                @if (TempData["mensaje"] == "1")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Usuario/Contraseña Incorrectos</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "2")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Validada</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "3")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Activada</strong>
+                                    </div>
+                                }
+                                <button id="btnLoginAdmin" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Administrativo" asp-action="Login">Iniciar Sesión</button>
+                                <hr>
+                            </form>
+                        </div>
+                        <div id="entrenadores" class="tab-pane fade">
+                            <img class="logotipo" src="~/img/LogoSPEJAR.png" />
+                            <h3 class="titulo">Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento</h3>
+                            <hr />
+                            <h3>Entrenadores</h3>
+                            <form method="post">
+                                <div class="form-group">
+                                    <label asp-for="EmailAdministrativo" class="labelPrincipal">* Usuario</label>
+                                    <input id="userInput" type="email" name="email" asp-for="EmailAdministrativo" class="form-control" placeholder="* Usuario">
+                                    <span asp-validation-for="EmailAdministrativo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PasswordAdministrativo" class="labelPrincipal">Contraseña:</label>
+                                    <input id="passInput" type="password" name="password" asp-for="PasswordAdministrativo" class="form-control" placeholder="* Contraseña" id="pwd">
+                                    <span asp-validation-for="PasswordAdministrativo" class="text-danger"></span>
+                                </div>
+                                @if (TempData["mensaje"] == "1")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Usuario/Contraseña Incorrectos</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "2")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Validada</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "3")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Activada</strong>
+                                    </div>
+                                }
+                                <button id="btnLoginEntrenador" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Entrenador" asp-action="Login">Iniciar Sesión</button>
+                                <hr>
+                            </form>
+                        </div>
+                        <div id="jugadores" class="tab-pane fade">
+                            <img class="logotipo" src="~/img/LogoSPEJAR.png" />
+                            <h3 class="titulo">Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento</h3>
+                            <hr />
+                            <h3>Jugadores</h3>
+                            <form method="post">
+                                <div class="form-group">
+                                    <label asp-for="EmailAdministrativo" class="labelPrincipal">* Usuario</label>
+                                    <input id="userInput" type="email" name="email" asp-for="EmailAdministrativo" class="form-control" placeholder="* Usuario">
+                                    <span asp-validation-for="EmailAdministrativo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PasswordAdministrativo" class="labelPrincipal">Contraseña:</label>
+                                    <input id="passInput" type="password" name="password" asp-for="PasswordAdministrativo" class="form-control" placeholder="* Contraseña" id="pwd">
+                                    <span asp-validation-for="PasswordAdministrativo" class="text-danger"></span>
+                                </div>
+                                @if (TempData["mensaje"] == "1")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Usuario/Contraseña Incorrectos</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "2")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Validada</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "3")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Activada</strong>
+                                    </div>
+                                }
+                                <button id="btnLoginJugador" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Jugador" asp-action="Login">Iniciar Sesión</button>
+                                <hr>
+                            </form>
+                        </div>
+                        <div id="utileros" class="tab-pane fade">
+                            <img class="logotipo" src="~/img/LogoSPEJAR.png" />
+                            <h3 class="titulo">Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento</h3>
+                            <hr />
+                            <h3>Utileros</h3>
+                            <form method="post">
+                                <div class="form-group">
+                                    <label asp-for="EmailAdministrativo" class="labelPrincipal">* Usuario</label>
+                                    <input id="userInput" type="email" name="email" asp-for="EmailAdministrativo" class="form-control" placeholder="* Usuario">
+                                    <span asp-validation-for="EmailAdministrativo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PasswordAdministrativo" class="labelPrincipal">Contraseña:</label>
+                                    <input id="passInput" type="password" name="password" asp-for="PasswordAdministrativo" class="form-control" placeholder="* Contraseña" id="pwd">
+                                    <span asp-validation-for="PasswordAdministrativo" class="text-danger"></span>
+                                </div>
+                                @if (TempData["mensaje"] == "1")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Usuario/Contraseña Incorrectos</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "2")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Validada</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "3")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Activada</strong>
+                                    </div>
+                                }
+                                <button id="btnLoginUtilero" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Utilero" asp-action="Login">Iniciar Sesión</button>
+                                <hr>
+                            </form>
+                        </div>
+                        <div id="tutores" class="tab-pane fade">
+                            <img class="logotipo" src="~/img/LogoSPEJAR.png" />
+                            <h3 class="titulo">Sistema de Planeación y Estadística de Jugadores de Alto Rendimiento</h3>
+                            <hr />
+                            <h3>Tutores</h3>
+                            <form method="post">
+                                <div class="form-group">
+                                    <label asp-for="EmailAdministrativo" class="labelPrincipal">* Usuario</label>
+                                    <input id="userInput" type="email" name="email" asp-for="EmailAdministrativo" class="form-control" placeholder="* Usuario">
+                                    <span asp-validation-for="EmailAdministrativo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PasswordAdministrativo" class="labelPrincipal">Contraseña:</label>
+                                    <input id="passInput" type="password" name="password" asp-for="PasswordAdministrativo" class="form-control" placeholder="* Contraseña" id="pwd">
+                                    <span asp-validation-for="PasswordAdministrativo" class="text-danger"></span>
+                                </div>
+                                @if (TempData["mensaje"] == "1")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Usuario/Contraseña Incorrectos</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "2")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Validada</strong>
+                                    </div>
+                                }
+                                else if (TempData["mensaje"] == "3")
+                                {
+                                    <div class="alert alert-danger">
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Su Cuenta No esta Activada</strong>
+                                    </div>
+                                }
+                                <hr>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="PasswordAdministrativo" class="labelPrincipal">Contraseña:</label>
-                        <input id="passInput" type="password" name="password" asp-for="PasswordAdministrativo" class="form-control" placeholder="* Contraseña" id="pwd">
-                        <span asp-validation-for="PasswordAdministrativo" class="text-danger"></span>
-                    </div>
-                    @if (TempData["mensaje"] == "1" )
-                    {
-                        <div class="alert alert-danger">
-                            <a href="#" class="alert-link">Usuario/Contraseña Incorrectos</a>
-                        </div>
-                    }else if (TempData["mensaje"] == "2")
-                    {
-                        <div class="alert alert-danger">
-                            <a href="#" class="alert-link">Su Cuenta No esta Validada</a>
-                        </div>
-                    }else if(TempData["mensaje"] == "3")
-                    {
-                          <div class="alert alert-danger">
-                            <a href="#" class="alert-link">Su Cuenta No esta Activa</a>
-                        </div>
-
-                    }
-
-                    <button id="btnLoginAdmin" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Administrativo" asp-action="Login">Iniciar Sesión Administradores</button>
-                    <button id="btnLoginEntrenador" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Entrenador" asp-action="Login">Entrenadores (Provicional)</button>
-                    <button id="btnLoginJugador" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Jugador" asp-action="Login">Jugadores (Provicional)</button>
-                    <button id="btnLoginUtilero" type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Utilero" asp-action="Login">Utileros (Provicional)</button>
-                    <!-- <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Utilero" asp-action="Login">Utileros (Provicional)</button>
-    <button type="submit" class="btn iniciar btn-lg btn-block" asp-area="" asp-controller="Tutor" asp-action="Login">Tutores (Provicional)</button> -->
-                    <hr>
-                </form>
-                <hr>
-                <div class="recuperar_contrasena">
-                    <a class="enlace" asp-action="PasswordReset">Recuperar Contraseña</a>
                 </div>
             </div>
         </div>
     </div>
 </body>
-
 </html>
-
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $('#userInput').focus();

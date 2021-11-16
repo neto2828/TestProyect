@@ -34,7 +34,7 @@
                                 <input asp-for="NombreAdscripcion" class="form-control" readonly />
                                 <span asp-validation-for="NombreAdscripcion" class="text-danger"></span>
                             </div>
-                            <div class="form-group">                                
+                            <div class="form-group">
                                 <span id="confirmDeleteSpan_@Model.IdAdscripcion" style="display:none">
                                     <span>¿Desea Eliminar la Área de Adscripción <strong>@Html.ViewData.Model.NombreAdscripcion</strong>?</span>
                                     <button type="submit" class="btn btn-danger">Si</button>
@@ -54,8 +54,8 @@
     </div>
 </body>
 @section Scripts{
-    <script src="~/js/DeleteConfirm.js"></script>
+<script src="~/js/DeleteConfirm.js"></script>
     @{
-        <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
     }
 }

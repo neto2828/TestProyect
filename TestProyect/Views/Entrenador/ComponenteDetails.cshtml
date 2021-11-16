@@ -1,8 +1,9 @@
-﻿@model IEnumerable<TestProyect.Models.Componentes>
+﻿@model TestProyect.Models.Componentes
 @{
-    ViewData["Title"] = "Administrativos";
+    ViewData["Title"] = "Subcomponente";
     Layout = "~/Views/Shared/_MenuPartial.cshtml";
 }
+
 <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -26,7 +27,7 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a href="#" class="dropdown-item">Perfil</a>
-                            <a asp-controller="Entrenador" asp-action="Configuracion" class="dropdown-item">Configuración</a>
+                            <a asp-controller="Entrenador" asp-action="Configuracion"  class="dropdown-item">Configuración</a>
                             <hr>
                             <a href="#" class="dropdown-item">Cerrar Sesión</a>
                         </div>
@@ -41,12 +42,11 @@
     <div class="card border">
         <div class="card-header">
             <a class="link-bar" asp-action="Index">Inicio/</a>
-            <a class="link-bar" asp-action="Configuracion">Configuración/</a>
+            <a class="link-bar" asp-action="Componente">Componente/</a>
         </div>
     </div>
     <hr />
-
-    @if (TempData["mensaje"] != null)
+        @if (TempData["mensaje"] != null)
     {
         <div class="alert alert-success alert-dismissible fade show">
             <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -68,19 +68,18 @@
             <strong>Eliminado!</strong> @TempData["eliminado"]
         </div>
     }
-
     <div class="row">
         <div class="col-12">
             <div class="card border">
                 <div class="card-header">
                     <div class="col-md-12">
                         <div class="float-left">
-                            <h3><strong>Lista de Componentes</strong></h3>
+                            <h3><strong>Subcomponentes de @Html.ViewData.Model.NombreComponente</strong></h3>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="float-right">
-                            <a asp-controller="Entrenador" asp-action="ComponenteCreate" class="btn btn-info"><i class="fas fa-plus"> Nuevo Componente</i></a>
+                            <a asp-controller="Entrenador" asp-action="SubcomponenteCreate" asp-route-id="@Html.ViewData.Model.IdComponente" class="btn btn-info"><i class="fas fa-plus"> Añadir Subcomponente</i></a>
                         </div>
                     </div>
                 </div>
@@ -90,24 +89,12 @@
                     <table class="table table-bordered" id="tablas" width="100%" cellpadding="0">
                         <thead>
                             <tr class="text-center">
-                                <th>@Html.DisplayNameFor(m => m.NombreComponente)</th>
                                 <th>
                                     Acciones
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(m => item.NombreComponente)</td>
-                                    <td class="text-center">
-                                        <a class="btn btn-primary btn-sm" asp-action="ComponenteEdit" asp-route-id="@item.IdComponente"><i class="fas fa-user-circle"></i></a> |
-                                        <a class="btn btn-success btn-sm" asp-action="ComponenteDetails" asp-route-id="@item.IdComponente"><i class="fas fa-info-circle"></i></a> |
-                                        <a class="btn btn-danger btn-sm" asp-action="ComponenteDelete" asp-route-id="@item.IdComponente"><i class="fas fa-user-minus"></i></a>
-                                    </td>
-                                </tr>
-                            }
                         </tbody>
                     </table>
                     <hr />
@@ -126,9 +113,8 @@
             </div>
         </div>
     </div>
-</body>
 
-@section Scripts{
+    @section Scripts{
     <script>
         $(document).ready(function () {
             $('#tablas').DataTable({
@@ -156,4 +142,8 @@
         });
     </script>
 }
+
+
+
+</body>
 

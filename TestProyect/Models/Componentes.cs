@@ -21,5 +21,10 @@ namespace TestProyect.Models
 
         [ForeignKey("EntrenadorCompId")]
         public Entrenadores Entrenadores { get; set; }
+
+        public static implicit operator int(Componentes v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

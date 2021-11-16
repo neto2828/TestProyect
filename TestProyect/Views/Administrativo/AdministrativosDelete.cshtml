@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                             <hr />
-                            <div class="form-group">                                
+                            <div class="form-group">
                                 <span id="confirmDeleteSpan_@Model.IdAdministrativos" style="display:none">
                                     <span>¿Desea Eliminar a <strong>@Html.ViewData.Model.NombreAdministrativo @Html.ViewData.Model.PaternoAdministrativo @Html.ViewData.Model.MaternoAdministrativo </strong> ?</span>
                                     <button type="submit" class="btn btn-danger">Si</button>
@@ -118,8 +118,8 @@
     </div>
 </body>
 @section Scripts{
-    <script src="~/js/DeleteConfirm.js"></script>
+<script src="~/js/DeleteConfirm.js"></script>
     @{
-        <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
     }
 }

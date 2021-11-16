@@ -48,8 +48,8 @@ section#konten {
     background-color: rgb(34, 32, 32);
 }
 
-.navbar-nav{
-color: white !important;
+.navbar-nav {
+    color: white !important;
 }
 
 .sidebar .nav-item:hover {
@@ -57,12 +57,11 @@ color: white !important;
     background-color: var(--naranja);
 }
 
-.logo_sidebar{    
+.logo_sidebar {
     border-color: var(--naranja);
     display: block;
     margin: auto;
     width: 150px;
-
 }
 
 .translate {

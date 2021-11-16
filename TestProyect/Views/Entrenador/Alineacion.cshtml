@@ -3,6 +3,8 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Sidebar.cshtml";
 }
+<hr />
+
 
 <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -68,5 +70,22 @@
 </header>
 
 <body class="fondoEntrenador">
+    <hr>
+
+    <div class="container" style="margin-right: 20%">
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["TotalJugadores"] == "0")
+                {
+                    <h3>
+                        <div class="alert alert-danger alert-dismissible fade show" style="margin-top:20%">                            
+                            <strong>Este equipo No cuenta con jugadores.</strong> Para añadir <a href="">Dar Click Aquí</a>
+                        </div>
+                    </h3>
+                }
+            </div>
+        </div>
+    </div>
 
 </body>
+

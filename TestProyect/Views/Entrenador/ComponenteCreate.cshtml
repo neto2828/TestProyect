@@ -1,9 +1,9 @@
-﻿@model TestProyect.Models.Equipos
+﻿@model TestProyect.Models.Componentes
+
 @{
-    ViewData["Title"] = "EquipoCreate";
+    ViewData["Title"] = "ComponenteCreate";
     Layout = "~/Views/Shared/_MenuPartial.cshtml";
 }
-
 <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -42,25 +42,43 @@
     <div class="card border">
         <div class="card-header">
             <a class="link-bar" asp-action="Index">Inicio/</a>
+            <a class="link-bar" asp-action="Configuracion">Configuración/</a>
         </div>
     </div>
     <hr />
+
     <div class="row">
-        <div class="col-md-3">
-            <div class="card" style="">
-                <div class="card-body">
-                    <h4 class="card-title">Componentes</h4>
-                    <p class="card-text"></p>
-                    <br>
-                    <a asp-controller="Entrenador" asp-action="Componente" class="btn btn-orange">Ingresar</a>
+        <div class="col-md-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Añadir Componente</strong></h3>
+                </div>
+            </div>
+            <div class="card-body card-special">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-action="ComponenteCreate">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input asp-for="EntrenadorCompId" value="2" class="form-control" />
+                            <div class="form-group">
+                                <label asp-for="NombreComponente" class="control-label"></label>
+                                <input asp-for="NombreComponente" class="form-control" />
+                                <span asp-validation-for="NombreComponente" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-@section Scripts{
-    @{
-    <partial name="_ValidationScriptsPartial" />
-    }
-}
 
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

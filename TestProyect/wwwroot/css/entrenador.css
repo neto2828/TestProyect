@@ -23,14 +23,12 @@
 /* ----------------- */
 
 .cards-wrapper {
-    
     display: flex;
     justify-content: center;
-
 }
 
 .card img {
-    margin-top:10px;
+    margin-top: 10px;
     max-width: 100%;
     max-height: 100%;
     background-color: white;
@@ -69,4 +67,10 @@
     .card img {
         height: 11em;
     }
+}
+
+
+.mensajeJugadores{
+    margin-top:20%;
+    margin-right: 20%
 }

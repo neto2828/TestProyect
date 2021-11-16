@@ -128,10 +128,13 @@ namespace TestProyect.Controllers
                 return NotFound();
             }
             var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
+            var TotalJugadores = _context.Jugadores.Where(i=> i.EquipoJugId==id).Count();
+            TempData["TotalJugadores"] = TotalJugadores.ToString();
             if (estatu == null)
             {
                 return NotFound();
-            }
+            }          
+
             return View(estatu);
         }
 
@@ -206,5 +209,67 @@ namespace TestProyect.Controllers
 
             return View(await applicationDbContext.ToListAsync());
         }
+
+        public IActionResult ComponenteCreate()
+        {            
+            return View();
+        }
+
+        // GET: EntrenadoresController
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ComponenteCreate(Componentes componentes)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.Componentes.AddAsync(componentes);
+                await _context.SaveChangesAsync();
+                int id = componentes.IdComponente;
+                TempData["mensaje"] = "El Componente se ha Creado";
+                return (RedirectToAction("ComponenteDetails", new {id=id}));
+            }
+            return View(componentes);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ComponenteDetails (int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var compone = _context.Componentes.Find(id);
+            if (compone == null)
+            {
+                return NotFound();
+            }
+            int componeId = compone.IdComponente;
+            var prueba =_context.Componentes.Single(i => i.IdComponente == componeId);
+            ViewData["ComponenteName"] = new SelectList(_context.Componentes.Where(i=>i.IdComponente == componeId), "NombreComponente", "NombreComponente");
+            ViewData["ComponenteId"] = new SelectList(_context.Componentes.Where(i => i.IdComponente == componeId), "IdComponente", "IdComponente");
+            var applicationDbContext = _context.Componentes.Single(i => i.IdComponente == componeId);
+            return View(applicationDbContext);
+        }
+
+        public IActionResult SubcomponenteCreate(int? id)
+        {
+            return View();
+        }
+
+        // GET: EntrenadoresController
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SubcomponenteCreate(int? id, Subcomponentes subcomponentes, int v)
+        {
+            var compone = _context.Componentes.Find(id);
+
+            int componeId = compone.IdComponente;
+            var prueba = _context.Componentes.Single(i => i.IdComponente == componeId);
+            ViewData["ComponenteName"] = new SelectList(_context.Componentes.Where(i => i.IdComponente == componeId), "NombreComponente", "NombreComponente");
+            ViewData["ComponenteId"] = new SelectList(_context.Componentes.Where(i => i.IdComponente == componeId), "IdComponente", "IdComponente");
+            var applicationDbContext = _context.Componentes.Single(i => i.IdComponente == componeId);
+            return View(applicationDbContext);
+        }
+
     }
 }

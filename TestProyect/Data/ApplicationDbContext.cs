@@ -11,10 +11,10 @@ namespace TestProyect.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            
+
         }
 
-        public DbSet<Estatus> Estatus { get; set; }             
+        public DbSet<Estatus> Estatus { get; set; }
         public DbSet<Adscripcion> Adscripcion { get; set; }
         public DbSet<Administrativos> Administrativos { get; set; }
         public DbSet<Categorias> Categorias { get; set; }
