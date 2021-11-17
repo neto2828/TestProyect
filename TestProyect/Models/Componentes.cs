@@ -16,15 +16,17 @@ namespace TestProyect.Models
         [Required(ErrorMessage = "El Nombre del Componente es Obligatorio")]
         public string NombreComponente { get; set; }
 
+        [Display(Name = "Icono del Componente")]
+        [Required(ErrorMessage = "Seleccione un Icono para el componente")]
+        public string IconoComponente { get; set; }
+
+
         [Required]
         public int? EntrenadorCompId { get; set; }
 
         [ForeignKey("EntrenadorCompId")]
         public Entrenadores Entrenadores { get; set; }
 
-        public static implicit operator int(Componentes v)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

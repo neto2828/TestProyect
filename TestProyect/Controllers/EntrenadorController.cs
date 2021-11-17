@@ -128,30 +128,75 @@ namespace TestProyect.Controllers
                 return NotFound();
             }
             var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
-            var TotalJugadores = _context.Jugadores.Where(i=> i.EquipoJugId==id).Count();
-            TempData["TotalJugadores"] = TotalJugadores.ToString();
+            var TotalJugadores = _context.Jugadores.Where(i => i.EquipoJugId == id).Count();
+            TempData["Equipo"] = id;
+            if (TotalJugadores == 0)
+            {
+                TempData["TotalJugadores"] = "Este equipo No cuenta con jugadores.";
+            }
+
+            if (TotalJugadores < 11 && TotalJugadores > 0)
+            {
+                TempData["TotalJugadores"] = "El equipo requiere al menos 11 jugadores. Este Equipo tiene: " + TotalJugadores + " Jugadores";
+            }
+
             if (estatu == null)
             {
                 return NotFound();
-            }          
+            }
 
             return View(estatu);
         }
 
-        public ActionResult Planeacion()
+        public async Task<ActionResult> Planeacion(int? id)
         {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
+            if (estatu == null)
+            {
+                return NotFound();
+            }
+
             ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
-            return View();
+            TempData["Equipo"] = id;
+            return View(estatu);
         }
 
-        public ActionResult Estadistica()
+        public async Task<ActionResult> Estadistica(int? id)
         {
-            return View();
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
+            if (estatu == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
+            TempData["Equipo"] = id;
+            return View(estatu);
         }
 
-        public ActionResult Jugadores()
+        public async Task<ActionResult> Jugadores(int? id)
         {
-            return View();
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
+            if (estatu == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
+            TempData["Equipo"] = id;
+            return View(estatu);
         }
 
         // GET: EntrenadoresController/Edit/5
@@ -211,7 +256,7 @@ namespace TestProyect.Controllers
         }
 
         public IActionResult ComponenteCreate()
-        {            
+        {
             return View();
         }
 
@@ -226,13 +271,13 @@ namespace TestProyect.Controllers
                 await _context.SaveChangesAsync();
                 int id = componentes.IdComponente;
                 TempData["mensaje"] = "El Componente se ha Creado";
-                return (RedirectToAction("ComponenteDetails", new {id=id}));
+                return (RedirectToAction("ComponenteDetails", new { id = id }));
             }
             return View(componentes);
         }
 
         [HttpGet]
-        public async Task<IActionResult> ComponenteDetails (int? id)
+        public IActionResult ComponenteDetails(int? id)
         {
             if (id == null || id == 0)
             {
@@ -244,8 +289,8 @@ namespace TestProyect.Controllers
                 return NotFound();
             }
             int componeId = compone.IdComponente;
-            var prueba =_context.Componentes.Single(i => i.IdComponente == componeId);
-            ViewData["ComponenteName"] = new SelectList(_context.Componentes.Where(i=>i.IdComponente == componeId), "NombreComponente", "NombreComponente");
+            var prueba = _context.Componentes.Single(i => i.IdComponente == componeId);
+            ViewData["ComponenteName"] = new SelectList(_context.Componentes.Where(i => i.IdComponente == componeId), "NombreComponente", "NombreComponente");
             ViewData["ComponenteId"] = new SelectList(_context.Componentes.Where(i => i.IdComponente == componeId), "IdComponente", "IdComponente");
             var applicationDbContext = _context.Componentes.Single(i => i.IdComponente == componeId);
             return View(applicationDbContext);
@@ -259,7 +304,7 @@ namespace TestProyect.Controllers
         // GET: EntrenadoresController
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SubcomponenteCreate(int? id, Subcomponentes subcomponentes, int v)
+        public IActionResult SubcomponenteCreate(int? id, Subcomponentes subcomponentes, int v)
         {
             var compone = _context.Componentes.Find(id);
 
@@ -271,5 +316,13 @@ namespace TestProyect.Controllers
             return View(applicationDbContext);
         }
 
+        public ActionResult Mesociclo(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            return View();
+        }
     }
 }

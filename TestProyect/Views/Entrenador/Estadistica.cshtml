@@ -3,68 +3,76 @@
     Layout = "~/Views/Shared/_Sidebar.cshtml";
 }
 
-<body class="fondoAdministracion">
-    <div class="d-flex" id="content-wrapper">
-        <div id="sidebar-container" class="bg-primary">
-            <div class="logo text-center">
-                <img src="~/img/LogoSPEJAR.png" alt="..." height="36">
-            </div>
-            <div class="card">
-                <div class="card-header">Equipo 1</div>
-                <div class="card-body-perfil">
-                    <div class="logo text-center">
-                        <img src="~/img/Equipos/Logo1.svg" alt="..." height="120">
-                    </div>
-                </div>
-                <div class="card-footer"></div>
-            </div>
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button type="button" class="navbar-toggler sidemenu-toggler mb-4">
+                <span class="line top"></span>
+                <span class="line middle"></span>
+                <span class="line bottom"></span>
+            </button>
+            <a href="#" class="navbar-brand">Navbar</a>
 
-            <div class="menu">
-                <a asp-controller="Entrenador" asp-action="Index" class="d-block text-light p-3"><i class="icon ion-md-grid mr-2 lead"></i> Equipos</a>
-                <a asp-controller="Entrenador" asp-action="Alineacion" class="d-block text-light p-3"><i class="icon ion-md-people mr-2 lead"></i> Alineación</a>
-                <a asp-controller="Entrenador" asp-action="Planeacion" class="d-block text-light p-3"><i class="icon ion-md-stats mr-2 lead"></i> Planeación</a>
-                <a asp-controller="Entrenador" asp-action="Componente" class="d-block text-light p-3"><i class="icon ion-md-stats mr-2 lead"></i> Componente</a>
-                <a asp-controller="Entrenador" asp-action="Estadistica" class="d-block text-light p-3 activo"><i class="icon ion-md-contact mr-2 lead"></i> Estadísticas</a>
-                <a asp-controller="Entrenador" asp-action="Jugadores" class="d-block text-light p-3"><i class="icon ion-md-cog mr-2 lead"></i> Jugadores</a>
+            <button type="button" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
+                            <img src="https://assets.metrolatam.com/cl/2015/11/09/captura-de-pantalla-2015-11-09-a-las-09-20-49-1-1200x800.jpg" alt="logo" style="width:40px;"> [Poner Nombre del usuario aquí]
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a href="#" class="dropdown-item">Perfil</a>
+                            <a asp-controller="Entrenador" asp-action="Configuracion" class="dropdown-item">Configuración</a>
+                            <hr>
+                            <a href="#" class="dropdown-item">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="w-100">
-            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="~/img/jugador.png" class="img-fluid rounded-circle avatar mr-2" />
-                                    Nombre del Usuario
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Perfil</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    </nav>
+    <!-- SIDEBAR MENU -->
 
-            <div id="content" class="bg-transparent w-100">
-                <div class="container">
-                    <div class="fondoTitulo">
-                        <div class="row justify-content-center">
-                            <div class="col-md-6 text-center">
-                                <h3>Selecione un Equipos</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+    <div class="wrapper d-flex ">
+        <div class="sideMenu shadow bg-dark">
+            <div class="sidebar">
+                <ul class="navbar-nav">
+                    <li class="text-center">
+                        <h4>@Html.ViewData.Model.NombreEquipo</h4>
+                        <hr class="separador">
+                    </li>
+                    <li class="">
+                        <img class="logo_sidebar" src="~/img/Equipos/Logo1.svg" />
+                        <hr class="separador">
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Entrenador" asp-action="Alineacion" asp-route-id="@TempData["Equipo"]" asp-id class="nav-link"><i class="material-icons icon"></i>Alineación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Entrenador" asp-action="Planeacion" asp-route-id="@TempData["Equipo"]" class="nav-link"><i class="material-icons icon"></i>Planeación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Entrenador" asp-action="Estadistica" asp-route-id="@TempData["Equipo"]" class="nav-link"><i class="material-icons icon"></i>Estadísticas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Entrenador" asp-action="Jugadores" asp-route-id="@TempData["Equipo"]" class="nav-link"><i class="material-icons icon"></i>Jugadores</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+</header>
 
+<body class="fondoEntrenador">
+    <hr>
+    <div class="container" style="margin-right: 20%">
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+    </div>
 </body>

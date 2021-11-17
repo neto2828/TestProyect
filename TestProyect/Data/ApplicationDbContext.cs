@@ -27,6 +27,7 @@ namespace TestProyect.Data
         public DbSet<Utileros> Utileros { get; set; }
         public DbSet<Componentes> Componentes { get; set; }
         public DbSet<Subcomponentes> Subcomponentes { get; set; }
+        public DbSet<Mesociclos> Mesociclos { get; set; }
 
     }
 }
