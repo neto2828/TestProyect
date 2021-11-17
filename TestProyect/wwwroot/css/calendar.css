@@ -1,0 +1,39 @@
+:root {
+    --grisF: #343A40;
+    --grisC: #595959;
+    --naranja: #EA7B1F;
+    --primaryTeam: #9c1737;
+    --secondaryTeam: #325082;
+    --tertiaryTeam: #EBE52D;
+    /*Para asignar un color de variable es: var(--grisF);*/
+}
+
+#calendar-wrapper {
+  height: 100vh; 
+}
+
+#calendar {
+    background-color: var(--grisF);
+    color: white;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.fc-header-toolbar {
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em; }
+
+#calendar a.fc-event {
+  color: #000;
+  /* bootstrap default styles make it black. undo */ }
+
+#eventModal label {
+  text-align: right; }
+
+.modal-footer {
+  justify-content: space-between !important; }
+

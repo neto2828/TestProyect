@@ -316,12 +316,20 @@ namespace TestProyect.Controllers
             return View(applicationDbContext);
         }
 
-        public ActionResult Mesociclo(int? id)
+        public async Task<ActionResult> Mesociclo(int? id)
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
+            var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
+            TempData["Equipo"] = id;
+            return View(estatu);
+        }
+        
+        public IActionResult Prueba()
+        {
+
             return View();
         }
     }

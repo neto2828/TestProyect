@@ -68,31 +68,21 @@
 </header>
 
 <body class="fondoEntrenador">
-    <hr>
-    <div class="container" style="margin-left:10%; margin-top:15%">
+
+    <div class="container" style="margin-top: 10%">
         <div class="row">
-            <div class="col-md-6">
-                <div class="card" style="">
-                    <img class="card-img-top" src="~/img/Mesociclo.svg" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">Planeación Mensual</h4>
-                        <p class="card-text">Mesociclo Deportivo</p>
-                        <br>
-                        <a asp-controller="Entrenador" asp-action="Mesociclo" asp-route-id="@TempData["Equipo"]" class="btn btn-orange">Ingresar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card" style="">
-                    <img class="card-img-top" src="~/img/Microciclo.svg" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">Planeación Semanal</h4>
-                        <p class="card-text">Microciclo Deportivo</p>
-                        <br>
-                        <a asp-controller="Entrenador" asp-action="Microciclo" asp-route-id="@TempData["Equipo"]" class="btn btn-orange">Ingresar</a>
-                    </div>
+            <div class="col-md-12">
+                <div id="calendar-wrapper">
+                    <div id="calendar"></div>
                 </div>
             </div>
         </div>
     </div>
+
+ 
 </body>
+
+
+            
+
+
