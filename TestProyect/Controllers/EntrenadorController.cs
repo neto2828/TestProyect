@@ -182,6 +182,15 @@ namespace TestProyect.Controllers
             return View(estatu);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetPlayers(string id)
+        {
+            var equipo = Int32.Parse(id);
+            var jugadores = await _context.Jugadores.Where(a => a.EquipoJugId == equipo).ToListAsync();
+            //if (jugadores == null) return NotFound();
+            return Ok(jugadores);
+        }
+
         public async Task<ActionResult> Jugadores(int? id)
         {
             if (id == null || id == 0)

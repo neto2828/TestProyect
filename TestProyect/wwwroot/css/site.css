@@ -116,9 +116,11 @@ button.accept-policy {
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
-    position: relative;
+html, body {
     min-height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -126,11 +128,15 @@ body {
     margin-bottom: 60px;
 }
 
+li {
+    list-style: none;
+}
+
 .footer {
     background-color: var(--grisF);
     color: white;
-    position: absolute;
-    bottom: 0;
+    /*position: absolute;
+    bottom: 0;*/
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
@@ -325,32 +331,148 @@ hr .linea {
 
 /** Estilos campo de Futbol */
 
-
-.fieldBox {
-    border: 2px solid black;
+.contenedor {
+    border: 1px solid black;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    height: 100vh;
 }
 
+.banca {
+    width: 30%;
+    border: 1px solid green;
+}
+
+/*.field {
+    border: 1px solid red;
+    width: 80%;
+    height: 90vh;
+    background-image: url(https://thumbs.dreamstime.com/b/vista-superior-del-campo-de-f%C3%BAtbol-84246649.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
+
 .field {
+    border: 1px solid blue;
     top: 10vh;
     left: 35vw;
-    width: 70vw;
-    height: 65vh;
-    background: url(https://thumbs.dreamstime.com/b/vista-superior-del-campo-de-f%C3%BAtbol-84246649.jpg);
-    border: 1px solid black;
-    background-size: 50%;
-    background-repeat: no-repeat;
+    width: 30vw;
+    height: 90vh;
+    background: url(https://4.bp.blogspot.com/-JiJEc7lH1Is/UHJs3kn261I/AAAAAAAADYA/gQRAxHK2q_w/s1600/tileable_old_school_video_game_grass.jpg);
+    background-size: 30%;
     position: absolute;
 }
 
+.field__box {
+    width: 90%;
+    height: 90%;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    margin: 20px auto;
+    position: relative;
+}
+
+.field__line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+}
+
+.field__line--goal--top {
+    width: 15%;
+    height: 5%;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    border-top: none;
+    left: 42.5%;
+}
+
+.field__line--goal--bottom {
+    bottom: 0;
+    width: 15%;
+    height: 5%;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    border-bottom: none;
+    margin: 0 42.5%;
+}
+
+.field__line--penalty--top {
+    width: 35%;
+    height: 10%;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    border-top: none;
+    margin: 0 32.5%;
+}
+
+.field__line--penalty--bottom {
+    bottom: 0;
+    width: 35%;
+    height: 10%;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    border-bottom: none;
+    margin: 0 32.5%;
+}
+
+.field__line--penalty--arc--top {
+    top: 0;
+    width: 25%;
+    height: 12%;
+    border-radius: 0 0 60% 60%;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    margin: 0 37.5%;
+}
+
+.field__line--penalty--arc--bottom {
+    bottom: 0;
+    width: 25%;
+    height: 12%;
+    border-radius: 60% 60% 0 0;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    border-bottom: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    margin: 0 37.5%;
+}
+
+.field__line--penalty--arc {
+    top: 0;
+    width: 25%;
+    height: 12%;
+    border-radius: 0 0 60% 60%;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    margin: 0 37.5%;
+}
+
+.field__line--mid {
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.field__line--circle {
+    top: 44%;
+    width: 17%;
+    height: 12%;
+    margin: auto;
+    border-radius: 70%;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    left: 41.5%;
+}
 
 .player {
     position: absolute;
 }
 
 .player__item {
-    width: 3%;
-    height: 6%;
-    background: repeating-linear-gradient(90deg, var(--primaryTeam),var(--primaryTeam) 10%, var(--secondaryTeam) 10%, var(--secondaryTeam) 20%);
+    width: 9%;
+    height: 7%;
+    background: repeating-linear-gradient(90deg, #9c1737, #9c1737 10%, #325082 10%, #325082 20%);
     border-radius: 50%;
     box-shadow: 0 0 30px #000000;
     text-align: center;
@@ -364,65 +486,57 @@ hr .linea {
 
 .player__item--shirt {
     bottom: 25%;
-    font-size: 1.25em;
-    font-weight: 500;
+    font-size: 1em;
     text-align: center;
-    color: var(--tertiaryTeam);
+    color: #ebe52d;
 }
 
 .player__item--label {
     font-size: 0.7em;
     top: 75%;
     position: absolute;
-    background-color: var(--tertiaryTeam);
-    color: var(--primaryTeam);
+    background-color: #ebe52d;
+    color: #9c1737;
     border-radius: 10%;
     padding: 5%;
 }
 
 .player__item--card {
     position: absolute;
-    top: -250%;
-    background-color: var(--primaryTeam);
-    /*/opacity: 0
-      //width: auto
-      //padding: 10%*/
+    top: -380%;
+    background-color: #9c1737;
     font-size: 0.7em;
-    color: var(--secondaryTeam);
+    color: #325082;
     border-radius: 3%;
     box-shadow: 0 0 30px #000000;
     z-index: 2;
-    /*overflow: hidden*/
     display: none;
-    /*justify-content: center*/
     flex-flow: column;
 }
 
-    .player__item--card::after {
+    .player__item--card:after {
         content: "";
         display: inline-block;
         width: 0;
         height: 0;
         border-left: 10px solid transparent;
-        border-top: 10px solid var(--secondaryTeam);
+        border-top: 10px solid #325082;
         border-right: 10px solid transparent;
     }
 
-
-    .player__item--card::before {
+    .player__item--card:before {
         content: "";
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
         height: 40%;
-        background-color: var(--secondaryTeam);
+        background-color: #325082;
         z-index: -1;
     }
 
 .player__item--card--name {
-    color: var(--primaryTeam);
-    font-weight: 800;
+    color: #9c1737;
 }
 
 .player__item--card--photo {
@@ -441,74 +555,71 @@ hr .linea {
 
 .player__item--card--info {
     display: flex;
-    margin: 4px;
-    font-weight: 700
 }
 
 .player__item--card--info--column {
     display: table;
-    padding: 0.3%;
+    padding: 2%;
 }
 
 .player__item--card--info--item {
     text-align: center;
 }
 
-.player__item--gk {
+.player__item--1 {
     bottom: 1%;
     left: 45%;
 }
 
-.player__item--two {
+.player__item--2 {
     bottom: 25%;
     right: 5%;
 }
 
-.player__item--three {
+.player__item--3 {
     bottom: 15%;
     right: 25%;
 }
 
-.player__item--four {
+.player__item--4 {
     bottom: 15%;
     left: 25%;
 }
 
-.player__item--five {
+.player__item--5 {
     bottom: 42%;
     right: 30%;
 }
 
-.player__item--six {
+.player__item--6 {
     bottom: 25%;
     left: 5%;
 }
 
-.player__item--seven {
+.player__item--7 {
     bottom: 42%;
     left: 30%;
 }
 
-.player__item--eight {
+.player__item--8 {
     top: 30%;
     left: 45%;
 }
 
-.player__item--nine {
+.player__item--9 {
     top: 15%;
-    right: 65%;
+    right: 5%;
 }
 
-.player__item--ten {
+.player__item--10 {
     top: 15%;
-    left: 65%;
+    left: 5%;
 }
 
-.player__item--eleven {
-    top: 50%;
-    left: 70%;
+.player__item--11 {
+    top: 8%;
+    left: 45%;
 }
-
 
 /*Mapa*/
 
@@ -559,6 +670,23 @@ hr .linea {
     .btn-logout:hover {
         color: white;
     }
+
+.items {
+    border: 1px solid black;
+    width: 200px;
+    background-color: white;
+    box-shadow: 5px 5px 0px -4px rgba(0,0,0,0.11);
+    -webkit-box-shadow: 5px 5px 0px -4px rgba(0,0,0,0.11);
+    -moz-box-shadow: 5px 5px 0px -4px rgba(0,0,0,0.11);
+    cursor: grab;
+    margin: 3px;
+}
+
+#btnGuardar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .login-select {
     display: flex;
