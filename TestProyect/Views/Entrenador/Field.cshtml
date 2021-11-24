@@ -10,7 +10,7 @@
         </div>
         <div id="listado" class="lista">
             <ol id="listaJugadores">
-                <li id="0" class="items"><span>Jugador 1</span></li>
+                
             </ol>
         </div>
         <div id="#saveCoordenadas">
@@ -49,33 +49,68 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        var totaljugadores = 0;
+        var totalTitulares = 0;
         var jugadores = $.ajax({
             url: 'GetPlayers',
             type: 'GET',
-            async: true,
+            async: false,
             data: { id: '3' },
         }).done(function (data) {
             jugadores = data;
             var i = 0;
             jugadores.forEach(function (jugador) {
                 i++;
-                var list = $('<li id="' + i + '" class="items">' + jugador.nombreJugador + '</li>')
+                var list = $('<li id="' + i + '" class="items ui-sortable-handle"><span>' + jugador.nombreJugador + '</span></li>')
                 $('#listaJugadores').append(list);
-                var dragg = '#drag'+i;
+                var dragg = '#drag' + i;
                 var cadena = '';
-  
-                cadena += '<div class="player player__item--shirt">9</div >'
+
+                cadena += '<div class="player player__item--shirt">' + jugador.camisetaJugador +'</div >'
                 cadena += '<div class="player player__item--label">' + jugador.nombreJugador + '</div >'
-           
+
                 $(dragg).append(cadena);
-                if(jugador.TitularJugador == true){
+                if(jugador.titularJugador == true){
                     $(dragg).show();
+                    $('#' + i).css("background-color", "green");
+                    totalTitulares += 1;
                 }else{
                     $(dragg).hide();
+                    $('#'+i).delay(1000).css("background-color", "grey");
                 }
             });
+            totaljugadores = i;
+            return data;
+        });
 
-            return data.responseJson;
+        $("#btnSave").click(function () {
+            var coordenadasFinal = [];
+            for (i = 0; i < totaljugadores; i++) {
+                var id = '#drag' + (i+1);
+                var doc = $(id);
+                var coordenadas = doc.position();
+                var coordenaX = coordenadas.left;
+                var coordenaY = coordenadas.top;
+                var  valores = {
+                    idJugador: jugadores.responseJSON[i].idJugador,
+                    coordenadaX: coordenaX,
+                    coordenadaY: coordenaY,
+                };
+                console.log("VALORES TO PUSH",valores);
+                coordenadasFinal.push(valores)
+            }
+
+
+            $.ajax({
+            url: 'SaveCoordenadas',
+            type: 'POST',
+            async: false,
+            data: { posicionJugadores: coordenadasFinal },
+        }).done(function (data) {
+           console.log("DAAATTAAAAA", data);
+        });
+           
+
         });
     });
 
@@ -96,22 +131,163 @@
     $(".field__box").droppable();
 
 
-    $("#listaJugadores").sortable({ containment: "#listado", scroll: false });
-
-    $("#1").click(function () {
-        if ($('#drag').is(':visible')) {
-            $('#drag').hide();
+    $(document).on('click', '#1', function () {
+        if ($('#drag1').is(':visible')) {
+            $('#drag1').hide();
             $('#1').delay(1000).css("background-color", "grey");
         } else {
-            $('#drag').show();
+            $('#drag1').show();
             $('#1').delay(1000).css("background-color", "green");
         }
     });
 
-    $("#btnSave").click(function () {
-        var coordenadas = $("#drag1").position();
-
-        console.log(coordenadas);
-
+    $(document).on('click', '#2', function () {
+        if ($('#drag2').is(':visible')) {
+            $('#drag2').hide();
+            $('#2').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag2').show();
+            $('#2').delay(1000).css("background-color", "green");
+        }
     });
+    $(document).on('click', '#3', function () {
+        if ($('#drag3').is(':visible')) {
+            $('#drag3').hide();
+            $('#3').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag3').show();
+            $('#3').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#4', function () {
+        if ($('#drag4').is(':visible')) {
+            $('#drag4').hide();
+            $('#4').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag4').show();
+            $('#4').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#5', function () {
+        if ($('#drag5').is(':visible')) {
+            $('#drag5').hide();
+            $('#5').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag5').show();
+            $('#5').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#6', function () {
+        if ($('#drag6').is(':visible')) {
+            $('#drag6').hide();
+            $('#6').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag6').show();
+            $('#6').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#7', function () {
+        if ($('#drag7').is(':visible')) {
+            $('#drag7').hide();
+            $('#7').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag7').show();
+            $('#7').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#8', function () {
+        if ($('#drag8').is(':visible')) {
+            $('#drag8').hide();
+            $('#8').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag8').show();
+            $('#8').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#9', function () {
+        if ($('#drag9').is(':visible')) {
+            $('#drag9').hide();
+            $('#9').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag9').show();
+            $('#9').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#10', function () {
+        if ($('#drag10').is(':visible')) {
+            $('#drag10').hide();
+            $('#10').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag10').show();
+            $('#10').delay(1000).css("background-color", "green");
+        }
+    });
+        $(document).on('click', '#11', function () {
+        if ($('#drag11').is(':visible')) {
+            $('#drag11').hide();
+            $('#11').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag11').show();
+            $('#11').delay(1000).css("background-color", "green");
+        }
+        });
+        $(document).on('click', '#12', function () {
+        if ($('#drag12').is(':visible')) {
+            $('#drag12').hide();
+            $('#12').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag12').show();
+            $('#12').delay(1000).css("background-color", "green");
+        }
+        });
+    $(document).on('click', '#13', function () {
+        if ($('#drag13').is(':visible')) {
+            $('#drag13').hide();
+            $('#13').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag13').show();
+            $('#13').delay(1000).css("background-color", "green");
+        }
+    });
+
+    $(document).on('click', '#14', function () {
+        if ($('#drag14').is(':visible')) {
+            $('#drag14').hide();
+            $('#14').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag1').show();
+            $('#14').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#15', function () {
+        if ($('#drag15').is(':visible')) {
+            $('#drag15').hide();
+            $('#15').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag15').show();
+            $('#15').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#16', function () {
+        if ($('#drag16').is(':visible')) {
+            $('#drag16').hide();
+            $('#16').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag16').show();
+            $('#16').delay(1000).css("background-color", "green");
+        }
+    });
+    $(document).on('click', '#17', function () {
+        if ($('#drag17').is(':visible')) {
+            $('#drag17').hide();
+            $('#17').delay(1000).css("background-color", "grey");
+        } else {
+            $('#drag17').show();
+            $('#17').delay(1000).css("background-color", "green");
+        }
+    });
+
+    $("#listaJugadores").sortable({ containment: "#listado", scroll: false });
+
+
 </script>

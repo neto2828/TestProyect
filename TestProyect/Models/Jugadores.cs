@@ -111,5 +111,13 @@ namespace TestProyect.Models
         public bool ValidacionJugador { get; set; }
         [Required]
         public bool CambioPwJugador { get; set; }
+
+        public string CamisetaJugador { get; set; }
+
+        public string CoordenadaX { get; set; }
+
+        public string CoordenadaY { get; set; }
+
+        public bool TitularJugador { get; set; }
     }
 }
