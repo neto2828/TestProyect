@@ -354,5 +354,11 @@ namespace TestProyect.Controllers
 
             return View();
         }
+
+        public IActionResult Seleccion(int? id)
+        {
+            TempData["Equipo"] = id;
+            return View();
+        }
     }
 }

@@ -79,7 +79,7 @@
                 {
                     <h3>
                         <div class="alert alert-danger alert-dismissible fade show" style="margin-top:20%">
-                            <strong>@TempData["TotalJugadores"]</strong> Para añadir <a href="">Dar Click Aquí</a>
+                            <strong>@TempData["TotalJugadores"]</strong> Para añadir <a asp-controller="Entrenador" asp-action="Seleccion" asp-route-id="@TempData["Equipo"]" >Dar Click Aquí</a>
                         </div>
                     </h3>
                 }
