@@ -364,13 +364,15 @@ namespace TestProyect.Controllers
             var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
             var TotalJugadores = _context.Jugadores.Where(i => i.EquipoJugId == id).Count();
             TempData["Equipo"] = id;
+            
 
             if (estatu == null)
             {
                 return NotFound();
             }
-
-            return View(estatu);
+            var applicationDbContext = _context.Jugadores.Where(i=> i.EquipoJugId == 3 );
+            return View(await applicationDbContext.ToListAsync());
+            //return View(estatu);
         }
     }
 }
