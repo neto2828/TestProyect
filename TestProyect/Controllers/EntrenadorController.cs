@@ -355,10 +355,22 @@ namespace TestProyect.Controllers
             return View();
         }
 
-        public IActionResult Seleccion(int? id)
+        public async Task<IActionResult> Seleccion(int? id)
         {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
+            var TotalJugadores = _context.Jugadores.Where(i => i.EquipoJugId == id).Count();
             TempData["Equipo"] = id;
-            return View();
+
+            if (estatu == null)
+            {
+                return NotFound();
+            }
+
+            return View(estatu);
         }
     }
 }
