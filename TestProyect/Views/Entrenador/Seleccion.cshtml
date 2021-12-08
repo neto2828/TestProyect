@@ -71,51 +71,61 @@
 </header>
 
 <body class="fondoEntrenador">
+
+
     <hr>
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Guardado!</strong> @TempData["mensaje"]
+        </div>
+    }
+
     <div class="container" style="margin-left: 10%">
-<div class="row">
-        <div class="col-12">
-            <div class="card border">
-                <div class="card-header" style="background-color: #343A40">
-                    <div class="col-md-12">
-                        <div class="float-left">
-                            <h3><strong>Jugadores sin Equipo</strong></h3>
+        <div class="row">
+            <div class="col-12">
+                <div class="card border">
+                    <div class="card-header" style="background-color: #343A40">
+                        <div class="col-md-12">
+                            <div class="float-left">
+                                <h3><strong>Jugadores sin Equipo</strong></h3>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-body card-special">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="tablas" width="100%" cellpadding="0">
-                        <thead>
-                            <tr class="text-center">
-                                <th>@Html.DisplayNameFor(m => m.NombreJugador)</th>
-                                <th>@Html.DisplayNameFor(m => m.PaternoJugador)</th>
-                                <th>@Html.DisplayNameFor(m => m.MaternoJugador)</th>
-                                <th>
-                                    Acciones
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                  @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(m => item.NombreJugador)</td>
-                                    <td>@Html.DisplayFor(m => item.PaternoJugador)</td>
-                                    <td>@Html.DisplayFor(m => item.MaternoJugador)</td>
-                                    <td class="text-center">                                        
-                                        <a class="btn btn-success btn-sm" asp-action="JugadorSelect" asp-route-id="@item.IdJugador"><i class="fas fa-info-circle"></i></a>
-                                    </td>
+                <div class="card-body card-special">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tablas" width="100%" cellpadding="0">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>@Html.DisplayNameFor(m => m.NombreJugador)</th>
+                                    <th>@Html.DisplayNameFor(m => m.PaternoJugador)</th>
+                                    <th>@Html.DisplayNameFor(m => m.MaternoJugador)</th>
+                                    <th>
+                                        Acciones
+                                    </th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
-                    <hr />
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.NombreJugador)</td>
+                                        <td>@Html.DisplayFor(m => item.PaternoJugador)</td>
+                                        <td>@Html.DisplayFor(m => item.MaternoJugador)</td>
+                                        <td class="text-center">
+                                            <a class="btn btn-success btn-sm" asp-action="JugadorSelect" asp-route-id="@item.IdJugador"><i class="fas fa-info-circle"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <hr />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 

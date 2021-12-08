@@ -374,5 +374,16 @@ namespace TestProyect.Controllers
             return View(await applicationDbContext.ToListAsync());
             //return View(estatu);
         }
+
+        public async Task<IActionResult> JugadorSelect(int? id, int? idJugador)
+        {
+            var estatu = await _context.Equipos.FirstOrDefaultAsync(m => m.IdEquipo == id);
+            var TotalJugadores = _context.Jugadores.Where(i => i.EquipoJugId == id).Count();
+            TempData["Equipo"] = id;
+            TempData["Jugador"] = idJugador;
+
+            TempData["mensaje"] = "Se ha añadido el jugador" + idJugador + "al equipo" + id;
+            return (RedirectToAction("Alineacion", new { id = id }));
+        }
     }
 }
