@@ -73,66 +73,66 @@
 <body class="fondoEntrenador">
     <hr>
 
-                @if (TempData["TotalJugadores"] != null)
-                {
-                        <div class="container" style="margin-left: 10%">
-        <div class="row">
-            <div class="col-md-12">
+    @if (TempData["TotalJugadores"] != null)
+    {
+        <div class="container" style="margin-left: 10%">
+            <div class="row">
+                <div class="col-md-12">
                     <h3>
                         <div class="alert alert-danger alert-dismissible fade show" style="margin-top:20%">
-                            <strong>@TempData["TotalJugadores"]</strong> Para añadir <a asp-controller="Entrenador" asp-action="Seleccion" asp-route-id="@TempData["Equipo"]" >Dar Click Aquí</a>
+                            <strong>@TempData["TotalJugadores"]</strong> Para añadir <a asp-controller="Entrenador" asp-action="Seleccion" asp-route-id="@TempData["Equipo"]">Dar Click Aquí</a>
                         </div>
                     </h3>
                 </div>
+            </div>
         </div>
-        </div>
-    } else
+    }
+    else
     {
-        
-   <div class="contenedor">
-    <div class="banca">
-        <div style="padding: 3px; border: 1px solid pink;">
-            <h5>Banca</h5>
-        </div>
-        <div id="listado" class="lista">
-            <ol id="listaJugadores">
-                
-            </ol>
-        </div>
-        <div id="#saveCoordenadas">
-            <button id="btnSave">Guardar</button>
-        </div>
-    </div>
-    <div id="fields" class="field">
-        <div id="field___box" class="field__box">
-            <div class="field__line field__line--goal--top"></div>
-            <div class="field__line field__line--goal--bottom"></div>
-            <div class="field__line field__line--penalty--top"></div>
-            <div class="field__line field__line--penalty--bottom"></div>
-            <div class="field__line field__line--penalty--arc--top"></div>
-            <div class="field__line field__line--penalty--arc--bottom"></div>
-            <div class="field__line field__line--mid"></div>
-            <div class="field__line field__line--circle"></div>
-            <div class="arrow"></div>
-            <div id="drag1" class="player player__item player__item--1"></div>
-            <div id="drag2" class="player player__item player__item--2"></div>
-            <div id="drag3" class="player player__item player__item--3"></div>
-            <div id="drag4" class="player player__item player__item--4"></div>
-            <div id="drag5" class="player player__item player__item--5"></div>
-            <div id="drag6" class="player player__item player__item--6"></div>
-            <div id="drag7" class="player player__item player__item--7"></div>
-            <div id="drag8" class="player player__item player__item--8"></div>
-            <div id="drag9" class="player player__item player__item--9"></div>
-            <div id="drag10" class="player player__item player__item--10"></div>
-            <div id="drag11" class="player player__item player__item--11"></div>
-            <div id="drag12" class="player player__item player__item--12"></div>
-            <div id="drag13" class="player player__item player__item--13"></div>
-            
-        </div>
-    </div>
+
+        <div class="contenedor">
+            <div class="banca">
+                <div style="padding: 3px; border: 1px solid pink;">
+                    <h5>Banca</h5>
+                </div>
+                <div id="listado" class="lista">
+                    <ol id="listaJugadores">
+                    </ol>
+                </div>
+                <div id="#saveCoordenadas">
+                    <button id="btnSave">Guardar</button>
+                </div>
+            </div>
+            <div id="fields" class="field">
+                <div id="field___box" class="field__box">
+                    <div class="field__line field__line--goal--top"></div>
+                    <div class="field__line field__line--goal--bottom"></div>
+                    <div class="field__line field__line--penalty--top"></div>
+                    <div class="field__line field__line--penalty--bottom"></div>
+                    <div class="field__line field__line--penalty--arc--top"></div>
+                    <div class="field__line field__line--penalty--arc--bottom"></div>
+                    <div class="field__line field__line--mid"></div>
+                    <div class="field__line field__line--circle"></div>
+                    <div class="arrow"></div>
+                    <div id="drag1" class="player player__item player__item--1"></div>
+                    <div id="drag2" class="player player__item player__item--2"></div>
+                    <div id="drag3" class="player player__item player__item--3"></div>
+                    <div id="drag4" class="player player__item player__item--4"></div>
+                    <div id="drag5" class="player player__item player__item--5"></div>
+                    <div id="drag6" class="player player__item player__item--6"></div>
+                    <div id="drag7" class="player player__item player__item--7"></div>
+                    <div id="drag8" class="player player__item player__item--8"></div>
+                    <div id="drag9" class="player player__item player__item--9"></div>
+                    <div id="drag10" class="player player__item player__item--10"></div>
+                    <div id="drag11" class="player player__item player__item--11"></div>
+                    <div id="drag12" class="player player__item player__item--12"></div>
+                    <div id="drag13" class="player player__item player__item--13"></div>
+
+                </div>
+            </div>
 
 
-</div>
+        </div>
 
 
     }
@@ -204,7 +204,7 @@
         }).done(function (data) {
            console.log("DAAATTAAAAA", data);
         });
-           
+
 
         });
     });

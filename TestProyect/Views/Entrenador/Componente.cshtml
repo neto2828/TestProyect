@@ -11,7 +11,9 @@
                 <span class="line middle"></span>
                 <span class="line bottom"></span>
             </button>
-            <a href="#" class="navbar-brand">Navbar</a>
+            <a href="#" class="navbar-brand">
+                <img class="logotipo" src="~/img/LogoSPEJAR.png" height="40" width="200" />
+            </a>
 
             <button type="button" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse">
                 <span class="navbar-toggler-icon"></span>
@@ -129,31 +131,31 @@
 </body>
 
 @section Scripts{
-    <script>
-        $(document).ready(function () {
-            $('#tablas').DataTable({
-                language: {
-                    "decimal": "",
-                    "emptyTable": "No hay Información",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                    "infoEmpty": "Mostrando 0 de 0 Entradas",
-                    "infoFiltered": "(Filtrando de _MAX_ total entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ Entradas",
-                    "loadingMenu": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "Sin Resultados Encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    }
+<script>
+    $(document).ready(function () {
+        $('#tablas').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay Información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 de 0 Entradas",
+                "infoFiltered": "(Filtrando de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingMenu": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin Resultados Encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
                 }
-            });
+            }
         });
-    </script>
+    });
+</script>
 }
 

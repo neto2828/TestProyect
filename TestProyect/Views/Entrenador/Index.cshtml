@@ -4,6 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_MenuPartial.cshtml";
 }
+
 <link rel="stylesheet" href="~/css/entrenador.css">
 
 <header>
@@ -14,7 +15,9 @@
                 <span class="line middle"></span>
                 <span class="line bottom"></span>
             </button>
-            <a href="#" class="navbar-brand">Navbar</a>
+            <a href="#" class="navbar-brand">
+                <img class="logotipo" src="~/img/LogoSPEJAR.png" height="40" width="200" />
+            </a>
 
             <button type="button" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse">
                 <span class="navbar-toggler-icon"></span>
@@ -31,7 +34,7 @@
                             <a href="#" class="dropdown-item">Perfil</a>
                             <a asp-controller="Entrenador" asp-action="Configuracion" class="dropdown-item">Configuración</a>
                             <hr>
-                            <a href="#" class="dropdown-item">Cerrar Sesión</a>
+                            <a asp-controller="Entrenador" asp-action="Logout" class="dropdown-item">Cerrar Sesión</a>
                         </div>
                     </li>
                 </ul>
@@ -107,6 +110,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             @foreach (var item in Model)
                             {
 
@@ -125,6 +129,7 @@
                                     </div>
                                 </div>
                             }
+
                         </div>
                         <a class="carousel-control-prev" href="#demo" data-slide="prev">
                             <span class="carousel-control-prev-icon"></span>

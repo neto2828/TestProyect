@@ -27,7 +27,7 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a href="#" class="dropdown-item">Perfil</a>
-                            <a asp-controller="Entrenador" asp-action="Configuracion"  class="dropdown-item">Configuración</a>
+                            <a asp-controller="Entrenador" asp-action="Configuracion" class="dropdown-item">Configuración</a>
                             <hr>
                             <a href="#" class="dropdown-item">Cerrar Sesión</a>
                         </div>
@@ -46,7 +46,7 @@
         </div>
     </div>
     <hr />
-        @if (TempData["mensaje"] != null)
+    @if (TempData["mensaje"] != null)
     {
         <div class="alert alert-success alert-dismissible fade show">
             <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -141,7 +141,7 @@
             });
         });
     </script>
-}
+    }
 
 
 

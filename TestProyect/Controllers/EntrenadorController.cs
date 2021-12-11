@@ -41,7 +41,7 @@ namespace TestProyect.Controllers
                         {
                             HttpContext.Session.SetString("usuariologueado", email);
                             HttpContext.Session.SetString("mainController", "Entrenador");
-                            return View("Planeacion");
+                            return View("Views/Entrenador/Index.cshtml");
                         }
                         else
                         {
@@ -70,10 +70,10 @@ namespace TestProyect.Controllers
         }
 
 
-
+       
         public async Task<IActionResult> Index()
         {
-
+            
             var applicationDbContext = _context.Equipos.Include(i => i.Categorias);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -91,7 +91,7 @@ namespace TestProyect.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Equipos.AddAsync(equipos);
+                await _context.Equipos.AddAsync(equipos);
                 await _context.SaveChangesAsync();
                 TempData["mensaje"] = "El Equipo se ha Creado";
                 return (RedirectToAction(nameof(Index)));
@@ -384,6 +384,13 @@ namespace TestProyect.Controllers
 
             TempData["mensaje"] = "Se ha añadido el jugador" + idJugador + "al equipo" + id;
             return (RedirectToAction("Alineacion", new { id = id }));
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            HttpContext.Session.SetString("usuariologueado", "");
+            return View("Views/Home/Index.cshtml");
         }
     }
 }
