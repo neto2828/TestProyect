@@ -42,9 +42,10 @@ namespace TestProyect.Controllers
                     if (usuario.Where(s => s.IdEstatus == 1).Any())
                     {
                         if (usuario.Where(s => s.ValidacionAdministrativo == true).Any())
-                        {
+                        {                            
                             HttpContext.Session.SetString("usuariologueado", email);
                             HttpContext.Session.SetString("mainController", "Administrativo");
+                            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
                             return View("Index");
                         }
                         else

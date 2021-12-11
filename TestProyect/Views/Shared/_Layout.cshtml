@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
-      <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script type="text/javascript" src="~/js/site.js"></script>
 </head>
 <body>
@@ -20,29 +20,34 @@
     <header>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container">
+
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="~/img/LogoSPEJAR.png" alt="..." height="36">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
+                
+                    
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+
+                        @if(ViewData["usuariologueado"]!= null){
+                        <li class="nav-item dropdown">
+                            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
+                                <img src="https://assets.metrolatam.com/cl/2015/11/09/captura-de-pantalla-2015-11-09-a-las-09-20-49-1-1200x800.jpg" alt="logo" style="width:40px;"> @ViewData["usuariologueado"]
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <hr>
+                                <a asp-controller="Home" asp-action="Logout" class="dropdown-item">Cerrar Sesión</a>
+                            </div>
+                        </li>
+                        }
                     </ul>
                 </div>
-                <div style="float:left">
-                    @if (string.IsNullOrEmpty(ViewContext.HttpContext.Session.GetString("usuariologueado")))
-                    {
-
-                    }
-                    else
-                    {
-                        <div id="btnOut" class="btn btn-primary btn-sm">
-                            <span id="txtLogout" style="color:white;" class="glyphicon glyphicon-log-out">@Html.ActionLink("Cerrar Sesión", "Logout", "Home", null, new { @class = "btn-logout" })</span>
-                        </div>
-                    }
-                </div>
-
+                
             </div>
         </nav>
     </header>
