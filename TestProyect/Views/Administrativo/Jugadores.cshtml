@@ -8,7 +8,7 @@
     <hr>
     <div class="card border">
         <div class="card-header">
-            <a class="link-bar" asp-action="">Administrativo:@ViewData["usuariologueado"]</a>
+            <a class="link-bar" asp-controller="Home" asp-action="Index">Inicio/</a>
 
         </div>
     </div>
@@ -73,20 +73,20 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>@Html.DisplayFor(m => item.NombreJugador)</td>
-                                <td>@Html.DisplayFor(m => item.PaternoJugador)</td>
-                                <td>@Html.DisplayFor(m => item.MaternoJugador)</td>
-                                <td>@Html.DisplayFor(m => item.CelularJugador)</td>
-                                <td>@Html.DisplayFor(m => item.EmailJugador)</td>
-                                <td>@Html.DisplayFor(m => item.Equipos.Entrenadores.NombreEntrenador)</td>
-                                <td>@Html.DisplayFor(m => item.Estatus.NombreEstatus)</td>
-                                <td class="text-center">
-                                    <a class="btn btn-primary btn-sm" asp-action="JugadoresEdit" asp-route-id="@item.IdJugador"><i class="fas fa-user-edit"></i></a> |
-                                    <a class="btn btn-success btn-sm" asp-action="JugadoresDetails" asp-route-id="@item.IdJugador"><i class="fas fa-info-circle"></i></a> |
-                                    <a class="btn btn-danger btn-sm" asp-action="JugadoresDelete" asp-route-id="@item.IdJugador"><i class="fas fa-user-minus"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>@Html.DisplayFor(m => item.NombreJugador)</td>
+                                    <td>@Html.DisplayFor(m => item.PaternoJugador)</td>
+                                    <td>@Html.DisplayFor(m => item.MaternoJugador)</td>
+                                    <td>@Html.DisplayFor(m => item.CelularJugador)</td>
+                                    <td>@Html.DisplayFor(m => item.EmailJugador)</td>
+                                    <td>@Html.DisplayFor(m => item.Equipos.Entrenadores.NombreEntrenador)</td>
+                                    <td>@Html.DisplayFor(m => item.Estatus.NombreEstatus)</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-primary btn-sm" asp-action="JugadoresEdit" asp-route-id="@item.IdJugador"><i class="fas fa-user-edit"></i></a> |
+                                        <a class="btn btn-success btn-sm" asp-action="JugadoresDetails" asp-route-id="@item.IdJugador"><i class="fas fa-info-circle"></i></a> |
+                                        <a class="btn btn-danger btn-sm" asp-action="JugadoresDelete" asp-route-id="@item.IdJugador"><i class="fas fa-user-minus"></i></a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -109,31 +109,31 @@
 </body>
 
 @section Scripts{
-    <script>
-        $(document).ready(function () {
-            $('#tablas').DataTable({
-                language: {
-                    "decimal": "",
-                    "emptyTable": "No hay Información",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                    "infoEmpty": "Mostrando 0 de 0 Entradas",
-                    "infoFiltered": "(Filtrando de _MAX_ total entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ Entradas",
-                    "loadingMenu": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "Sin Resultados Encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    }
+<script>
+    $(document).ready(function () {
+        $('#tablas').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay Información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 de 0 Entradas",
+                "infoFiltered": "(Filtrando de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingMenu": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin Resultados Encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
                 }
-            });
+            }
         });
-    </script>
+    });
+</script>
 }
 

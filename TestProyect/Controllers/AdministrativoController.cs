@@ -42,7 +42,7 @@ namespace TestProyect.Controllers
                     if (usuario.Where(s => s.IdEstatus == 1).Any())
                     {
                         if (usuario.Where(s => s.ValidacionAdministrativo == true).Any())
-                        {                            
+                        {
                             HttpContext.Session.SetString("usuariologueado", email);
                             HttpContext.Session.SetString("mainController", "Administrativo");
                             ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
@@ -95,6 +95,7 @@ namespace TestProyect.Controllers
         {
             ViewData["EstatusId"] = new SelectList(_context.Estatus, "IdEstatus", "NombreEstatus");
             ViewData["AdscripcionId"] = new SelectList(_context.Adscripcion.Where(i => i.EstatusId == 1), "IdAdscripcion", "NombreAdscripcion");
+
             return View();
         }
 
@@ -102,6 +103,7 @@ namespace TestProyect.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AdministrativosCreate(Administrativos administrativos)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Administrativos.Add(administrativos);
@@ -109,7 +111,8 @@ namespace TestProyect.Controllers
                 TempData["mensaje"] = "El Administrativo se ha Creado";
                 return RedirectToAction(nameof(Administrativos));
             }
-            return View();
+            TempData["mensaje"] = "Error al crear el Administrativo, Intente de nuevo";
+            return RedirectToAction(nameof(Administrativos));
         }
 
         [HttpGet]
@@ -492,5 +495,43 @@ namespace TestProyect.Controllers
             var applicationDbContext = _context.Utileros.Include(i => i.Estatus).Include(i => i.Adscripcion);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [HttpGet]
+        public IActionResult UtilerosCreate()
+        {
+            ViewData["EstatusId"] = new SelectList(_context.Estatus, "IdEstatus", "NombreEstatus");
+            ViewData["AdscripcionId"] = new SelectList(_context.Adscripcion.Where(i => i.EstatusId == 1), "IdAdscripcion", "NombreAdscripcion");
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UtilerosCreate(Utileros utileros)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _context.Utileros.Add(utileros);
+                await _context.SaveChangesAsync();
+                TempData["mensaje"] = "El Utilero se ha Creado";
+                return RedirectToAction(nameof(Utileros));
+            }
+            TempData["mensaje"] = "Error al crear el Utilero, Intente de nuevo";
+            return RedirectToAction(nameof(Utileros));
+        }
+
+        /***************************/
+        /*Controlador CRUD Utileros Index*/
+
+        public async Task<IActionResult> Ligas()
+        {
+            ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
+            var applicationDbContext = _context.Utileros.Include(i => i.Estatus);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
     }
+
+
 }

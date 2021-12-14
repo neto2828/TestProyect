@@ -293,6 +293,9 @@ namespace TestProyect.Migrations
                     b.Property<bool>("CambioPwJugador")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("CamisetaJugador")
+                        .HasColumnType("int");
+
                     b.Property<string>("CasaJugador")
                         .HasColumnType("nvarchar(max)");
 
@@ -302,6 +305,12 @@ namespace TestProyect.Migrations
 
                     b.Property<string>("CiudadJugador")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoordenadaX")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoordenadaY")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailJugador")
@@ -369,6 +378,9 @@ namespace TestProyect.Migrations
 
                     b.Property<int?>("PosicionJugId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("TitularJugador")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("ValidacionJugador")
                         .HasColumnType("bit");

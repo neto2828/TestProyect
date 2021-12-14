@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TestProyect.Migrations
 {
-    public partial class Jugador : Migration
+    public partial class ActualizacionJugador : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -191,6 +192,64 @@ namespace TestProyect.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Utileros",
+                columns: table => new
+                {
+                    IdUtilero = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MatriculaUtilero = table.Column<int>(type: "int", nullable: false),
+                    NombreUtilero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaternoUtilero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MaternoUtilero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CasaUtilero = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CelularUtilero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailUtilero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PasswordUtilero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AdscripcionUtiId = table.Column<int>(type: "int", nullable: false),
+                    EstatusUtiId = table.Column<int>(type: "int", nullable: true),
+                    CanchaUtilero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ValidacionUtilero = table.Column<bool>(type: "bit", nullable: false),
+                    CambioPwUtilero = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Utileros", x => x.IdUtilero);
+                    table.ForeignKey(
+                        name: "FK_Utileros_Adscripcion_AdscripcionUtiId",
+                        column: x => x.AdscripcionUtiId,
+                        principalTable: "Adscripcion",
+                        principalColumn: "IdAdscripcion",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Utileros_Estatus_EstatusUtiId",
+                        column: x => x.EstatusUtiId,
+                        principalTable: "Estatus",
+                        principalColumn: "IdEstatus",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Componentes",
+                columns: table => new
+                {
+                    IdComponente = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NombreComponente = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IconoComponente = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EntrenadorCompId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Componentes", x => x.IdComponente);
+                    table.ForeignKey(
+                        name: "FK_Componentes_Entrenadores_EntrenadorCompId",
+                        column: x => x.EntrenadorCompId,
+                        principalTable: "Entrenadores",
+                        principalColumn: "IdEntrenador",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Equipos",
                 columns: table => new
                 {
@@ -215,6 +274,26 @@ namespace TestProyect.Migrations
                         principalTable: "Entrenadores",
                         principalColumn: "IdEntrenador",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Subcomponentes",
+                columns: table => new
+                {
+                    IdSubcomponente = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NombreSubcomponente = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ComponenteSubId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subcomponentes", x => x.IdSubcomponente);
+                    table.ForeignKey(
+                        name: "FK_Subcomponentes_Componentes_ComponenteSubId",
+                        column: x => x.ComponenteSubId,
+                        principalTable: "Componentes",
+                        principalColumn: "IdComponente",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -246,7 +325,11 @@ namespace TestProyect.Migrations
                     PiernaJugador = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EstatusJugId = table.Column<int>(type: "int", nullable: true),
                     ValidacionJugador = table.Column<bool>(type: "bit", nullable: false),
-                    CambioPwJugador = table.Column<bool>(type: "bit", nullable: false)
+                    CambioPwJugador = table.Column<bool>(type: "bit", nullable: false),
+                    CamisetaJugador = table.Column<int>(type: "int", nullable: true),
+                    CoordenadaX = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CoordenadaY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TitularJugador = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -283,6 +366,43 @@ namespace TestProyect.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Mesociclos",
+                columns: table => new
+                {
+                    IdMesociclo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    VolumenMesociclo = table.Column<int>(type: "int", nullable: false),
+                    TurnoMesococlo = table.Column<int>(type: "int", nullable: false),
+                    FechaMesococlo = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ObservacionesMesococlo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MesocicloCanId = table.Column<int>(type: "int", nullable: false),
+                    MesocicloEquId = table.Column<int>(type: "int", nullable: true),
+                    MesocicloCompId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Mesociclos", x => x.IdMesociclo);
+                    table.ForeignKey(
+                        name: "FK_Mesociclos_Canchas_MesocicloCanId",
+                        column: x => x.MesocicloCanId,
+                        principalTable: "Canchas",
+                        principalColumn: "IdCancha",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Mesociclos_Componentes_MesocicloCompId",
+                        column: x => x.MesocicloCompId,
+                        principalTable: "Componentes",
+                        principalColumn: "IdComponente",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Mesociclos_Equipos_MesocicloEquId",
+                        column: x => x.MesocicloEquId,
+                        principalTable: "Equipos",
+                        principalColumn: "IdEquipo",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Administrativos_AdscripcionAdminId",
                 table: "Administrativos",
@@ -307,6 +427,11 @@ namespace TestProyect.Migrations
                 name: "IX_Categorias_EstatusCatId",
                 table: "Categorias",
                 column: "EstatusCatId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Componentes_EntrenadorCompId",
+                table: "Componentes",
+                column: "EntrenadorCompId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Entrenadores_AdscripcionEntId",
@@ -354,9 +479,39 @@ namespace TestProyect.Migrations
                 column: "PosicionJugId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Mesociclos_MesocicloCanId",
+                table: "Mesociclos",
+                column: "MesocicloCanId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Mesociclos_MesocicloCompId",
+                table: "Mesociclos",
+                column: "MesocicloCompId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Mesociclos_MesocicloEquId",
+                table: "Mesociclos",
+                column: "MesocicloEquId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Posiciones_EstatusPosId",
                 table: "Posiciones",
                 column: "EstatusPosId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Subcomponentes_ComponenteSubId",
+                table: "Subcomponentes",
+                column: "ComponenteSubId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Utileros_AdscripcionUtiId",
+                table: "Utileros",
+                column: "AdscripcionUtiId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Utileros_EstatusUtiId",
+                table: "Utileros",
+                column: "EstatusUtiId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -365,19 +520,31 @@ namespace TestProyect.Migrations
                 name: "Administrativos");
 
             migrationBuilder.DropTable(
-                name: "Canchas");
-
-            migrationBuilder.DropTable(
                 name: "Jugadores");
 
             migrationBuilder.DropTable(
-                name: "Equipos");
+                name: "Mesociclos");
+
+            migrationBuilder.DropTable(
+                name: "Subcomponentes");
+
+            migrationBuilder.DropTable(
+                name: "Utileros");
 
             migrationBuilder.DropTable(
                 name: "Paises");
 
             migrationBuilder.DropTable(
                 name: "Posiciones");
+
+            migrationBuilder.DropTable(
+                name: "Canchas");
+
+            migrationBuilder.DropTable(
+                name: "Equipos");
+
+            migrationBuilder.DropTable(
+                name: "Componentes");
 
             migrationBuilder.DropTable(
                 name: "Categorias");

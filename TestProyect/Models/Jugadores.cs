@@ -112,7 +112,8 @@ namespace TestProyect.Models
         [Required]
         public bool CambioPwJugador { get; set; }
 
-        public string CamisetaJugador { get; set; }
+
+        public int? CamisetaJugador { get; set; }
 
         public string CoordenadaX { get; set; }
 

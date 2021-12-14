@@ -35,6 +35,7 @@ namespace TestProyect.Models
         [Required(ErrorMessage = "El Teléfono Celular es Obligatorio")]
         public String CelularAdministrativo { get; set; }
 
+        [Index(nameof(EmailAdministrativo), IsUnique = true)]
         [Display(Name = "Correo Electrónico")]
         [Required(ErrorMessage = "El Correo Electrónico es Obligatorio")]
         public String EmailAdministrativo { get; set; }

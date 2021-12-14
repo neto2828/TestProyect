@@ -10,8 +10,8 @@ using TestProyect.Data;
 namespace TestProyect.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211117100339_Mesociclo")]
-    partial class Mesociclo
+    [Migration("20211211093957_ActualizacionJugador")]
+    partial class ActualizacionJugador
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -295,6 +295,9 @@ namespace TestProyect.Migrations
                     b.Property<bool>("CambioPwJugador")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("CamisetaJugador")
+                        .HasColumnType("int");
+
                     b.Property<string>("CasaJugador")
                         .HasColumnType("nvarchar(max)");
 
@@ -304,6 +307,12 @@ namespace TestProyect.Migrations
 
                     b.Property<string>("CiudadJugador")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoordenadaX")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoordenadaY")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailJugador")
@@ -371,6 +380,9 @@ namespace TestProyect.Migrations
 
                     b.Property<int?>("PosicionJugId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("TitularJugador")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("ValidacionJugador")
                         .HasColumnType("bit");

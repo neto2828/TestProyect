@@ -1,0 +1,128 @@
+﻿@model TestProyect.Models.Utileros
+
+@{
+    ViewData["Title"] = "UtilerosCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<body class="fondoAdministracion">
+    <hr>
+
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-action="Login">Administrativo/</a>
+            <a class="link-bar" asp-action="Utileros">Utileros/</a>
+        </div>
+    </div>
+    <hr />
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border">
+                <div class="card-header">
+                    <h3><strong>Añadir Utilero</strong></h3>
+                </div>
+            </div>
+            <div class="card-body card-special">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-action="UtilerosCreate">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="MatriculaUtilero" class="control-label"></label>
+                                        <input asp-for="MatriculaUtilero" class="form-control" />
+                                        <span asp-validation-for="MatriculaUtilero" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="NombreUtilero" class="control-label"></label>
+                                        <input asp-for="NombreUtilero" class="form-control" />
+                                        <span asp-validation-for="NombreUtilero" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="PaternoUtilero" class="control-label"></label>
+                                        <input asp-for="PaternoUtilero" class="form-control" />
+                                        <span asp-validation-for="PaternoUtilero" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="MaternoUtilero" class="control-label"></label>
+                                        <input asp-for="MaternoUtilero" class="form-control" />
+                                        <span asp-validation-for="MaternoUtilero" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="CasaUtilero" class="control-label"></label>
+                                        <input asp-for="CasaUtilero" class="form-control" />
+                                        <span asp-validation-for="CasaUtilero" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="CelularUtilero" class="control-label"></label>
+                                        <input asp-for="CelularUtilero" class="form-control" />
+                                        <span asp-validation-for="CelularUtilero" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="EmailUtilero" class="control-label"></label>
+                                        <input asp-for="EmailUtilero" class="form-control" />
+                                        <span asp-validation-for="EmailUtilero" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="PasswordUtilero" class="control-label"></label>
+                                        <input asp-for="PasswordUtilero" class="form-control" />
+                                        <span asp-validation-for="PasswordUtilero" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="AdscripcionUtiId" class="control-label"></label>
+                                        <select asp-for="AdscripcionUtiId" class="form-control" asp-items="ViewBag.AdscripcionId"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="EstatusUtiId" class="control-label"></label>
+                                        <select asp-for="EstatusUtiId" class="form-control" asp-items="ViewBag.EstatusId"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Guardar</i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

@@ -8,32 +8,32 @@
     <hr>
     <div class="card border">
         <div class="card-header">
-            <span>Usuario Logueado: @ViewData["usuariologueado"]</span>
+            <a class="link-bar" asp-controller="Home" asp-action="Index">Inicio/</a>
         </div>
     </div>
     <hr />
 
     @if (TempData["mensaje"] != null)
     {
-        <div class="alert alert-success alert-dismissible fade show">
-            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Guardado!</strong> @TempData["mensaje"]
-        </div>
+                        <div class="alert alert-success alert-dismissible fade show">
+                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Guardado!</strong> @TempData["mensaje"]
+                        </div>
     }
 
     @if (TempData["actualizacion"] != null)
     {
-        <div class="alert alert-info alert-dismissible fade show">
-            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Actualizado!</strong> @TempData["actualizacion"]
-        </div>
+                        <div class="alert alert-info alert-dismissible fade show">
+                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Actualizado!</strong> @TempData["actualizacion"]
+                        </div>
     }
     @if (TempData["eliminado"] != null)
     {
-        <div class="alert alert-danger alert-dismissible fade show">
-            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Eliminado!</strong> @TempData["eliminado"]
-        </div>
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Eliminado!</strong> @TempData["eliminado"]
+                        </div>
     }
 
     <div class="row">
@@ -72,20 +72,20 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>@Html.DisplayFor(m => item.NombreAdministrativo)</td>
-                                    <td>@Html.DisplayFor(m => item.PaternoAdministrativo)</td>
-                                    <td>@Html.DisplayFor(m => item.MaternoAdministrativo)</td>
-                                    <td>@Html.DisplayFor(m => item.CelularAdministrativo)</td>
-                                    <td>@Html.DisplayFor(m => item.EmailAdministrativo)</td>
-                                    <td>@Html.DisplayFor(m => item.Estatus.NombreEstatus)</td>
-                                    <td>@Html.DisplayFor(m => item.Adscripcion.NombreAdscripcion)</td>
-                                    <td class="text-center">
-                                        <a class="btn btn-primary btn-sm" asp-action="AdministrativosEdit" asp-route-id="@item.IdAdministrativos"><i class="fas fa-user-circle"></i></a> |
-                                        <a class="btn btn-success btn-sm" asp-action="AdministrativosDetails" asp-route-id="@item.IdAdministrativos"><i class="fas fa-info-circle"></i></a> |
-                                        <a class="btn btn-danger btn-sm" asp-action="AdministrativosDelete" asp-route-id="@item.IdAdministrativos"><i class="fas fa-user-minus"></i></a>
-                                    </td>
-                                </tr>
+                                                <tr>
+                                                    <td>@Html.DisplayFor(m => item.NombreAdministrativo)</td>
+                                                    <td>@Html.DisplayFor(m => item.PaternoAdministrativo)</td>
+                                                    <td>@Html.DisplayFor(m => item.MaternoAdministrativo)</td>
+                                                    <td>@Html.DisplayFor(m => item.CelularAdministrativo)</td>
+                                                    <td>@Html.DisplayFor(m => item.EmailAdministrativo)</td>
+                                                    <td>@Html.DisplayFor(m => item.Estatus.NombreEstatus)</td>
+                                                    <td>@Html.DisplayFor(m => item.Adscripcion.NombreAdscripcion)</td>
+                                                    <td class="text-center">
+                                                        <a class="btn btn-primary btn-sm" asp-action="AdministrativosEdit" asp-route-id="@item.IdAdministrativos"><i class="fas fa-user-circle"></i></a> |
+                                                        <a class="btn btn-success btn-sm" asp-action="AdministrativosDetails" asp-route-id="@item.IdAdministrativos"><i class="fas fa-info-circle"></i></a> |
+                                                        <a class="btn btn-danger btn-sm" asp-action="AdministrativosDelete" asp-route-id="@item.IdAdministrativos"><i class="fas fa-user-minus"></i></a>
+                                                    </td>
+                                                </tr>
                             }
                         </tbody>
                     </table>

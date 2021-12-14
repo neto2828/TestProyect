@@ -27,8 +27,8 @@
                     <div class="col-md-12">
                         <form asp-action="JugadoresCreate">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input asp-for="EquipoJugId" value="3" />
-                            <input asp-for="PosicionJugId" value="1" />
+                            <input type="hidden" asp-for="EquipoJugId" value="3" />
+                            <input type="hidden" asp-for="PosicionJugId" value="1" />
 
 
                             <div class="row">
