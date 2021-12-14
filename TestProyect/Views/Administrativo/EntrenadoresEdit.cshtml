@@ -15,118 +15,149 @@
         </div>
     </div>
     <hr />
+
     <div class="row">
-        <div class="col-md-12">
-            <div class="card border">
-                <div class="card-header">
-                    <h3><strong>Añadir Entrenador</strong></h3>
-                </div>
-            </div>
-            <div class="card-body card-special">
-                <div class="row">
-                    <div class="col-md-12">
-                        <form asp-controller="Administrativo" asp-action="EntrenadoresEdit">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="IdEntrenador"  />
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="MatriculaEntrenador" class="control-label"></label>
-                                        <input asp-for="MatriculaEntrenador" class="form-control" />
-                                        <span asp-validation-for="MatriculaEntrenador" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="NombreEntrenador" class="control-label"></label>
-                                        <input asp-for="NombreEntrenador" class="form-control" />
-                                        <span asp-validation-for="NombreEntrenador" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="PaternoEntrenador" class="control-label"></label>
-                                        <input asp-for="PaternoEntrenador" class="form-control" />
-                                        <span asp-validation-for="PaternoEntrenador" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="MaternoEntrenador" class="control-label"></label>
-                                        <input asp-for="MaternoEntrenador" class="form-control" />
-                                        <span asp-validation-for="MaternoEntrenador" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="CasaEntrenador" class="control-label"></label>
-                                        <input asp-for="CasaEntrenador" class="form-control" />
-                                        <span asp-validation-for="CasaEntrenador" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="CelularEntrenador" class="control-label"></label>
-                                        <input asp-for="CelularEntrenador" class="form-control" />
-                                        <span asp-validation-for="CelularEntrenador" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="EmailEntrenador" class="control-label"></label>
-                                        <input asp-for="EmailEntrenador" class="form-control" />
-                                        <span asp-validation-for="EmailEntrenador" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="PasswordEntrenador" class="control-label"></label>
-                                        <input asp-for="PasswordEntrenador" class="form-control" />
-                                        <span asp-validation-for="PasswordEntrenador" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="AdscripcionEntId" class="control-label"></label>
-                                        <select asp-for="AdscripcionEntId" class="form-control" asp-items="ViewBag.AdscripcionId"></select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="EstatusEntId" class="control-label"></label>
-                                        <select asp-for="EstatusEntId" class="form-control" asp-items="ViewBag.EstatusId"></select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label asp-for="CategoriaEntrenador" class="control-label"></label>
-                                        <input asp-for="CategoriaEntrenador" class="form-control" />
-                                        <span asp-validation-for="CategoriaEntrenador" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Modificar</i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="col-md-12">
+    <div class="card border">
+      <div class="card-header">
+      </div>
     </div>
+
+
+
+    <form asp-controller="Administrativo" asp-action="EntrenadoresEdit">
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+      <input type="hidden" asp-for="IdEntrenador" />
+
+
+
+
+      <div class="card-body card-special">
+        <div class="row">
+          <!-- Single Advisor-->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+              <!-- Team Thumb-->
+              <div class="advisor_thumb" style="background-color: var(--grisF) !important">
+                <img src="~/img/Anonimo.svg" alt="">
+              </div>
+              <!-- Team Details-->
+              <div class="single_advisor_details_info">
+                <div style="background-color:transparent;">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+
+
+                      <label asp-for="AdscripcionEntId" class="control-label"></label>
+                      <select asp-for="AdscripcionEntId" class="form-control" asp-items="ViewBag.AdscripcionId"></select>
+
+
+                    </li>
+                    <li class="list-group-item">
+
+
+                      <label class="control-label">Acceso</label>
+                      <input asp-for="ValidacionEntrenador" class="form-control" />
+                      <span asp-validation-for="ValidacionEntrenador" class="text-danger"></span>
+
+
+                    </li>
+                  </ul>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label asp-for="MatriculaEntrenador" class="control-label"></label>
+                  <input asp-for="MatriculaEntrenador" class="form-control" />
+                  <span asp-validation-for="MatriculaEntrenador" class="text-danger"></span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label asp-for="NombreEntrenador" class="control-label"></label>
+                  <input asp-for="NombreEntrenador" class="form-control" />
+                  <span asp-validation-for="NombreEntrenador" class="text-danger"></span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label asp-for="PaternoEntrenador" class="control-label"></label>
+                  <input asp-for="PaternoEntrenador" class="form-control" />
+                  <span asp-validation-for="PaternoEntrenador" class="text-danger"></span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label asp-for="MaternoEntrenador" class="control-label"></label>
+                  <input asp-for="MaternoEntrenador" class="form-control" />
+                  <span asp-validation-for="MaternoEntrenador" class="text-danger"></span>
+                </div>
+              </li>
+              <li>
+                <hr />
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label asp-for="EstatusEntId" class="control-label"></label>
+                  <select asp-for="EstatusEntId" class="form-control" asp-items="ViewBag.EstatusId"></select>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+
+          <div class="col-md-4">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label asp-for="CasaEntrenador" class="control-label"></label>
+                  <input asp-for="CasaEntrenador" class="form-control" />
+                  <span asp-validation-for="CasaEntrenador" class="text-danger"></span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label asp-for="CelularEntrenador" class="control-label"></label>
+                  <input asp-for="CelularEntrenador" class="form-control" />
+                  <span asp-validation-for="CelularEntrenador" class="text-danger"></span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label asp-for="EmailEntrenador" class="control-label"></label>
+                  <input asp-for="EmailEntrenador" class="form-control" />
+                  <span asp-validation-for="EmailEntrenador" class="text-danger"></span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label asp-for="PasswordEntrenador" class="control-label"></label>
+                  <input asp-for="PasswordEntrenador" class="form-control" />
+                  <span asp-validation-for="PasswordEntrenador" class="text-danger"></span>
+                </div>
+              </li>
+              <li>
+                <hr />
+              </li>
+
+              <li class="list-group-item">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success float-md-center"><i class="fas fa-check-circle"> Modificar</i></button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
 </body>
 @section Scripts{
     @{

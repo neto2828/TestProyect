@@ -74,7 +74,7 @@ namespace TestProyect.Controllers
         public async Task<IActionResult> Index()
         {
             
-            var applicationDbContext = _context.Equipos.Include(i => i.Categorias);
+            var applicationDbContext = _context.Equipos.Include(i => i.Categorias).Where(i => i.IdEquipo>3);
             return View(await applicationDbContext.ToListAsync());
         }
 

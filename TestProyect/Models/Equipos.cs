@@ -29,5 +29,8 @@ namespace TestProyect.Models
         [ForeignKey("CategoriaEquId")]
         public Categorias Categorias { get; set; }
 
+        [Display(Name = "Escudo del Equipo")]
+        [Required(ErrorMessage = "Seleccione un Escudo para su equipo")]
+        public int EscudoEquipo { get; set; }
     }
 }

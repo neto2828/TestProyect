@@ -15,38 +15,94 @@
         </div>
     </div>
     <hr>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card border">
                 <div class="card-header">
-                    <h3><strong>Detalle: @Html.ViewData.Model.NombreEntrenador @Html.ViewData.Model.PaternoEntrenador @Html.ViewData.Model.MaternoEntrenador</strong></h3>
                 </div>
             </div>
+
             <div class="card-body card-special">
+
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <ul class="list-group">
-                                <li class="list-group-item"><strong>Matrícula: </strong>@Html.DisplayFor(m => m.MatriculaEntrenador)</li>
-                                <li class="list-group-item"><strong>Nombre (s): </strong>@Html.DisplayFor(m => m.NombreEntrenador)</li>
-                                <li class="list-group-item"><strong>Paterno: </strong>@Html.DisplayFor(m => m.PaternoEntrenador)</li>
-                                <li class="list-group-item"><strong>Materno: </strong>@Html.DisplayFor(m => m.MaternoEntrenador)</li>
-                                <li class="list-group-item"><strong>Teléfono Fijo: </strong>@Html.DisplayFor(m => m.CasaEntrenador)</li>
-                                <li class="list-group-item"><strong>Teléfono Celular: </strong>@Html.DisplayFor(m => m.CelularEntrenador)</li>
-                                <li class="list-group-item"><strong>Correo Electrónico: </strong>@Html.DisplayFor(m => m.EmailEntrenador)</li>
-                                <li class="list-group-item"><strong>Área de Adscripción: </strong>@Html.DisplayFor(m => m.Adscripcion.NombreAdscripcion)</li>
-                                <li class="list-group-item"><strong>Estatus: </strong>@Html.DisplayFor(m => m.Estatus.NombreEstatus)</li>
-                            </ul>
+                    <!-- Single Advisor-->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <!-- Team Thumb-->
+                            <div class="advisor_thumb" style="background-color: var(--grisF) !important">
+                                <img src="~/img/Anonimo.svg" alt="">
+                            </div>
+                            <!-- Team Details-->
+                            <div class="single_advisor_details_info">
+                                <div style="background-color:transparent;">
+ 
+                                </div>
+                                <hr>
+                                <h3>@Html.ViewData.Model.NombreEntrenador @Html.ViewData.Model.PaternoEntrenador @Html.ViewData.Model.MaternoEntrenador</h3>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><strong>@Html.ViewData.Model.Adscripcion.NombreAdscripcion </strong></li>
+                                </ul>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Matrícula: </strong>@Html.DisplayFor(model => model.MatriculaEntrenador)</li>
+                            <li class="list-group-item"><strong>Nombre (s): </strong>@Html.DisplayFor(model => model.NombreEntrenador)</li>
+                            <li class="list-group-item"><strong>Paterno: </strong>@Html.DisplayFor(model => model.PaternoEntrenador)</li>
+                            <li class="list-group-item"><strong>Materno: </strong>@Html.DisplayFor(model => model.MaternoEntrenador)</li>
+                            <li><hr /></li>
+
+                            @if (Model.Estatus.NombreEstatus == "Activo")
+                            {
+                                <li class="list-group-item" style="background-color:green; color:white">
+                                    <strong>Estatus: </strong>@Html.DisplayFor(model => model.Estatus.NombreEstatus)
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="list-group-item" style="background-color:red; color:white">
+                                    <strong>Estatus: </strong>@Html.DisplayFor(model => model.Estatus.NombreEstatus)
+                                </li>
+                            }
+
+                                                        @if (Model.ValidacionEntrenador == true)
+                            {
+                                <li class="list-group-item" style="background-color:green; color:white">
+                                    <strong>Cuenta Validada: </strong>Validada
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="list-group-item" style="background-color:red; color:white">
+                                    <strong>Cuenta Validada: </strong>No Validada
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4">
+                        <ul class="list-group">                          
+                            <li class="list-group-item"><strong>Teléfono Fijo: </strong>@Html.DisplayFor(model => model.CasaEntrenador)</li>
+                            <li class="list-group-item"><strong>Teléfono Celular: </strong>@Html.DisplayFor(model => model.CelularEntrenador)</li>
+                            <li class="list-group-item"><strong>Correo Electrónico: </strong>@Html.DisplayFor(model => model.EmailEntrenador)</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <ul class="list-group">
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </body>
 @section Scripts{
     @{
-        <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
     }
 }

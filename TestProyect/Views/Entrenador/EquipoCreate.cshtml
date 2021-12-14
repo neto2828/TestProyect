@@ -32,7 +32,7 @@
                                 <div class="col-md-12">
                                     <form asp-controller="Entrenador" asp-action="Index">
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                        <input asp-for="EntrenadorEquiId" value="2" />
+                                        <input type="hidden" asp-for="EntrenadorEquiId" value="2" />
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -45,6 +45,13 @@
                                                 <div class="form-group">
                                                     <label asp-for="CategoriaEquId" class="control-label"></label>
                                                     <select asp-for="CategoriaEquId" class="form-control" asp-items="ViewBag.CategoriaEntrenador"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label asp-for="EscudoEquipo" class="control-label"></label>
+                                                    @Html.CheckBox("IsChecked", new { @class = "form-control" })
+                                                    <span asp-validation-for="EscudoEquipo" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
