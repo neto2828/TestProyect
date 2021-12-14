@@ -458,7 +458,7 @@ namespace TestProyect.Controllers
         public async Task<IActionResult> Jugadores()
         {
             ViewData["usuariologueado"] = HttpContext.Session.GetString("usuariologueado");
-            var applicationDbContext = _context.Jugadores.Include(i => i.Estatus).Include(i => i.Equipos).Include(i => i.Equipos.Entrenadores);
+            var applicationDbContext = _context.Jugadores.Include(i => i.Estatus).Include(i => i.Equipos).Include(i => i.Equipos.Entrenadores).Include(i => i.Paises).Include(i => i.Nacionalidad);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -484,6 +484,21 @@ namespace TestProyect.Controllers
                 return RedirectToAction(nameof(Jugadores));
             }
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> JugadoresDetails(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var estatu = await _context.Jugadores.Include(i => i.Estatus).Include(i => i.Equipos).Include(i => i.Equipos.Entrenadores).Include(i => i.Paises).Include(i => i.Nacionalidad).FirstOrDefaultAsync(m => m.IdJugador == id);
+            if (estatu == null)
+            {
+                return NotFound();
+            }
+            return View(estatu);
         }
 
         /***************************/

@@ -1,0 +1,168 @@
+﻿@model TestProyect.Models.Jugadores
+
+@{
+    ViewData["Title"] = "JugadoresDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<body class="fondoAdministracion">
+    <hr>
+    <div class="card border">
+        <div class="card-header">
+            <a class="link-bar" asp-action="">Administrativo/</a>
+            <a class="link-bar" asp-action="Jugadores">Jugadores/</a>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card border">
+                <div class="card-header">
+                </div>
+            </div>
+
+            <div class="card-body card-special">
+
+                <div class="row">
+                    <!-- Single Advisor-->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <!-- Team Thumb-->
+                            <div class="advisor_thumb" style="background-color: var(--grisF) !important">
+                                <img src="~/img/Anonimo.svg" alt="">
+                            </div>
+                            <!-- Team Details-->
+                            <div class="single_advisor_details_info">
+                                <div style="background-color:transparent;">
+                                    @if (Model.CamisetaJugador == null)
+                                    {
+                                        <i data-toggle="tooltip" data-placement="top" title="Camiseta No Dispoible)"><img src="~/img/camiseta.svg" width="40px" /></i>
+                                        <span style="font-size: 30px;">N/D</span>
+                                    }
+                                    else
+                                    {
+                                        <i data-toggle="tooltip" data-placement="top" title="Camiseta # @Html.DisplayFor(model => model.CamisetaJugador)"><img src="~/img/camiseta.svg" width="40px" /></i>
+                                        <span style="font-size: 30px;">@Html.DisplayFor(model => model.CamisetaJugador)</span>
+                                    }
+
+                                    @if (Model.PiernaJugador == "Izquierda")
+                                    {
+                                        <i data-toggle="tooltip" data-placement="top" title="Perfil @Html.DisplayFor(model => model.PiernaJugador)"><img src="~/img/Izquierda.svg" width="40px" /></i>
+                                    }
+                                    else
+                                    {
+                                        <i data-toggle="tooltip" data-placement="top" title="Perfil @Html.DisplayFor(model => model.PiernaJugador)"><img src="~/img/Derecha.svg" width="40px" /></i>
+                                    }
+
+                                    @if (Model.TitularJugador == false)
+                                    {
+                                        <i data-toggle="tooltip" data-placement="top" title="Jugador No Titular"><img src="~/img/NoTitular.svg" width="40px" /></i>
+                                    }
+                                    else
+                                    {
+                                        <i data-toggle="tooltip" data-placement="top" title="Jugador Titular"><img src="~/img/Titular.svg" width="40px" /></i>
+                                    }
+                                </div>
+                                <hr>
+                                <h3>@Html.ViewData.Model.NombreJugador @Html.ViewData.Model.PaternoJugador @Html.ViewData.Model.MaternoJugador</h3>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><strong>Posición: </strong></li>
+                                    <li class="list-group-item"><strong>Nacionalidad: </strong><img src="https://flagcdn.com/@Html.DisplayFor(model => model.Nacionalidad.ClasePais)" width="30" alt="Sudáfrica"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <!-- Team Thumb-->
+                            <div class="advisor_thumb" style="background-color: var(--grisF) !important">
+                                <img src="~/img/Equipos/Logo1.svg" alt="">
+                            </div>
+                            <!-- Team Details-->
+                            <div class="single_advisor_details_info">
+                                <div style="background-color:transparent;">
+                                    <h3>@Html.DisplayFor(model => model.Equipos.NombreEquipo)</h3>
+                                    <span>@Html.DisplayFor(model => model.Equipos.Entrenadores.NombreEntrenador)</span>
+                                </div>
+                                <hr>
+                                <i class="list-group-item" data-toggle="tooltip" data-placement="left" title="Goles Anotados"><img src="~/img/Gol.svg" width="40px" /> <strong>0</strong></i>
+                                <i class="list-group-item" data-toggle="tooltip" data-placement="left" title="Minutos Jugados"><img src="~/img/Minutos.svg" width="40px" /> <strong>0</strong></i>
+                                <i class="list-group-item" data-toggle="tooltip" data-placement="left" title="Tarjetas Amarillas"><img src="~/img/Amarilla.svg" width="40px" /> <strong>0</strong></i>
+                                <i class="list-group-item" data-toggle="tooltip" data-placement="left" title="Tarjetas Rojas"><img src="~/img/Roja.svg" width="40px" /> <strong>0</strong></i>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Matrícula: </strong>@Html.DisplayFor(model => model.MatriculaJugador)</li>
+                            <li class="list-group-item"><strong>Nombre (s): </strong>@Html.DisplayFor(model => model.NombreJugador)</li>
+                            <li class="list-group-item"><strong>Paterno: </strong>@Html.DisplayFor(model => model.PaternoJugador)</li>
+                            <li class="list-group-item"><strong>Materno: </strong>@Html.DisplayFor(model => model.MaternoJugador)</li>
+                            <li class="list-group-item"><strong>Estatura: </strong>@Html.DisplayFor(model => model.EstaturaJugador)</li>
+                            <li class="list-group-item"><strong>Peso: </strong>@Html.DisplayFor(model => model.PesoJugador)</li>
+                            <li class="list-group-item"><strong>Fecha de Nacimiento: </strong>@Html.DisplayFor(model => model.NacimientoJugador)</li>
+
+                            @if (Model.Estatus.NombreEstatus == "Activo")
+                            {
+                                <li class="list-group-item" style="background-color:green; color:white">
+                                    <strong>Estatus: </strong>@Html.DisplayFor(model => model.Estatus.NombreEstatus)
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="list-group-item" style="background-color:red; color:white">
+                                    <strong>Estatus: </strong>@Html.DisplayFor(model => model.Estatus.NombreEstatus)
+                                </li>
+                            }
+
+                                                        @if (Model.ValidacionJugador == true)
+                            {
+                                <li class="list-group-item" style="background-color:green; color:white">
+                                    <strong>Cuenta Validada: </strong>Validada
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="list-group-item" style="background-color:red; color:white">
+                                    <strong>Cuenta Validada: </strong>No Validada
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Calle: </strong>@Html.DisplayFor(model => model.CalleJugador)</li>
+                            <li class="list-group-item"><strong>No. Ext: </strong>@Html.DisplayFor(model => model.NoExtJugador)</li>
+                            <li class="list-group-item"><strong>No. Int: </strong>@Html.DisplayFor(model => model.NoIntJugador)</li>
+                            <li class="list-group-item"><strong>Ciudad: </strong>@Html.DisplayFor(model => model.CiudadJugador)</li>
+                            <li class="list-group-item"><strong>Estado: </strong>@Html.DisplayFor(model => model.EstadoJugador)</li>
+                            <li class="list-group-item"><strong>País: </strong>@Html.DisplayFor(model => model.Paises.NombrePais)</li>
+                            <li><hr /></li>
+                            <li class="list-group-item"><strong>Teléfono Fijo: </strong>@Html.DisplayFor(model => model.CasaJugador)</li>
+                            <li class="list-group-item"><strong>Teléfono Celular: </strong>@Html.DisplayFor(model => model.CelularJugador)</li>
+                            <li class="list-group-item"><strong>Correo Electrónico: </strong>@Html.DisplayFor(model => model.EmailJugador)</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <ul class="list-group">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

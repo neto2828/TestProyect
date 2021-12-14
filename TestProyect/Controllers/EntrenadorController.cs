@@ -105,14 +105,14 @@ namespace TestProyect.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveCoordenadas(Array posicionJugadores )
+        public IActionResult SaveCoordenadas(Array posicionJugadores)
         {
             //if (ModelState.IsValid)
-           // {
-           //    _context.Administrativos.Add(administrativos);
+            // {
+            //    _context.Administrativos.Add(administrativos);
             //    await _context.SaveChangesAsync();
-//TempData["mensaje"] = "El Administrativo se ha Creado";
-              //  return RedirectToAction(nameof(Administrativos));
+            //TempData["mensaje"] = "El Administrativo se ha Creado";
+            //  return RedirectToAction(nameof(Administrativos));
             //
             return View();
         }

@@ -8,7 +8,7 @@
     <hr>
     <div class="card border">
         <div class="card-header">
-            <a class="link-bar" asp-controller="Home" asp-action="Index">Inicio/</a>
+            <a class="link-bar" asp-controller="Administrativo" asp-action="Index">Inicio/</a>
 
         </div>
     </div>
@@ -74,7 +74,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(m => item.NombreJugador)</td>
+                                    <td><img src="https://flagcdn.com/@Html.DisplayFor(m => item.Nacionalidad.ClasePais)" width="30" alt="Sudáfrica"> @Html.DisplayFor(m => item.NombreJugador)</td>
                                     <td>@Html.DisplayFor(m => item.PaternoJugador)</td>
                                     <td>@Html.DisplayFor(m => item.MaternoJugador)</td>
                                     <td>@Html.DisplayFor(m => item.CelularJugador)</td>
