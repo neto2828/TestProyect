@@ -19,7 +19,7 @@
         <div class="col-md-12">
             <div class="card border">
                 <div class="card-header">
-                    <h3><strong>Añadir Administrativo</strong></h3>
+                    <h3><strong>Añadir Equipo</strong></h3>
                 </div>
             </div>
             <div class="card-body card-special">
@@ -32,7 +32,7 @@
                                 <div class="col-md-12">
                                     <form asp-controller="Entrenador" asp-action="Index">
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                        <input type="hidden" asp-for="EntrenadorEquiId" value="2" />
+                                        <input type="hidden" asp-for="EntrenadorEquiId" value="4" />
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -50,18 +50,36 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label asp-for="EscudoEquipo" class="control-label"></label>
-                                                    @Html.CheckBox("IsChecked", new { @class = "form-control" })
+                                                    <br />
+                                                    <input asp-for="EscudoEquipo" value="Logo1.svg" type="radio" id="Logo1" class="input-hidden" />
+                                                    <label for="Logo1"><img src="~/img/Equipos/Logo1.svg" /></label>
+
+                                                    <input asp-for="EscudoEquipo" value="Logo2.svg" type="radio" id="Logo2" class="input-hidden" />
+                                                    <label for="Logo2"><img src="~/img/Equipos/Logo2.svg" /></label>
+
+                                                    <input asp-for="EscudoEquipo" value="Logo3.svg" type="radio" id="Logo3" class="input-hidden" />
+                                                    <label for="Logo3"><img src="~/img/Equipos/Logo3.svg" /></label>
+
+                                                    <input asp-for="EscudoEquipo" value="Logo4.svg" type="radio" id="Logo4" class="input-hidden" />
+                                                    <label for="Logo4"><img src="~/img/Equipos/Logo4.svg" /></label>
+
+                                                    <input asp-for="EscudoEquipo" value="Logo5.svg" type="radio" id="Logo5" class="input-hidden" />
+                                                    <label for="Logo5"><img src="~/img/Equipos/Logo5.svg" /></label>
+
+                                                    <input asp-for="EscudoEquipo" value="Logo6.svg" type="radio" id="Logo6" class="input-hidden" />
+                                                    <label for="Logo6"><img src="~/img/Equipos/Logo6.svg" /></label>
+
                                                     <span asp-validation-for="EscudoEquipo" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr />
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-success float-md-right"><i class="fas fa-check-circle"> Guardar</i></button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            <hr />
                         </form>
                     </div>
                 </div>
@@ -69,6 +87,9 @@
         </div>
     </div>
 </body>
+
+
+
 @section Scripts{
     @{
     <partial name="_ValidationScriptsPartial" />

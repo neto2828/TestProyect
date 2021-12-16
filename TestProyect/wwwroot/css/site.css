@@ -863,3 +863,30 @@ hr .linea {
     .single_advisor_profile:focus .single_advisor_details_info p {
         color: #ffffff;
     }
+
+
+
+
+.input-hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Stuff after this is only to make things more pretty */
+input[type=radio] + label > img {
+    width: 160px;
+    height: 160px;
+    transition: 500ms all;
+    border-radius: 100px;
+}
+
+input[type=radio]:checked + label > img {
+    border: 1px solid #fff;
+    box-shadow: 0 0 3px 3px #090;
+}
+
+
+input[type=radio]:checked + label > img {
+    transform:
+    <!-- rotateZ(-10deg) rotateX(10deg); -->
+}

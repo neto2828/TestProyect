@@ -31,6 +31,6 @@ namespace TestProyect.Models
 
         [Display(Name = "Escudo del Equipo")]
         [Required(ErrorMessage = "Seleccione un Escudo para su equipo")]
-        public int EscudoEquipo { get; set; }
+        public string EscudoEquipo { get; set; }
     }
 }
