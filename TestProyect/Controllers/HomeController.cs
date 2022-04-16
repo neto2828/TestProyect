@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using System.Net.Mail;
+using System.Net;
 using System.Threading.Tasks;
 using TestProyect.Models;
 
@@ -63,7 +65,9 @@ namespace TestProyect.Controllers
 
         public IActionResult PasswordReset()
         {
-            return View();
+            viewController = HttpContext.Session.GetString("mainController");
+
+            return View(viewController);
         }
 
         public IActionResult Administracion()
@@ -75,6 +79,45 @@ namespace TestProyect.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public ActionResult Recuperar(string email)
+        {
+            //
+
+
+            //
+            enviarEmail( email , "1234567");
+            return View("Index");
+        }
+
+        //[AllowAnonymous]
+        public void enviarEmail(string correo, string pass)
+        {
+            MailMessage Correo = new MailMessage();
+            Correo.From = new MailAddress("spejarproject2022@gmail.com");
+            Correo.To.Add(correo);
+            Correo.Subject = ("Recuperar Contraseña ");
+            Correo.Body = ("Esta es la contraseña " + pass);
+            Correo.Priority = MailPriority.High;
+
+            SmtpClient ServerMail = new SmtpClient();
+            ServerMail.Host = "smtp.gmail.com";
+            ServerMail.Port = (587);
+            //ServerMail.Credentials = CredentialCache.DefaultNetworkCredentials;
+            ServerMail.Credentials = new NetworkCredential("spejarproject2022@gmail.com", "Unideh123*");
+            ServerMail.UseDefaultCredentials = false;
+            ServerMail.EnableSsl = true;
+
+            try
+            {
+                ServerMail.Send(Correo);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
