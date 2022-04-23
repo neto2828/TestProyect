@@ -1,13 +1,13 @@
 ﻿<div class="contenedor">
     <div class="banca">
-        <div style="padding: 3px; border: 1px solid pink;">
-            <h5>Banca</h5>
+        <div class="tituloBanca" style="text-align: center;">
+            <h5 class="tituloTexto">Banca</h5>
         </div>
-        <div id="listado" class="lista">
+        <div id="listado" class="lista" style="display: flex; justify-content: center;">
             <ol id="listaJugadores">
             </ol>
         </div>
-        <div id="#saveCoordenadas">
+        <div id="#saveCoordenadas" class="saveContainer">
             <button id="btnSave">Guardar</button>
         </div>
     </div>
@@ -35,6 +35,11 @@
             <div id="drag11" class="player player__item player__item--11"></div>
             <div id="drag12" class="player player__item player__item--12"></div>
             <div id="drag13" class="player player__item player__item--13"></div>
+            <div id="drag14" class="player player__item player__item--14"></div>
+            <div id="drag15" class="player player__item player__item--15"></div>
+            <div id="drag16" class="player player__item player__item--16"></div>
+            <div id="drag17" class="player player__item player__item--17"></div>
+            <div id="drag18" class="player player__item player__item--18"></div>
 
         </div>
     </div>
@@ -43,14 +48,20 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+
         var totaljugadores = 0;
         var totalTitulares = 0;
+        for (let i = 1; i <= 18; i++ ) {
+            let draggabble = '#drag' + i;
+            $(draggabble).hide();
+        }
         var jugadores = $.ajax({
             url: 'GetPlayers',
             type: 'GET',
             async: false,
             data: { id: '5' },
         }).done(function (data) {
+
             jugadores = data;
             var i = 0;
             jugadores.forEach(function (jugador) {
@@ -58,6 +69,7 @@
                 var list = $('<li id="' + i + '" class="items ui-sortable-handle"><span>' + jugador.nombreJugador + '</span></li>')
                 $('#listaJugadores').append(list);
                 var dragg = '#drag' + i;
+                $(dragg).hide();
                 var cadena = '';
 
                 cadena += '<div class="player player__item--shirt">' + jugador.camisetaJugador +'</div >'
@@ -66,11 +78,11 @@
                 $(dragg).append(cadena);
                 if(jugador.titularJugador == true){
                     $(dragg).show();
-                    $('#' + i).css("background-color", "green");
+                    $('#' + i).css("background-color", "#C0FAB0");
                     totalTitulares += 1;
                 }else{
                     $(dragg).hide();
-                    $('#'+i).delay(1000).css("background-color", "grey");
+                    $('#' + i).delay(1000).css("background-color", "#E3E3E3");
                 }
             });
             totaljugadores = i;
@@ -79,6 +91,7 @@
 
         $("#btnSave").click(function () {
             var coordenadasFinal = [];
+            console.log("TOTL-> ",totaljugadores)
             for (i = 0; i < totaljugadores; i++) {
                 var id = '#drag' + (i+1);
                 var doc = $(id);
@@ -90,16 +103,17 @@
                     coordenadaX: coordenaX,
                     coordenadaY: coordenaY,
                 };
-                console.log("VALORES TO PUSH",valores);
                 coordenadasFinal.push(valores)
             }
+
+            //console.log("COORDENADAS A ENVIAR", coordenadasFinal);
 
 
             $.ajax({
             url: 'SaveCoordenadas',
             type: 'POST',
-            async: false,
-            data: { posicionJugadores: coordenadasFinal },
+            async: true,
+            data: { coordenadasFinal },
         }).done(function (data) {
            console.log("DAAATTAAAAA", data);
         });
@@ -120,7 +134,12 @@
      $("#drag10").draggable();
      $("#drag11").draggable();
      $("#drag12").draggable();
-     $("#drag13").draggable();
+    $("#drag13").draggable();
+    $("#drag14").draggable();
+    $("#drag15").draggable();
+    $("#drag16").draggable();
+    $("#drag17").draggable();
+    $("#drag18").draggable();
 
     $(".field__box").droppable();
 
@@ -128,156 +147,165 @@
     $(document).on('click', '#1', function () {
         if ($('#drag1').is(':visible')) {
             $('#drag1').hide();
-            $('#1').delay(1000).css("background-color", "grey");
+            $('#1').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag1').show();
-            $('#1').delay(1000).css("background-color", "green");
+            $('#1').delay(1000).css("background-color", "#C0FAB0");
         }
     });
 
     $(document).on('click', '#2', function () {
         if ($('#drag2').is(':visible')) {
             $('#drag2').hide();
-            $('#2').delay(1000).css("background-color", "grey");
+            $('#2').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag2').show();
-            $('#2').delay(1000).css("background-color", "green");
+            $('#2').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#3', function () {
         if ($('#drag3').is(':visible')) {
             $('#drag3').hide();
-            $('#3').delay(1000).css("background-color", "grey");
+            $('#3').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag3').show();
-            $('#3').delay(1000).css("background-color", "green");
+            $('#3').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#4', function () {
         if ($('#drag4').is(':visible')) {
             $('#drag4').hide();
-            $('#4').delay(1000).css("background-color", "grey");
+            $('#4').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag4').show();
-            $('#4').delay(1000).css("background-color", "green");
+            $('#4').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#5', function () {
         if ($('#drag5').is(':visible')) {
             $('#drag5').hide();
-            $('#5').delay(1000).css("background-color", "grey");
+            $('#5').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag5').show();
-            $('#5').delay(1000).css("background-color", "green");
+            $('#5').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#6', function () {
         if ($('#drag6').is(':visible')) {
             $('#drag6').hide();
-            $('#6').delay(1000).css("background-color", "grey");
+            $('#6').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag6').show();
-            $('#6').delay(1000).css("background-color", "green");
+            $('#6').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#7', function () {
         if ($('#drag7').is(':visible')) {
             $('#drag7').hide();
-            $('#7').delay(1000).css("background-color", "grey");
+            $('#7').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag7').show();
-            $('#7').delay(1000).css("background-color", "green");
+            $('#7').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#8', function () {
         if ($('#drag8').is(':visible')) {
             $('#drag8').hide();
-            $('#8').delay(1000).css("background-color", "grey");
+            $('#8').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag8').show();
-            $('#8').delay(1000).css("background-color", "green");
+            $('#8').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#9', function () {
         if ($('#drag9').is(':visible')) {
             $('#drag9').hide();
-            $('#9').delay(1000).css("background-color", "grey");
+            $('#9').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag9').show();
-            $('#9').delay(1000).css("background-color", "green");
+            $('#9').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#10', function () {
         if ($('#drag10').is(':visible')) {
             $('#drag10').hide();
-            $('#10').delay(1000).css("background-color", "grey");
+            $('#10').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag10').show();
-            $('#10').delay(1000).css("background-color", "green");
+            $('#10').delay(1000).css("background-color", "#C0FAB0");
         }
     });
         $(document).on('click', '#11', function () {
         if ($('#drag11').is(':visible')) {
             $('#drag11').hide();
-            $('#11').delay(1000).css("background-color", "grey");
+            $('#11').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag11').show();
-            $('#11').delay(1000).css("background-color", "green");
+            $('#11').delay(1000).css("background-color", "#C0FAB0");
         }
         });
         $(document).on('click', '#12', function () {
         if ($('#drag12').is(':visible')) {
             $('#drag12').hide();
-            $('#12').delay(1000).css("background-color", "grey");
+            $('#12').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag12').show();
-            $('#12').delay(1000).css("background-color", "green");
+            $('#12').delay(1000).css("background-color", "#C0FAB0");
         }
         });
     $(document).on('click', '#13', function () {
         if ($('#drag13').is(':visible')) {
             $('#drag13').hide();
-            $('#13').delay(1000).css("background-color", "grey");
+            $('#13').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag13').show();
-            $('#13').delay(1000).css("background-color", "green");
+            $('#13').delay(1000).css("background-color", "#C0FAB0");
         }
     });
 
     $(document).on('click', '#14', function () {
         if ($('#drag14').is(':visible')) {
             $('#drag14').hide();
-            $('#14').delay(1000).css("background-color", "grey");
+            $('#14').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag1').show();
-            $('#14').delay(1000).css("background-color", "green");
+            $('#14').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#15', function () {
         if ($('#drag15').is(':visible')) {
             $('#drag15').hide();
-            $('#15').delay(1000).css("background-color", "grey");
+            $('#15').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag15').show();
-            $('#15').delay(1000).css("background-color", "green");
+            $('#15').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#16', function () {
         if ($('#drag16').is(':visible')) {
             $('#drag16').hide();
-            $('#16').delay(1000).css("background-color", "grey");
+            $('#16').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag16').show();
-            $('#16').delay(1000).css("background-color", "green");
+            $('#16').delay(1000).css("background-color", "#C0FAB0");
         }
     });
     $(document).on('click', '#17', function () {
         if ($('#drag17').is(':visible')) {
             $('#drag17').hide();
-            $('#17').delay(1000).css("background-color", "grey");
+            $('#17').delay(1000).css("background-color", "#E3E3E3");
         } else {
             $('#drag17').show();
-            $('#17').delay(1000).css("background-color", "green");
+            $('#17').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#18', function () {
+        if ($('#drag18').is(':visible')) {
+            $('#drag18').hide();
+            $('#18').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag18').show();
+            $('#18').delay(1000).css("background-color", "#C0FAB0");
         }
     });
 

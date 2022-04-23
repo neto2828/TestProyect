@@ -12,6 +12,8 @@ using System.Net.Mail;
 using System.Net;
 using System.Threading.Tasks;
 using TestProyect.Models;
+using TestProyect.Data;
+using TestProyect.Models;
 
 
 namespace TestProyect.Controllers
@@ -22,10 +24,12 @@ namespace TestProyect.Controllers
         public string userExists;
         public string viewController;
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -84,11 +88,45 @@ namespace TestProyect.Controllers
         [HttpPost]
         public ActionResult Recuperar(string email)
         {
-            //
+            // Busqueda del Email
+            string password = "";
+            var usuarioAdmin = _context.Administrativos.Where(s => s.EmailAdministrativo == email);
+            var usuarioEntre = _context.Entrenadores.Where(s => s.EmailEntrenador == email);
+            var usuarioJugad = _context.Jugadores.Where(s => s.EmailJugador == email);
+            var usuarioUti = _context.Utileros.Where(s => s.EmailUtilero == email);
+            //var usuarioTuto = _context.Tutores.Where(s => s.EmailTutor == email);
+            if (usuarioAdmin.Any())
+            {
+                var result = _context.Administrativos.Where(s => s.EmailAdministrativo == email).Select(u => new { u.PasswordAdministrativo }).FirstOrDefault();
+                password = result.PasswordAdministrativo;
+            }
+            else if (usuarioEntre.Any())
+            {
+                var result = _context.Entrenadores.Where(s => s.EmailEntrenador == email).Select(u => new { u.PasswordEntrenador }).FirstOrDefault();
+                password = result.PasswordEntrenador;
+            }
+            else if (usuarioJugad.Any())
+            {
+                var result = _context.Jugadores.Where(s => s.EmailJugador == email).Select(u => new { u.PasswordJugador }).FirstOrDefault();
+                password = result.PasswordJugador;
+            }
+            else if (usuarioUti.Any())
+            {
+                var result = _context.Utileros.Where(s => s.EmailUtilero == email).Select(u => new { u.PasswordUtilero }).FirstOrDefault();
+                password = result.PasswordUtilero;
+            }
+            else
+            {
+                TempData["Password"] = "1";
+                return View("PasswordReset");
+            }
 
 
-            //
-            enviarEmail( email , "1234567");
+            if (password.Length > 0)
+            {
+                enviarEmail(email, password);
+            }
+
             return View("Index");
         }
 
@@ -99,7 +137,7 @@ namespace TestProyect.Controllers
             Correo.From = new MailAddress("spejarproject2022@gmail.com");
             Correo.To.Add(correo);
             Correo.Subject = ("Recuperar Contraseña ");
-            Correo.Body = ("Esta es la contraseña " + pass);
+            Correo.Body = ("Esta es la contraseña para ingresar a su cuenta:" + pass);
             Correo.Priority = MailPriority.High;
 
             SmtpClient ServerMail = new SmtpClient();
