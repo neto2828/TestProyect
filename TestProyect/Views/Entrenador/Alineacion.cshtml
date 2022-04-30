@@ -3,7 +3,6 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Sidebar.cshtml";
 }
-<hr />
 
 
 <header>
@@ -92,12 +91,319 @@
     else
     {
 
+        <div class="contenedor">
+            <div class="banca">
+                <div class="tituloBanca" style="text-align: center;">
+                    <h5 class="tituloTexto">Banca</h5>
+                </div>
+                <div id="listado" class="lista" style="display: flex; justify-content: center;">
+                    <ol id="listaJugadores">
+                    </ol>
+                </div>
+                <div id="#saveCoordenadas" class="saveContainer">
+                    <button id="btnSave">Guardar</button>
+                </div>
+            </div>
+            <div id="fields" class="field">
+                <div id="field___box" class="field__box">
+                    <div class="field__line field__line--goal--top"></div>
+                    <div class="field__line field__line--goal--bottom"></div>
+                    <div class="field__line field__line--penalty--top"></div>
+                    <div class="field__line field__line--penalty--bottom"></div>
+                    <div class="field__line field__line--penalty--arc--top"></div>
+                    <div class="field__line field__line--penalty--arc--bottom"></div>
+                    <div class="field__line field__line--mid"></div>
+                    <div class="field__line field__line--circle"></div>
+                    <div class="arrow"></div>
+                    <div id="drag1" class="player player__item player__item--1"></div>
+                    <div id="drag2" class="player player__item player__item--2"></div>
+                    <div id="drag3" class="player player__item player__item--3"></div>
+                    <div id="drag4" class="player player__item player__item--4"></div>
+                    <div id="drag5" class="player player__item player__item--5"></div>
+                    <div id="drag6" class="player player__item player__item--6"></div>
+                    <div id="drag7" class="player player__item player__item--7"></div>
+                    <div id="drag8" class="player player__item player__item--8"></div>
+                    <div id="drag9" class="player player__item player__item--9"></div>
+                    <div id="drag10" class="player player__item player__item--10"></div>
+                    <div id="drag11" class="player player__item player__item--11"></div>
+                    <div id="drag12" class="player player__item player__item--12"></div>
+                    <div id="drag13" class="player player__item player__item--13"></div>
+                    <div id="drag14" class="player player__item player__item--14"></div>
+                    <div id="drag15" class="player player__item player__item--15"></div>
+                    <div id="drag16" class="player player__item player__item--16"></div>
+                    <div id="drag17" class="player player__item player__item--17"></div>
+                    <div id="drag18" class="player player__item player__item--18"></div>
+
+                </div>
+            </div>
+
+
+        </div>
     }
-
-
-
-
 </body>
 
 
+<script language="javascript">
+    $(document).ready(function () {
+        var totaljugadores = 0;
+        var totalTitulares = 0;
+        for (let i = 1; i <= 18; i++) {
+            let draggabble = '#drag' + i;
+            $(draggabble).hide();
+        }
+        var jugadores = $.ajax({
+            url: 'GetPlayers',
+            type: 'GET',
+            async: false,
+            data: { id: '5' },
+        }).done(function (data) {
 
+            jugadores = data;
+            var i = 0;
+            jugadores.forEach(function (jugador) {
+                i++;
+                var list = $('<li id="' + i + '" class="items ui-sortable-handle"><span>' + jugador.nombreJugador + '</span></li>')
+                $('#listaJugadores').append(list);
+                var dragg = '#drag' + i;
+                $(dragg).hide();
+                var cadena = '';
+
+                cadena += '<div class="player player__item--shirt">' + jugador.camisetaJugador + '</div >'
+                cadena += '<div class="player player__item--label">' + jugador.nombreJugador + '</div >'
+
+                $(dragg).append(cadena);
+                if (jugador.titularJugador == true) {
+                    $(dragg).show();
+                    $('#' + i).css("background-color", "#C0FAB0");
+                    totalTitulares += 1;
+                } else {
+                    $(dragg).hide();
+                    $('#' + i).delay(1000).css("background-color", "#E3E3E3");
+                }
+            });
+            totaljugadores = i;
+            return data;
+        });
+
+        $("#btnSave").click(function () {
+            var coordenadasFinal = [];
+            console.log("TOTL-> ", totaljugadores)
+            for (i = 0; i < totaljugadores; i++) {
+                var id = '#drag' + (i + 1);
+                var doc = $(id);
+                var coordenadas = doc.position();
+                var coordenaX = coordenadas.left;
+                var coordenaY = coordenadas.top;
+                var valores = {
+                    idJugador: jugadores.responseJSON[i].idJugador,
+                    coordenadaX: coordenaX,
+                    coordenadaY: coordenaY,
+                };
+                coordenadasFinal.push(valores)
+            }
+
+            //console.log("COORDENADAS A ENVIAR", coordenadasFinal);
+
+
+            $.ajax({
+                url: 'SaveCoordenadas',
+                type: 'POST',
+                async: true,
+                data: { coordenadasFinal },
+            }).done(function (data) {
+                console.log("DAAATTAAAAA", data);
+            });
+
+
+        });
+    });
+
+    $("#drag1").draggable();
+    $("#drag2").draggable();
+    $("#drag3").draggable();
+    $("#drag4").draggable();
+    $("#drag5").draggable();
+    $("#drag6").draggable();
+    $("#drag7").draggable();
+    $("#drag8").draggable();
+    $("#drag9").draggable();
+    $("#drag10").draggable();
+    $("#drag11").draggable();
+    $("#drag12").draggable();
+    $("#drag13").draggable();
+    $("#drag14").draggable();
+    $("#drag15").draggable();
+    $("#drag16").draggable();
+    $("#drag17").draggable();
+    $("#drag18").draggable();
+
+    $(".field__box").droppable();
+
+
+    $(document).on('click', '#1', function () {
+        if ($('#drag1').is(':visible')) {
+            $('#drag1').hide();
+            $('#1').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag1').show();
+            $('#1').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+
+    $(document).on('click', '#2', function () {
+        if ($('#drag2').is(':visible')) {
+            $('#drag2').hide();
+            $('#2').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag2').show();
+            $('#2').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#3', function () {
+        if ($('#drag3').is(':visible')) {
+            $('#drag3').hide();
+            $('#3').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag3').show();
+            $('#3').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#4', function () {
+        if ($('#drag4').is(':visible')) {
+            $('#drag4').hide();
+            $('#4').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag4').show();
+            $('#4').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#5', function () {
+        if ($('#drag5').is(':visible')) {
+            $('#drag5').hide();
+            $('#5').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag5').show();
+            $('#5').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#6', function () {
+        if ($('#drag6').is(':visible')) {
+            $('#drag6').hide();
+            $('#6').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag6').show();
+            $('#6').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#7', function () {
+        if ($('#drag7').is(':visible')) {
+            $('#drag7').hide();
+            $('#7').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag7').show();
+            $('#7').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#8', function () {
+        if ($('#drag8').is(':visible')) {
+            $('#drag8').hide();
+            $('#8').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag8').show();
+            $('#8').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#9', function () {
+        if ($('#drag9').is(':visible')) {
+            $('#drag9').hide();
+            $('#9').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag9').show();
+            $('#9').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#10', function () {
+        if ($('#drag10').is(':visible')) {
+            $('#drag10').hide();
+            $('#10').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag10').show();
+            $('#10').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#11', function () {
+        if ($('#drag11').is(':visible')) {
+            $('#drag11').hide();
+            $('#11').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag11').show();
+            $('#11').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#12', function () {
+        if ($('#drag12').is(':visible')) {
+            $('#drag12').hide();
+            $('#12').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag12').show();
+            $('#12').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#13', function () {
+        if ($('#drag13').is(':visible')) {
+            $('#drag13').hide();
+            $('#13').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag13').show();
+            $('#13').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+
+    $(document).on('click', '#14', function () {
+        if ($('#drag14').is(':visible')) {
+            $('#drag14').hide();
+            $('#14').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag1').show();
+            $('#14').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#15', function () {
+        if ($('#drag15').is(':visible')) {
+            $('#drag15').hide();
+            $('#15').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag15').show();
+            $('#15').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#16', function () {
+        if ($('#drag16').is(':visible')) {
+            $('#drag16').hide();
+            $('#16').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag16').show();
+            $('#16').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#17', function () {
+        if ($('#drag17').is(':visible')) {
+            $('#drag17').hide();
+            $('#17').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag17').show();
+            $('#17').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+    $(document).on('click', '#18', function () {
+        if ($('#drag18').is(':visible')) {
+            $('#drag18').hide();
+            $('#18').delay(1000).css("background-color", "#E3E3E3");
+        } else {
+            $('#drag18').show();
+            $('#18').delay(1000).css("background-color", "#C0FAB0");
+        }
+    });
+
+    $("#listaJugadores").sortable({ containment: "#listado", scroll: false });
+</script>
